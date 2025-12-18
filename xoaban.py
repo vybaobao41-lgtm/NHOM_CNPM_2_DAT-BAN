@@ -1,38 +1,39 @@
-# AC-01: Hiển thị nút Xóa và gắn sự kiện click
+from tkinter import messagebox
+
+# AC-01: Hiển thị giao diện (Hàm này sẽ được gọi từ màn hình quản lý chính)
 def hien_thi_giao_dien_xoa():
-    print("--- UI: Đang hiển thị nút [Xóa bàn] trên màn hình quản lý ---")
+    print("--- UI: Nút [Xóa bàn] đã sẵn sàng ---")
 
-def khi_nhan_nut_xoa(id_ban):
-    print(f"--- Event: Quản lý đã nhấn vào nút xóa bàn số {id_ban} ---")
-
-if __name__ == "__main__":
-    # Giả lập chạy tính năng
-    hien_thi_giao_dien_xoa()
-    khi_nhan_nut_xoa(101)
-    # Kế thừa AC-01: Hiển thị giao diện
-def hien_thi_giao_dien_xoa():
-    print("--- UI: Đang hiển thị nút [Xóa bàn] trên màn hình quản lý ---")
-
-# AC-02: Logic kiểm tra trạng thái (Business Rule)
+# AC-02: Logic kiểm tra trạng thái
 def kiem_tra_truoc_khi_xoa(id_ban, trang_thai):
-    print(f"Hệ thống đang kiểm tra trạng thái bàn số {id_ban}...")
-    
-    # Chỉ cho phép xóa nếu bàn ở trạng thái "Trống"
     if trang_thai == "Trống":
-        print(f"Hợp lệ: Bàn {id_ban} đang Trống. Bạn có thể xóa.")
         return True
     else:
-        # Hiển thị thông báo lỗi phù hợp như yêu cầu AC-02
-        print(f"Lỗi: Không thể xóa bàn {id_ban} vì đang ở trạng thái [{trang_thai}]!")
+        # Hiển thị thông báo lỗi phù hợp (AC-02)
+        messagebox.showerror("Lỗi", f"Không thể xóa bàn {id_ban} vì đang ở trạng thái [{trang_thai}]!")
         return False
 
+# AC-03 & AC-04: Hộp thoại xác nhận
+def khi_nhan_nut_xoa(id_ban, trang_thai):
+    # Bước 1: Gọi AC-02 để validate
+    if kiem_tra_truoc_khi_xoa(id_ban, trang_thai):
+        
+        # Bước 2: Hiển thị popup xác nhận (AC-03)
+        xac_nhan = messagebox.askyesno("Xác nhận xóa", 
+                                       f"Bàn {id_ban} đang trống. Bạn có chắc chắn muốn xóa khỏi hệ thống?")
+        
+        if xac_nhan: # Người dùng chọn "Xác nhận"
+            print(f"Hệ thống: Bắt đầu xử lý xóa bàn {id_ban}...")
+            # Đây là nơi sẽ viết code cho AC-05 (Xóa Database)
+        else: # AC-04: Người dùng chọn "Hủy"
+            print("Hành động bị hủy: Popup đóng lại, dữ liệu giữ nguyên.")
+
 if __name__ == "__main__":
+    # Test case giả lập để bạn chạy thử file này ngay lập tức
     hien_thi_giao_dien_xoa()
     
-    # Giả lập 2 trường hợp để test logic AC-02
-    print("\n--- Test case 1: Bàn đang có khách ---")
-    kiem_tra_truoc_khi_xoa(101, "Đang phục vụ")
+    print("\n--- Chạy thử: Bàn đang có khách (AC-02) ---")
+    khi_nhan_nut_xoa(101, "Đang phục vụ")
     
-    print("\n--- Test case 2: Bàn đang trống ---")
-    kiem_tra_truoc_khi_xoa(102, "Trống")
-    
+    print("\n--- Chạy thử: Bàn trống (AC-03 & AC-04) ---")
+    khi_nhan_nut_xoa(102, "Trống")
