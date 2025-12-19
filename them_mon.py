@@ -1,22 +1,3 @@
-menu = []
-
-def them_mon(name, price, category):
-    # AC02: kiểm tra thiếu thông tin
-    if not name or not price or not category:
-        return "Lỗi: Thiếu thông tin bắt buộc"
-
-    # AC03: kiểm tra giá hợp lệ
-    try:
-        price = float(price)
-        if price <= 0:
-            return "Giá phải lớn hơn 0"
-    except ValueError:
-        return "Giá phải lớn hơn 0"
-
-    item = {
-        "name": name,
-        "price": price,
-        "category": category
-    }
+    # AC04: lưu món và hiển thị trong danh sách
     menu.append(item)
     return "Thêm món thành công"
