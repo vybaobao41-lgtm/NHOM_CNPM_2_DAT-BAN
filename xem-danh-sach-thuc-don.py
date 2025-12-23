@@ -1,118 +1,98 @@
-import random
+import pandas as pd
 
 # =========================
-# DANH MỤC THỰC ĐƠN
+# ĐỌC MENU TỪ EXCEL
 # =========================
-categories = {
-    "Hải sản": [
-        "Tôm hấp bia", "Cá nướng giấy bạc", "Mực xào sa tế", "Ghẹ rang muối", "Sò điệp nướng mỡ hành",
-        "Hàu nướng phô mai", "Cá hồi áp chảo", "Tôm sốt me", "Mực nhồi thịt", "Cá trê chiên giòn"
-    ],
-    "Món khai vị": [
-        "Súp cua", "Salad rau củ", "Chả giò hải sản", "Gỏi cuốn", "Sườn nướng BBQ",
-        "Bánh xèo mini", "Nem chua rán", "Súp bí đỏ", "Bánh bao chiên", "Khoai tây chiên"
-    ],
-    "Món chính": [
-        "Cơm chiên hải sản", "Phở bò tái", "Bún chả Hà Nội", "Mì xào thập cẩm", "Cá kho tộ",
-        "Gà rang muối", "Heo quay", "Lẩu hải sản", "Cá hồi nướng", "Mực xào chua ngọt"
-    ],
-    "Tráng miệng": [
-        "Kem socola", "Bánh flan", "Chè ba màu", "Bánh bông lan", "Trái cây tráng miệng",
-        "Kem vani", "Pudding socola", "Bánh mousse", "Chè đậu xanh", "Bánh crepe"
-    ],
-    "Đồ uống": [
-        "Nước cam", "Trà đá", "Trà sữa", "Cà phê sữa đá", "Sinh tố bơ",
-        "Sinh tố dâu", "Nước ép cà rốt", "Nước ép táo", "Bia tươi", "Nước khoáng"
-    ]
-}
+FILE_PATH = "THUCDON.xlsx"
 
-# =========================
-# TẠO DỮ LIỆU 350 MÓN ĂN
-# =========================
+df = pd.read_excel(FILE_PATH)
+
 menu = []
-id_counter = 1
+for idx, row in df.iterrows():
+    menu.append({
+        "id": idx + 1,
+        "name": row["TÊN MÓN"],
+        "category": row["DANH MỤC"],
+        "price": int(row["GIÁ TIỀN (VND)"]),
+        "description": f"{row['TÊN MÓN']} thuộc danh mục {row['DANH MỤC']}",
+        "image": None,          # Excel chưa có → để None
+        "status": "Còn hàng"    # Excel chưa có → mặc định
+    })
 
-for category, items in categories.items():
-    # Tạo 70 món mỗi danh mục để tổng ~350 món
-    for i in range(70):
-        name_base = random.choice(items)
-        name = f"{name_base} {i + 1}"
-        price = random.randint(50000, 500000)  # giá từ 50k → 500k
-        status = random.choice(["Còn hàng", "Hết hàng"])
-        menu.append({
-            "name": name,
-            "category": category,
-            "price": price,
-            "description": f"{name} - Món ăn ngon thuộc danh mục {category}.",
-            "image": f"image_{id_counter}.jpg",
-            "status": status
-        })
-        id_counter += 1
-
-
-# =========================
-# AC-01: Hiển thị đầy đủ món ăn
-# =========================
 def show_full_menu():
+    """
+        Hiển thị TOÀN BỘ danh sách thực đơn đã đọc từ file Excel.
+
+        - Không có tham số đầu vào
+        - Duyệt qua danh sách `menu`
+        - In ra: ID, Tên món, Danh mục, Giá tiền
+        - Dùng khi:
+            + Người dùng muốn xem toàn bộ thực đơn
+            + Màn hình "Xem danh sách món ăn"
+    """
     print(f"--- DANH SÁCH THỰC ĐƠN ({len(menu)} món) ---")
     for item in menu:
-        print(f"Tên món: {item['name']}")
+        print(f"[{item['id']}] {item['name']}")
         print(f"Danh mục: {item['category']}")
         print(f"Giá: {item['price']} VND")
-        print(f"Mô tả: {item['description']}")
-        print(f"Hình ảnh: {item['image']}")
-        print(f"Trạng thái: {item['status']}")
         print("---------------------------")
 
-
-# =========================
-# AC-02: Lọc theo danh mục
-# =========================
 def filter_by_category(category):
-    filtered = [item for item in menu if item["category"].lower() == category.lower()]
-    if not filtered:
-        print(f"❌ Không tìm thấy món trong danh mục '{category}'")
-        return
-    print(f"--- MÓN ĂN DANH MỤC: {category} ({len(filtered)} món) ---")
-    for item in filtered:
-        print(f"{item['name']} | {item['price']} VND | {item['status']}")
+    """
+        Hiển thị TOÀN BỘ danh sách thực đơn đã đọc từ file Excel.
 
-
-# =========================
-# AC-03: Tìm kiếm món
-# =========================
-def search_menu(keyword):
-    result = [item for item in menu if
-              keyword.lower() in item["name"].lower() or keyword.lower() in item["description"].lower()]
+        - Không có tham số đầu vào
+        - Duyệt qua danh sách `menu`
+        - In ra: ID, Tên món, Danh mục, Giá tiền
+        - Dùng khi:
+            + Người dùng muốn xem toàn bộ thực đơn
+            + Màn hình "Xem danh sách món ăn"
+    """
+    result = [i for i in menu if i["category"].lower() == category.lower()]
     if not result:
-        print(f"❌ Không tìm thấy món với từ khóa '{keyword}'")
+        print("❌ Không có món trong danh mục này")
         return
-    print(f"--- KẾT QUẢ TÌM KIẾM: '{keyword}' ({len(result)} món) ---")
+
+    print(f"--- DANH MỤC: {category} ---")
     for item in result:
-        print(f"{item['name']} | {item['category']} | {item['price']} VND | {item['status']}")
+        print(f"{item['name']} | {item['price']} VND")
 
+def search_menu(keyword):
+    """
+        Tìm kiếm món ăn theo TỪ KHÓA trong tên món.
 
-# =========================
-# AC-04: Hiển thị trạng thái món
-# =========================
+        Tham số:
+            keyword (str): Từ khóa cần tìm (VD: "Bánh")
+
+        - Tìm kiếm gần đúng (contains)
+        - Không phân biệt hoa/thường
+        - Dùng khi:
+            + Người dùng nhập ô tìm kiếm
+            + Chức năng search món ăn
+    """
+    result = [i for i in menu if keyword.lower() in i["name"].lower()]
+    if not result:
+        print("❌ Không tìm thấy món")
+        return
+
+    for item in result:
+        print(f"{item['name']} | {item['category']} | {item['price']} VND")
+
 def show_menu_status():
-    print("--- TRẠNG THÁI MÓN ĂN ---")
+    """
+        Hiển thị TRẠNG THÁI của từng món ăn.
+
+        - Hiện tại trạng thái mặc định là "Còn hàng"
+        - Chưa đọc từ Excel (hard-code)
+        - Dùng khi:
+            + Kiểm tra món còn / hết
+            + Sau này mở rộng để quản lý tồn kho
+    """
     for item in menu:
         print(f"{item['name']}: {item['status']}")
 
-
-# =========================
-# DEMO / TEST
-# =========================
 if __name__ == "__main__":
-    print("1️⃣ Hiển thị đầy đủ menu (AC-01)")
     show_full_menu()
-
-    print("\n2️⃣ Lọc danh mục Hải sản (AC-02)")
-    filter_by_category("Hải sản")
-
-    print("\n3️⃣ Tìm kiếm từ khóa 'Tôm' (AC-03)")
-    search_menu("Tôm")
-
-    print("\n4️⃣ Hiển thị trạng thái món ăn (AC-04)")
+    filter_by_category("Tráng Miệng")
+    search_menu("Bánh")
     show_menu_status()
