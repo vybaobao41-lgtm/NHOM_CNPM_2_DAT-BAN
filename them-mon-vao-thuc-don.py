@@ -87,3 +87,16 @@ def ac03_them_mon_thanh_cong():
     thuc_don.append(mon_moi)
     print("✔ Thêm món vào thực đơn thành công")
 
+# =========================
+# AC-04: Hiển thị món trong danh sách
+# =========================
+
+def ac04_hien_thi_thuc_don():
+    print("\n--- AC-04: Danh sách thực đơn ---")
+    if not thuc_don:
+        print("📭 Thực đơn hiện đang trống")
+        return
+
+    for i, mon in enumerate(thuc_don, start=1):
+        print(f"{i}. {mon['ten_mon']} - {mon['gia']}đ - {mon['loai_mon']}")
+
