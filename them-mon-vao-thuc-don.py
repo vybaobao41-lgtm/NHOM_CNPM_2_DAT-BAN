@@ -27,3 +27,33 @@ def ac01_them_mon():
         return
 
     print("✔ Thông tin không bị bỏ trống")
+
+# =========================
+# AC-02: Kiểm tra giá hợp lệ
+# =========================
+
+def ac02_kiem_tra_gia(gia):
+    if not gia.isdigit():
+        return False, "❌ Giá phải là số"
+    if int(gia) <= 0:
+        return False, "❌ Giá phải lớn hơn 0"
+    return True, ""
+
+def ac02_them_mon():
+    print("\n--- AC-02: Kiểm tra giá hợp lệ ---")
+    ten_mon = input("Nhập tên món: ")
+    gia = input("Nhập giá: ")
+    loai_mon = input("Nhập loại món: ")
+
+    hop_le, thong_bao = ac01_kiem_tra_thong_tin_trong(ten_mon, gia, loai_mon)
+    if not hop_le:
+        print(thong_bao)
+        return
+
+    hop_le, thong_bao = ac02_kiem_tra_gia(gia)
+    if not hop_le:
+        print(thong_bao)
+        print("❌ Không cho phép lưu")
+        return
+
+    print("✔ Giá hợp lệ")
