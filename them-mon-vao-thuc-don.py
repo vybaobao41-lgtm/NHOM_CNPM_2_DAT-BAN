@@ -100,3 +100,28 @@ def ac04_hien_thi_thuc_don():
     for i, mon in enumerate(thuc_don, start=1):
         print(f"{i}. {mon['ten_mon']} - {mon['gia']}đ - {mon['loai_mon']}")
 
+if __name__ == "__main__":
+    while True:
+        print("\nThêm món vào thực đơn")
+        print("1. Kiểm tra thông tin không hợp lệ")
+        print("2. Kiểm tra giá hợp lệ")
+        print("3. Thêm món thành công")
+        print("4. Hiển thị món trong thực đơn")
+        print("0. Thoát")
+
+        chon = input("Chọn chức năng: ")
+
+        if chon == "1":
+            ac01_them_mon()
+        elif chon == "2":
+            ac02_them_mon()
+        elif chon == "3":
+            ac03_them_mon_thanh_cong()
+        elif chon == "4":
+            ac04_hien_thi_thuc_don()
+        elif chon == "0":
+            print("Thoát chương trình.")
+            break
+        else:
+            print("Lựa chọn không hợp lệ, vui lòng chọn lại.")
+
