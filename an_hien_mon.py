@@ -46,3 +46,11 @@ def hien_thi_danh_sach(danh_sach_mon):
     print("\nDANH SÁCH THỰC ĐƠN")
     for i, mon in enumerate(danh_sach_mon, start=1):
         print(f"{i}. {mon.ten_mon} | {mon.gia} | {mon.loai_mon} | {mon.trang_thai()}")
+
+        # -------------------------
+# HÀM DÙNG CHUNG CHO US KHÁC
+# -------------------------
+def lay_mon_dang_ban(danh_sach_mon):
+    """Trả về danh sách món đang bán, dùng cho gọi món / order"""
+    return [mon for mon in danh_sach_mon if mon.dang_ban]
+
