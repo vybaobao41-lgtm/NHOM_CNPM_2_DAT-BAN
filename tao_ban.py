@@ -40,3 +40,39 @@ def ac01_them_ban():
     # Thêm bàn
     dat_ban[so_ban] = {"trang_thai": "trống", "khach_hang": "", "sdt": "", "so_nguoi": 0}
     print(f"✔ Thêm bàn số {so_ban} thành công!")
+# =========================
+# AC-02/03: Đặt bàn cho khách
+# =========================
+def ac02_03_dat_ban_khach():
+    print("\n--- AC-02/AC-03: Đặt bàn cho khách ---")
+    
+    so_ban_input = input("Nhập số bàn: ").strip()
+    ten_khach = input("Nhập tên khách: ").strip()
+    sdt_khach = input("Nhập SĐT khách: ").strip()
+    so_nguoi_input = input("Nhập số khách: ").strip()
+    
+    # Kiểm tra bắt buộc
+    if so_ban_input == "" or ten_khach == "" or sdt_khach == "" or so_nguoi_input == "":
+        print("❌ Vui lòng nhập đầy đủ thông tin!")
+        return
+    
+    # Kiểm tra số bàn, số điện thoại, số khách hợp lệ
+    if not so_ban_input.isdigit():
+        print("❌ Số bàn phải là số!")
+        return
+    if not sdt_khach.isdigit():
+        print("❌ Số điện thoại phải là số!")
+        return
+    if not so_nguoi_input.isdigit() or int(so_nguoi_input) <= 0:
+        print("❌ Số khách không hợp lệ!")
+        return
+    
+    so_ban = int(so_ban_input)
+    so_nguoi = int(so_nguoi_input)
+    
+    if so_ban in dat_ban and dat_ban[so_ban]["trang_thai"] == "đặt":
+        print(f"⚠ Bàn số {so_ban} đã được đặt trước!")
+        return
+    
+    dat_ban[so_ban] = {"trang_thai": "đặt", "khach_hang": ten_khach, "sdt": sdt_khach, "so_nguoi": so_nguoi}
+    print(f"✔ Đặt bàn số {so_ban} cho {ten_khach} ({so_nguoi} khách) thành công!")
