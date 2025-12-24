@@ -57,3 +57,33 @@ def ac02_them_mon():
         return
 
     print("✔ Giá hợp lệ")
+
+    # =========================
+# AC-03: Thêm món thành công
+# =========================
+
+def ac03_them_mon_thanh_cong():
+    print("\n--- AC-03: Thêm món thành công ---")
+    ten_mon = input("Nhập tên món: ")
+    gia = input("Nhập giá: ")
+    loai_mon = input("Nhập loại món: ")
+
+    hop_le, thong_bao = ac01_kiem_tra_thong_tin_trong(ten_mon, gia, loai_mon)
+    if not hop_le:
+        print(thong_bao)
+        return
+
+    hop_le, thong_bao = ac02_kiem_tra_gia(gia)
+    if not hop_le:
+        print(thong_bao)
+        return
+
+    mon_moi = {
+        "ten_mon": ten_mon,
+        "gia": int(gia),
+        "loai_mon": loai_mon
+    }
+
+    thuc_don.append(mon_moi)
+    print("✔ Thêm món vào thực đơn thành công")
+
