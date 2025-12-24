@@ -1,8 +1,17 @@
 import tkinter as tk
 from tkinter import messagebox
+from datetime import datetime
 
 # ================= DATA =================
 order = []
+
+# ================= LOG FUNCTION =================
+def write_log(action, item):
+    with open("order_log.txt", "a", encoding="utf-8") as f:
+        time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        f.write(
+            f"{time} | {action} | {item['name']} | {item['price']} x {item['qty']}\n"
+        )
 
 # ================= FUNCTIONS =================
 def add_item():
@@ -13,9 +22,12 @@ def add_item():
             "price": int(entry_price.get()),
             "qty": int(entry_qty.get())
         }
+
         order.append(item)
+        write_log("ADD", item)
         refresh_list()
         clear_entries()
+
     except ValueError:
         messagebox.showerror("Lỗi", "Vui lòng nhập đúng dữ liệu")
 
@@ -34,6 +46,7 @@ def delete_item():
     )
 
     if confirm:
+        write_log("DELETE", item)
         order.pop(index)
         refresh_list()
 
@@ -59,7 +72,7 @@ def clear_entries():
 # ================= GUI =================
 root = tk.Tk()
 root.title("Quản lý Order - Nhà hàng hải sản")
-root.geometry("500x450")
+root.geometry("520x480")
 
 # ---- Input ----
 tk.Label(root, text="ID món").pack()
@@ -78,16 +91,20 @@ tk.Label(root, text="Số lượng").pack()
 entry_qty = tk.Entry(root)
 entry_qty.pack()
 
-tk.Button(root, text="➕ Thêm món", command=add_item).pack(pady=5)
+tk.Button(root, text="➕ Thêm món", command=add_item).pack(pady=6)
 
 # ---- List ----
-listbox = tk.Listbox(root, width=60)
+listbox = tk.Listbox(root, width=65)
 listbox.pack(pady=10)
 
 tk.Button(root, text="🗑️ Xóa món", command=delete_item).pack()
 
 # ---- Total ----
-label_total = tk.Label(root, text="Tổng tiền: 0 VND", font=("Arial", 12, "bold"))
+label_total = tk.Label(
+    root,
+    text="Tổng tiền: 0 VND",
+    font=("Time New Roman ", 12, "bold")
+)
 label_total.pack(pady=10)
 
 root.mainloop()
