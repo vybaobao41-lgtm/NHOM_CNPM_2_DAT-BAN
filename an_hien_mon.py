@@ -34,3 +34,15 @@ def hien_mon(mon_an):
         return "⚠ Món đang được bán"
     mon_an.dang_ban = True
     return f"✔ Hiện món '{mon_an.ten_mon}' thành công"
+
+# AC-03 — KHÔNG XÓA DỮ LIỆU KHI ẨN
+# Logic đã đảm bảo trong an_mon/hien_mon
+
+# -------------------------
+# AC-04 — HIỂN THỊ DANH SÁCH MÓN
+# -------------------------
+def hien_thi_danh_sach(danh_sach_mon):
+    """Hiển thị danh sách món ăn kèm trạng thái"""
+    print("\nDANH SÁCH THỰC ĐƠN")
+    for i, mon in enumerate(danh_sach_mon, start=1):
+        print(f"{i}. {mon.ten_mon} | {mon.gia} | {mon.loai_mon} | {mon.trang_thai()}")
