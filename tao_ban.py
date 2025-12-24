@@ -76,3 +76,20 @@ def ac02_03_dat_ban_khach():
     
     dat_ban[so_ban] = {"trang_thai": "đặt", "khach_hang": ten_khach, "sdt": sdt_khach, "so_nguoi": so_nguoi}
     print(f"✔ Đặt bàn số {so_ban} cho {ten_khach} ({so_nguoi} khách) thành công!")
+# =========================
+# AC-04: Hiển thị sơ đồ bàn
+# =========================
+def hien_thi_so_do_ban():
+    print("\n📌 Sơ đồ bàn hiện tại:")
+    trong = [so_ban for so_ban, info in dat_ban.items() if info["trang_thai"] == "trống"]
+    dat = [(so_ban, info) for so_ban, info in dat_ban.items() if info["trang_thai"] == "đặt"]
+    
+    if trong:
+        print("🔹 Bàn trống:", ", ".join(map(str, trong)))
+    else:
+        print("🔹 Không còn bàn trống")
+    
+    if dat:
+        print("🔸 Bàn đã đặt:")
+        for b, info in dat:
+            print(f" - Bàn {b}: Khách: {info['khach_hang']}, SĐT: {info['sdt']}, Số khách: {info['so_nguoi']}")
