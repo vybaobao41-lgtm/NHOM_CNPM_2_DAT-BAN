@@ -11,3 +11,16 @@ class MonAn:
     def trang_thai(self):
         """Trả về trạng thái món ăn"""
         return "Đang bán" if self.dang_ban else "Ngừng bán"
+    
+# -------------------------
+# AC-01 — ẨN MÓN
+# -------------------------
+def an_mon(mon_an):
+    """
+    Ẩn món: đổi trạng thái sang Ngừng bán
+    AC-03 cũng được đảm bảo vì không xóa dữ liệu
+    """
+    if not mon_an.dang_ban:
+        return "⚠ Món đã ngừng bán"
+    mon_an.dang_ban = False
+    return f"✔ Ẩn món '{mon_an.ten_mon}' thành công"
