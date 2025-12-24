@@ -24,3 +24,13 @@ def an_mon(mon_an):
         return "⚠ Món đã ngừng bán"
     mon_an.dang_ban = False
     return f"✔ Ẩn món '{mon_an.ten_mon}' thành công"
+
+# -------------------------
+# AC-02 — HIỆN MÓN
+# -------------------------
+def hien_mon(mon_an):
+    """Hiện món: đổi trạng thái sang Đang bán"""
+    if mon_an.dang_ban:
+        return "⚠ Món đang được bán"
+    mon_an.dang_ban = True
+    return f"✔ Hiện món '{mon_an.ten_mon}' thành công"
