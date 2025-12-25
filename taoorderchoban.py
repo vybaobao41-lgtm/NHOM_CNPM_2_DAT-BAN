@@ -81,3 +81,4 @@ class QuanLyNhaHang:
 if __name__ == "__main__":
     ung_dung = QuanLyNhaHang()
     ung_dung.menu_chinh()
+# Đã hoàn thiện chức năng tạo đơn hàng.
