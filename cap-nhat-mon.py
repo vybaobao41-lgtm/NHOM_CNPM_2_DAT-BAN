@@ -71,3 +71,14 @@ def cap_nhat_mon(mon_an, ten_mon, gia, loai_mon, mo_ta="", hinh_anh=""):
     mon_an.hinh_anh = hinh_anh
 
     return "✔ Cập nhật món thành công"
+
+# =========================
+# AC-05 — DANH SÁCH CẬP NHẬT
+# =========================
+def hien_thi_danh_sach(danh_sach_mon):
+    """
+    Hiển thị danh sách thực đơn sau khi cập nhật
+    """
+    print("\nDANH SÁCH THỰC ĐƠN")
+    for i, mon in enumerate(danh_sach_mon, start=1):
+        print(f"{i}. {mon.ten_mon} | {mon.gia} | {mon.loai_mon}")
