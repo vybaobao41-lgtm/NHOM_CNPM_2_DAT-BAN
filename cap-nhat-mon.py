@@ -45,3 +45,29 @@ def kiem_tra_gia_hop_le(gia):
         return True, ""
     except ValueError:
         return False, "⚠ Giá phải là số lớn hơn 0"
+    
+    # =========================
+# AC-04 — CẬP NHẬT MÓN THÀNH CÔNG
+# =========================
+def cap_nhat_mon(mon_an, ten_mon, gia, loai_mon, mo_ta="", hinh_anh=""):
+    """
+    Cập nhật thông tin món ăn
+    """
+    # Kiểm tra thông tin bắt buộc
+    hop_le, thong_bao = kiem_tra_thong_tin_bat_buoc(ten_mon, gia, loai_mon)
+    if not hop_le:
+        return thong_bao
+
+    # Kiểm tra giá
+    hop_le, thong_bao = kiem_tra_gia_hop_le(gia)
+    if not hop_le:
+        return thong_bao
+
+    # Cập nhật dữ liệu
+    mon_an.ten_mon = ten_mon
+    mon_an.gia = float(gia)
+    mon_an.loai_mon = loai_mon
+    mon_an.mo_ta = mo_ta
+    mon_an.hinh_anh = hinh_anh
+
+    return "✔ Cập nhật món thành công"
