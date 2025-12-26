@@ -131,3 +131,33 @@ if __name__ == '__main__':
     print(f"Trạng thái Bàn 1: {get_table_status(1)}") 
     print(f"Trạng thái Bàn 2: {get_table_status(2)}") 
     print(f"Trạng thái Bàn 3: {get_table_status(3)}")
+   
+    #--BaoVy--
+import sqlite3
+import datetime
+
+# AC-05: Hàm thực hiện xóa bàn trong Database
+def xoa_ban_khoi_db(id_ban):
+    try:
+        conn = sqlite3.connect('nha_hang.db') 
+        cursor = conn.cursor()
+        sql = "DELETE FROM BanAn WHERE id = ?"
+        cursor.execute(sql, (id_ban,))
+        conn.commit()
+        conn.close()
+        return True
+    except Exception as e:
+        print(f"Lỗi Database: {e}")
+        return False
+
+# AC-06: Hàm ghi nhật ký hệ thống (Log)
+def ghi_log_he_thong(id_ban, nguoi_thuc_hien="Admin"):
+    try:
+        thoi_gian = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        dong_log = f"[{thoi_gian}] {nguoi_thuc_hien} đã xóa bàn số: {id_ban}\n"
+        with open("audit_log.txt", "a", encoding="utf-8") as f:
+            f.write(dong_log)
+        return True
+    except Exception as e:
+        print(f"Lỗi ghi log: {e}")
+        return False 
