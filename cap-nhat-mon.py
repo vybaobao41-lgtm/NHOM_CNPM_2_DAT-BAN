@@ -82,3 +82,38 @@ def hien_thi_danh_sach(danh_sach_mon):
     print("\nDANH SÁCH THỰC ĐƠN")
     for i, mon in enumerate(danh_sach_mon, start=1):
         print(f"{i}. {mon.ten_mon} | {mon.gia} | {mon.loai_mon}")
+
+# NHẬP DỮ LIỆU 
+def nhap_thuc_don():
+    danh_sach = []
+
+    so_luong = int(input("Nhập số món trong thực đơn: "))
+    for _ in range(so_luong):
+        print("\n--- Nhập món ---")
+        ten = input("Tên món: ")
+
+        while True:
+            try:
+                gia = float(input("Giá món: "))
+                if gia <= 0:
+                    print("⚠ Giá phải lớn hơn 0")
+                    continue
+                break
+            except ValueError:
+                print("⚠ Giá phải là số")
+
+        loai = input("Loại món: ")
+
+        mon = MonAn(ten, gia, loai)
+        danh_sach.append(mon)
+
+    return danh_sach
+
+
+if __name__ == "__main__":
+    danh_sach_mon = nhap_thuc_don()
+
+
+    print("\n--- Danh sách ban đầu ---")
+    hien_thi_danh_sach(danh_sach_mon)
+
