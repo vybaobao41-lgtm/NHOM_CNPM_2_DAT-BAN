@@ -33,3 +33,15 @@ def kiem_tra_thong_tin_bat_buoc(ten_mon, gia, loai_mon):
     if not ten_mon or not loai_mon or gia is None:
         return False, "⚠ Vui lòng nhập đầy đủ thông tin bắt buộc"
     return True, ""
+
+# =========================
+# AC-03 — KIỂM TRA GIÁ HỢP LỆ
+# =========================
+def kiem_tra_gia_hop_le(gia):
+    try:
+        gia = float(gia)
+        if gia <= 0:
+            return False, "⚠ Giá phải là số lớn hơn 0"
+        return True, ""
+    except ValueError:
+        return False, "⚠ Giá phải là số lớn hơn 0"
