@@ -25,3 +25,11 @@ def lay_thong_tin_mon(mon_an):
     Lấy thông tin món để hiển thị khi chỉnh sửa
     """
     return mon_an.thong_tin()
+
+# =========================
+# AC-02 — KIỂM TRA THÔNG TIN BẮT BUỘC
+# =========================
+def kiem_tra_thong_tin_bat_buoc(ten_mon, gia, loai_mon):
+    if not ten_mon or not loai_mon or gia is None:
+        return False, "⚠ Vui lòng nhập đầy đủ thông tin bắt buộc"
+    return True, ""
