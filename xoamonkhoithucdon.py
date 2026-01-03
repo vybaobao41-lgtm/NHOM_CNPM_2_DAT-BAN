@@ -1,131 +1,115 @@
-# =========================
-# US-02 — CẬP NHẬT THÔNG TIN BÀN
-# =========================
+import pandas as pd
+import tkinter as tk
+from tkinter import messagebox, ttk
 
-# =========================
-# DỮ LIỆU GIẢ LẬP
-# =========================
+FILE_PATH = "THUCDON.xlsx"
 
-tables = [
-    {
-        "id": 1,
-        "name": "Bàn 01",
-        "seats": 4,
-        "status": "Trống"
-    },
-    {
-        "id": 2,
-        "name": "Bàn 02",
-        "seats": 6,
-        "status": "Đang phục vụ"
-    }
-]
-
-subscribers = []  # giả lập realtime
+TEN_MON_COL = "TÊN MÓN"
+DANH_MUC_COL = "DANH MỤC"
+GIA_COL = "GIÁ TIỀN (VND)"
 
 
-# =========================
-# HÀM HỖ TRỢ
-# =========================
-
-def notify_realtime():
-    """AC-02: đồng bộ realtime"""
-    for sub in subscribers:
-        sub()
-
-
-def find_table_by_id(table_id):
-    """Tìm bàn theo ID"""
-    for table in tables:
-        if table["id"] == table_id:
-            return table
+def doc_thuc_don():
+    try:
+        df = pd.read_excel(FILE_PATH)
+        for col in [TEN_MON_COL, DANH_MUC_COL, GIA_COL]:
+            if col not in df.columns:
+                raise ValueError
+        return df
+    except FileNotFoundError:
+        messagebox.showerror("Lỗi", "Không tìm thấy file THUCDON.xlsx")
+    except ValueError:
+        messagebox.showerror(
+            "Lỗi",
+            "File thực đơn không đúng định dạng.\n"
+            "Cần có các cột:\n"
+            "- TÊN MÓN\n- DANH MỤC\n- GIÁ TIỀN (VND)"
+        )
     return None
 
 
-def is_duplicate_table_name(name, exclude_id):
-    """AC-01: kiểm tra trùng tên bàn"""
-    for table in tables:
-        if table["name"] == name and table["id"] != exclude_id:
-            return True
-    return False
+def load_danh_sach():
+    tree.delete(*tree.get_children())
+    df = doc_thuc_don()
+    if df is None:
+        return
+    for _, row in df.iterrows():
+        tree.insert("", tk.END, values=(
+            row[TEN_MON_COL],
+            row[DANH_MUC_COL],
+            row[GIA_COL]
+        ))
 
 
-def show_tables():
-    print("\n--- DANH SÁCH BÀN ---")
-    for t in tables:
-        print(
-            f"ID: {t['id']} | {t['name']} | "
-            f"Số chỗ: {t['seats']} | Trạng thái: {t['status']}"
+def xoa_mon_da_chon():
+    selected = tree.selection()
+
+    if not selected:
+        messagebox.showwarning(
+            "Cảnh báo",
+            "Vui lòng chọn món cần xóa trong danh sách"
         )
-    print("--------------------\n")
+        return
+
+    item = tree.item(selected[0])
+    ten_mon, danh_muc, gia = item["values"]
+
+    xac_nhan = messagebox.askyesno(
+        "Xác nhận xóa",
+        f"Bạn có chắc chắn muốn xóa món:\n\n"
+        f"{ten_mon}\n"
+        f"Danh mục: {danh_muc}\n"
+        f"Giá: {gia} VND"
+    )
+
+    if not xac_nhan:
+        return
+
+    df = doc_thuc_don()
+    if df is None:
+        return
+
+    try:
+        df_moi = df[df[TEN_MON_COL].astype(str) != str(ten_mon)]
+        df_moi.to_excel(FILE_PATH, index=False)
+
+        messagebox.showinfo(
+            "Thành công",
+            "Đã xóa món khỏi thực đơn"
+        )
+        load_danh_sach()
+
+    except Exception as e:
+        messagebox.showerror(
+            "Lỗi",
+            f"Xóa món thất bại:\n{e}"
+        )
 
 
-# =========================
-# US-02 — CẬP NHẬT THÔNG TIN BÀN
-# =========================
+# ===== GIAO DIỆN =====
+root = tk.Tk()
+root.title("Quản lý thực đơn – Xóa món")
+root.geometry("820x480")
 
-def update_table(table_id, new_name, new_seats):
-    """
-    AC-01: Kiểm tra tính hợp lệ
-    AC-02: Cập nhật khi đang sử dụng + realtime
-    AC-03: Cập nhật thành công
-    AC-04: Hủy (không xử lý trong function, do UI xử lý)
-    """
+columns = (TEN_MON_COL, DANH_MUC_COL, GIA_COL)
+tree = ttk.Treeview(root, columns=columns, show="headings", height=16)
 
-    # ---- AC-01: bàn tồn tại ----
-    table = find_table_by_id(table_id)
-    if not table:
-        return "❌ Bàn không tồn tại"
+for col in columns:
+    tree.heading(col, text=col)
+    tree.column(col, width=300 if col == TEN_MON_COL else 160)
 
-    # ---- AC-01: validate tên bàn ----
-    if not new_name or not new_name.strip():
-        return "❌ Tên bàn không được để trống"
+tree.pack(pady=15)
 
-    # ---- AC-01: validate số chỗ ngồi ----
-    if not isinstance(new_seats, int):
-        return "❌ Số chỗ ngồi phải là số"
-    if new_seats <= 0:
-        return "❌ Số chỗ ngồi phải là số nguyên dương"
+btn_xoa = tk.Button(
+    root,
+    text="❌ XÓA MÓN ĐÃ CHỌN",
+    bg="red",
+    fg="white",
+    font=("Arial", 11, "bold"),
+    width=25,
+    command=xoa_mon_da_chon
+)
+btn_xoa.pack(pady=10)
 
-    # ---- AC-01: trùng tên bàn ----
-    if is_duplicate_table_name(new_name.strip(), table_id):
-        return "❌ Tên bàn đã tồn tại"
-
-    # ---- AC-02: cập nhật khi đang phục vụ ----
-    # KHÔNG đổi trạng thái
-    # KHÔNG ảnh hưởng order / đặt bàn
-
-    table["name"] = new_name.strip()
-    table["seats"] = new_seats
-
-    # ---- AC-02: realtime sync ----
-    notify_realtime()
-
-    # ---- AC-03: thành công ----
-    return "✅ Cập nhật thông tin bàn thành công"
-
-
-# =========================
-# GIẢ LẬP REALTIME LISTENER
-# =========================
-
-def realtime_listener():
-    print("🔄 Dữ liệu bàn đã được cập nhật realtime!")
-    show_tables()
-
-
-subscribers.append(realtime_listener)
-
-
-# =========================
-# TEST THỦ CÔNG (CÓ THỂ XÓA KHI PUSH)
-# =========================
-
-if __name__ == "__main__":
-    show_tables()
-
-    print(update_table(2, "Bàn VIP", 8))
-    print(update_table(1, "Bàn VIP", 4))     # trùng tên
-    print(update_table(1, "", 4))            # lỗi tên
-    print(update_table(1, "Bàn 01A", -1))    # lỗi số chỗ
-    print(update_table(99, "Bàn 99", 4))     # không tồn tại
+load_danh_sach()
+root.mainloop()
