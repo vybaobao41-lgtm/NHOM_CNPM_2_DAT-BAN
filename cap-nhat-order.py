@@ -8,11 +8,33 @@ class OrderItem:
         self.so_luong = so_luong
         self.ghi_chu = ghi_chu
 
-    def __str__(self):
-        return (f"{self.ten_mon} | {self.danh_muc} | "
-                f"{self.gia} VND | SL: {self.so_luong} | Ghi chú: {self.ghi_chu}")
+
+# ===== HÀM IN BẢNG ASCII =====
+def print_table(headers, rows):
+    col_widths = [len(h) for h in headers]
+
+    for row in rows:
+        for i, cell in enumerate(row):
+            col_widths[i] = max(col_widths[i], len(str(cell)))
+
+    def print_line():
+        print("+" + "+".join("-" * (w + 2) for w in col_widths) + "+")
+
+    def print_row(row):
+        print("|" + "|".join(
+            f" {str(cell).ljust(col_widths[i])} "
+            for i, cell in enumerate(row)
+        ) + "|")
+
+    print_line()
+    print_row(headers)
+    print_line()
+    for row in rows:
+        print_row(row)
+        print_line()
 
 
+# ===== HÀM NGHIỆP VỤ =====
 def cap_nhat_mon(order, ten_mon, so_luong_moi=None, ghi_chu_moi=None):
     """
     US-17 — Cập nhật món trong order
@@ -21,47 +43,68 @@ def cap_nhat_mon(order, ten_mon, so_luong_moi=None, ghi_chu_moi=None):
     AC03 — Cập nhật ghi chú
     """
     for item in order:
-        if item.ten_mon == ten_mon:
+        if item.ten_mon.lower() == ten_mon.lower():
 
-            # AC02 — Không cho phép số lượng ≤ 0
             if so_luong_moi is not None:
                 if so_luong_moi <= 0:
                     raise ValueError("Số lượng phải lớn hơn 0")
-                item.so_luong = so_luong_moi  # AC01
+                item.so_luong = so_luong_moi
 
-            # AC03 — Cập nhật ghi chú
             if ghi_chu_moi is not None:
                 item.ghi_chu = ghi_chu_moi
 
-            return True  # Cập nhật thành công
+            return True
 
     raise ValueError("Không tìm thấy món trong order")
 
 
-# ===== Ví dụ sử dụng =====
+# ===== HIỂN THỊ ORDER DẠNG BẢNG =====
+def hien_thi_order(order, title):
+    rows = []
+    for item in order:
+        rows.append([
+            item.ten_mon,
+            item.danh_muc,
+            f"{item.gia} VND",
+            item.so_luong,
+            item.ghi_chu
+        ])
+
+    print(f"\n{title}")
+    print_table(
+        ["Tên món", "Danh mục", "Giá", "Số lượng", "Ghi chú"],
+        rows
+    )
+
+
+# ===== CHƯƠNG TRÌNH CHÍNH =====
 if __name__ == "__main__":
-    # Order mẫu
+
     order = [
-        OrderItem("Fanta", "Soft Drink",  35000 , 2),
-        OrderItem("Khoai Tây Chiên (French Fries with Mayonnaise Sauce)", "Snack & Món Chiên Giòn",  79000 , 1)
+        OrderItem("Fanta", "Soft Drink", 35000, 2),
+        OrderItem("7Up","Soft Drink",35000, 4)
     ]
 
-    print("=== Order ban đầu ===")
-    for item in order:
-        print(item)
+    hien_thi_order(order, "ORDER BAN ĐẦU")
 
-    print("\n=== Cập nhật món ===")
+    print("\n=== CẬP NHẬT MÓN (US-17) ===")
+    ten_mon = input("Nhập tên món cần cập nhật: ")
+
+    sl_input = input("Nhập số lượng mới (Enter để bỏ qua): ")
+    so_luong_moi = None if sl_input.strip() == "" else int(sl_input)
+
+    ghi_chu_input = input("Nhập ghi chú mới (Enter để bỏ qua): ")
+    ghi_chu_moi = None if ghi_chu_input.strip() == "" else ghi_chu_input
+
     try:
         cap_nhat_mon(
             order,
-            ten_mon = "Fanta",
-            so_luong_moi = 3,
-            ghi_chu_moi = "Ít đá"
+            ten_mon,
+            so_luong_moi,
+            ghi_chu_moi
         )
-        print("Cập nhật thành công")
+        print("\n✅ Cập nhật thành công")
     except ValueError as e:
-        print("Lỗi:", e)
+        print("\n❌ Lỗi:", e)
 
-    print("\n=== Order sau cập nhật ===")
-    for item in order:
-        print(item)
+    hien_thi_order(order, "ORDER SAU CẬP NHẬT")
