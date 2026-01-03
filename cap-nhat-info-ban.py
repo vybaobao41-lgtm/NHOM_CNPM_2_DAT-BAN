@@ -1,24 +1,35 @@
-# ===== US-02: Cập nhật thông tin bàn =====
+from datetime import datetime
+
+# =========================
+# ENTITY
+# =========================
 
 class Table:
     def __init__(self, table_id, ngay, gio, so_nguoi, trang_thai):
         self.table_id = table_id
-        self.ngay = ngay        # yyyy-mm-dd
-        self.gio = gio          # hh:mm
+        self.ngay = ngay
+        self.gio = gio
         self.so_nguoi = so_nguoi
-        self.trang_thai = trang_thai  # Trống / Đang sử dụng / Đã đặt
+        self.trang_thai = trang_thai
 
     def __str__(self):
         return (f"Bàn {self.table_id} | Ngày: {self.ngay} | Giờ: {self.gio} | "
                 f"Số người: {self.so_nguoi} | Trạng thái: {self.trang_thai}")
 
 
+# =========================
+# VALIDATION (AC01)
+# =========================
+
 def kiem_tra_hop_le(ngay, gio, so_nguoi, trang_thai):
-    """
-    AC01 — Kiểm tra tính hợp lệ của thông tin bàn
-    """
     if not ngay or not gio:
         return False, "Ngày và giờ không được để trống"
+
+    try:
+        datetime.strptime(ngay, "%Y-%m-%d")
+        datetime.strptime(gio, "%H:%M")
+    except ValueError:
+        return False, "Sai định dạng ngày (yyyy-mm-dd) hoặc giờ (hh:mm)"
 
     if so_nguoi <= 0:
         return False, "Số người phải lớn hơn 0"
@@ -29,71 +40,106 @@ def kiem_tra_hop_le(ngay, gio, so_nguoi, trang_thai):
     return True, ""
 
 
-def cap_nhat_ban(danh_sach_ban, table_id,
-                 ngay_moi=None, gio_moi=None,
-                 so_nguoi_moi=None, trang_thai_moi=None,
-                 huy=False):
-    """
-    US-02 — Cập nhật thông tin bàn
-    AC02 — Cập nhật bàn khi đang sử dụng và đồng bộ realtime
-    AC03 — Cập nhật thành công
-    AC04 — Hủy cập nhật
-    """
+# =========================
+# BUSINESS LOGIC (US-02)
+# =========================
 
-    # AC04 — Hủy cập nhật
-    if huy:
-        print("Đã hủy cập nhật")
-        return False
+def cap_nhat_ban(danh_sach_ban, table_id,
+                 ngay_moi, gio_moi,
+                 so_nguoi_moi, trang_thai_moi):
 
     for ban in danh_sach_ban:
         if ban.table_id == table_id:
 
-            # Giá trị mới (nếu không nhập thì giữ nguyên)
-            ngay = ngay_moi if ngay_moi is not None else ban.ngay
-            gio = gio_moi if gio_moi is not None else ban.gio
-            so_nguoi = so_nguoi_moi if so_nguoi_moi is not None else ban.so_nguoi
-            trang_thai = trang_thai_moi if trang_thai_moi is not None else ban.trang_thai
+            hop_le, thong_bao = kiem_tra_hop_le(
+                ngay_moi, gio_moi, so_nguoi_moi, trang_thai_moi
+            )
 
-            # AC01 — Kiểm tra hợp lệ
-            hop_le, thong_bao = kiem_tra_hop_le(ngay, gio, so_nguoi, trang_thai)
             if not hop_le:
-                raise ValueError(thong_bao)
+                print(f"❌ {thong_bao}")
+                return False
 
-            # AC02 — Cho phép cập nhật cả khi đang sử dụng
-            ban.ngay = ngay
-            ban.gio = gio
-            ban.so_nguoi = so_nguoi
-            ban.trang_thai = trang_thai
+            ban.ngay = ngay_moi
+            ban.gio = gio_moi
+            ban.so_nguoi = so_nguoi_moi
+            ban.trang_thai = trang_thai_moi
 
-            # AC03 — Cập nhật thành công (dữ liệu được cập nhật ngay)
+            print("✅ Cập nhật bàn thành công!")
+            print(ban)
             return True
 
-    raise ValueError("Không tìm thấy bàn cần cập nhật")
+    print("❌ Không tìm thấy bàn")
+    return False
 
 
-# ===== Ví dụ sử dụng =====
+# =========================
+# UI NHẬP TỪ BÀN PHÍM (US-02)
+# =========================
+
+def cap_nhat_thong_tin_ban_tu_ban_phim(danh_sach_ban):
+    print("\n=== CẬP NHẬT THÔNG TIN BÀN (US-02) ===")
+
+    # Nhập ID
+    try:
+        table_id = int(input("Nhập ID bàn: "))
+    except ValueError:
+        print("❌ ID phải là số")
+        return
+
+    ban = next((b for b in danh_sach_ban if b.table_id == table_id), None)
+    if not ban:
+        print("❌ Không tìm thấy bàn")
+        return
+
+    print("\nThông tin hiện tại:")
+    print(ban)
+
+    # Xác nhận cập nhật (AC04)
+    xac_nhan = input("\nBạn có muốn cập nhật bàn này không? (y/n): ").lower()
+    if xac_nhan != "y":
+        print("⛔ Đã hủy cập nhật")
+        return
+
+    print("\nNhập thông tin mới:")
+
+    ngay_moi = input("Ngày (yyyy-mm-dd): ").strip()
+    gio_moi = input("Giờ (hh:mm): ").strip()
+
+    try:
+        so_nguoi_moi = int(input("Số người: "))
+    except ValueError:
+        print("❌ Số người phải là số")
+        return
+
+    trang_thai_moi = input("Trạng thái (Trống / Đang sử dụng / Đã đặt): ").strip()
+
+    cap_nhat_ban(
+        danh_sach_ban,
+        table_id,
+        ngay_moi,
+        gio_moi,
+        so_nguoi_moi,
+        trang_thai_moi
+    )
+
+
+# =========================
+# DEMO
+# =========================
+
 if __name__ == "__main__":
     danh_sach_ban = [
-        Table(1, "2025-12-23", "18:00", 4, "Trống"),
-        Table(2, "2025-12-23", "19:00", 2, "Đang sử dụng")
+        Table(1, "2026-01-03", "18:00", 4, "Trống"),
+        Table(2, "2026-01-03", "19:00", 6, "Đang sử dụng"),
+        Table(3, "2026-01-04", "20:00", 2, "Đã đặt")
     ]
 
-    print("=== Danh sách bàn ban đầu ===")
+    print("=== DANH SÁCH BÀN ===")
     for ban in danh_sach_ban:
         print(ban)
 
-    print("\n=== Cập nhật thông tin bàn ===")
-    try:
-        cap_nhat_ban(
-            danh_sach_ban,
-            table_id=2,
-            so_nguoi_moi=3,
-            trang_thai_moi="Đang sử dụng"
-        )
-        print("Cập nhật thành công")
-    except ValueError as e:
-        print("Lỗi:", e)
+    cap_nhat_thong_tin_ban_tu_ban_phim(danh_sach_ban)
 
-    print("\n=== Danh sách bàn sau cập nhật ===")
+    print("\n=== SAU CẬP NHẬT ===")
     for ban in danh_sach_ban:
         print(ban)
