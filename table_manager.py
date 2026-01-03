@@ -161,3 +161,35 @@ def ghi_log_he_thong(id_ban, nguoi_thuc_hien="Admin"):
     except Exception as e:
         print(f"Lỗi ghi log: {e}")
         return False 
+
+
+
+#baovy-huyban---
+import sqlite3
+
+# AC-05: Giải phóng bàn nếu đặt bàn đã chọn bàn
+def giai_phong_ban(id_ban):
+    try:
+        conn = sqlite3.connect('nha_hang.db')
+        cursor = conn.cursor()
+        # Chuyển trạng thái bàn về Trống
+        cursor.execute("UPDATE BanAn SET trang_thai = 'Trống' WHERE id = ?", (id_ban,))
+        conn.commit()
+        conn.close()
+        return True
+    except Exception as e:
+        print(f"Lỗi giải phóng bàn: {e}")
+        return False
+
+# AC-04: Cập nhật trạng thái đặt bàn thành 'Đã hủy'
+def cap_nhat_trang_thai_huy(ma_dat_ban):
+    try:
+        conn = sqlite3.connect('nha_hang.db')
+        cursor = conn.cursor()
+        cursor.execute("UPDATE DatBan SET trang_thai = 'Đã hủy' WHERE ma_dat_ban = ?", (ma_dat_ban,))
+        conn.commit()
+        conn.close()
+        return True
+    except Exception as e:
+        print(f"Lỗi cập nhật trạng thái hủy: {e}")
+        return False
