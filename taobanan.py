@@ -29,3 +29,17 @@ def hoi_them_ban_khi_het():
             return False
     return True
 
+# =========================
+# AC-02: Kiểm tra thông tin khách hợp lệ
+# =========================
+def kiem_tra_thong_tin_khach(ten_khach, so_nguoi):
+    if ten_khach.strip() == "":
+        return False, "❌ Tên khách không được để trống"
+
+    if not so_nguoi.isdigit():
+        return False, "❌ Số người phải là số"
+
+    if int(so_nguoi) <= 0:
+        return False, "❌ Số người phải lớn hơn 0"
+
+    return True, ""
