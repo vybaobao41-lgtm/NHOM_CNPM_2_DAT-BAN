@@ -45,7 +45,15 @@ def ac01_them_ban():
 # =========================
 def ac02_03_dat_ban_khach():
     print("\n--- AC-02/AC-03: Đặt bàn cho khách ---")
-    
+
+    # 🔍 Kiểm tra còn bàn trống không
+    ban_trong = [b for b, info in dat_ban.items() if info["trang_thai"] == "trống"]
+
+    if len(ban_trong) == 0:
+        print("❌ Hiện tại không còn bàn trống!")
+        print("👉 Vui lòng thêm bàn mới trước khi đặt.")
+        return
+
     so_ban_input = input("Nhập số bàn: ").strip()
     ten_khach = input("Nhập tên khách: ").strip()
     sdt_khach = input("Nhập SĐT khách: ").strip()
@@ -81,15 +89,46 @@ def ac02_03_dat_ban_khach():
 # =========================
 def hien_thi_so_do_ban():
     print("\n📌 Sơ đồ bàn hiện tại:")
-    trong = [so_ban for so_ban, info in dat_ban.items() if info["trang_thai"] == "trống"]
-    dat = [(so_ban, info) for so_ban, info in dat_ban.items() if info["trang_thai"] == "đặt"]
-    
-    if trong:
-        print("🔹 Bàn trống:", ", ".join(map(str, trong)))
-    else:
-        print("🔹 Không còn bàn trống")
-    
-    if dat:
-        print("🔸 Bàn đã đặt:")
-        for b, info in dat:
-            print(f" - Bàn {b}: Khách: {info['khach_hang']}, SĐT: {info['sdt']}, Số khách: {info['so_nguoi']}")
+
+    trong = [b for b, info in dat_ban.items() if info["trang_thai"] == "trống"]
+    dat = sorted([b for b, info in dat_ban.items() if info["trang_thai"] == "đặt"])
+
+    # Bàn trống: chỉ hiển thị số lượng
+    print(f"🔹 Bàn trống: {len(trong)} bàn")
+
+    # Bàn đã đặt: hiển thị chi tiết
+    print(f"🔸 Bàn đã đặt: {len(dat)} bàn")
+    for b in dat:
+        info = dat_ban[b]
+        ten = info["khach_hang"].title()
+        print(f"   - Bàn {b}: {ten} ({info['so_nguoi']} khách)")
+
+# =========================
+# MENU CHƯƠNG TRÌNH
+# =========================
+def menu():
+    while True:
+        print("\n===== QUẢN LÝ ĐẶT BÀN =====")
+        print("1. Thêm bàn mới")
+        print("2. Đặt bàn cho khách")
+        print("3. Hiển thị sơ đồ bàn")
+        print("0. Thoát")
+
+        choice = input("Chọn chức năng: ").strip()
+
+        if choice == "1":
+            ac01_them_ban()
+        elif choice == "2":
+            ac02_03_dat_ban_khach()
+        elif choice == "3":
+            hien_thi_so_do_ban()
+        elif choice == "0":
+            print("👋 Thoát chương trình!")
+            break
+        else:
+            print("❌ Lựa chọn không hợp lệ!")
+
+# =========================
+# CHẠY CHƯƠNG TRÌNH
+# =========================
+menu()

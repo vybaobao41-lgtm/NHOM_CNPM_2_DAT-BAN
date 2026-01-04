@@ -102,14 +102,14 @@ def ac04_hien_thi_thuc_don():
 
 if __name__ == "__main__":
     while True:
-        print("\nThêm món vào thực đơn")
-        print("1. Kiểm tra thông tin không hợp lệ")
-        print("2. Kiểm tra giá hợp lệ")
-        print("3. Thêm món thành công")
-        print("4. Hiển thị món trong thực đơn")
-        print("0. Thoát")
+        print("\n Thêm món vào thực đơn")
+        print("1.Kiểm tra thông tin không hợp lệ")
+        print("2.Kiểm tra giá hợp lệ")
+        print("3.Thêm món thành công")
+        print("4.Hiển thị món trong thực đơn")
+        print("0.Thoát")
 
-        chon = input("Chọn chức năng: ")
+        chon = input("chọn chức năng: ")
 
         if chon == "1":
             ac01_them_mon()
