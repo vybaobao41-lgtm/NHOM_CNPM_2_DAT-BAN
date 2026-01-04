@@ -171,7 +171,7 @@ def is_valid_phone(phone):
 def is_time_overlap(start1, end1, start2, end2):
     return start1 < end2 and start2 < end1
 
-
+2
 def print_table(headers, rows):
     col_widths = [len(h) for h in headers]
     for row in rows:
@@ -271,6 +271,7 @@ def create_reservation():
                 print("❌ Bàn đã được đặt trong thời gian này")
                 return
 
+    # Tạo đặt bàn
     reservation = {
         "customer": customer,
         "phone": phone,
@@ -284,8 +285,21 @@ def create_reservation():
 
     reservations.append(reservation)
 
-    print("✅ Tạo đặt bàn thành công")
-    show_reservations()   # ---- AC-03: tự động cập nhật danh sách
+    print("✅ Tạo đặt bàn thành công! Thông tin bàn vừa tạo:")
+
+    # In ra bảng 1 dòng
+    headers = ["Bàn", "Khách", "SĐT", "Số khách", "Bắt đầu", "Kết thúc", "Trạng thái", "Ghi chú"]
+    row = [[
+        reservation["table"],
+        reservation["customer"],
+        reservation["phone"],
+        reservation["guests"],
+        reservation["start"].strftime("%d/%m/%Y %H:%M"),
+        reservation["end"].strftime("%H:%M"),
+        reservation["status"],
+        reservation["note"]
+    ]]
+    print_table(headers, row)
 
 
 # =========================
