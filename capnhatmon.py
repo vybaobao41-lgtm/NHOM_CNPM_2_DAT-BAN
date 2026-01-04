@@ -34,6 +34,16 @@ def hien_thi_thuc_don():
         print(f"{i}. ", end="")
         mon.hien_thi()
 
+# =========================
+# AC-02: Kiểm tra thông tin bắt buộc
+# =========================
 
-# Chạy thử AC-01
-hien_thi_thuc_don()
+def thong_tin_hop_le(ten, gia, loai):
+    if not ten or not loai:
+        print("❌ Tên và loại món không được để trống!")
+        return False
+    if gia is None:
+        print("❌ Giá món không được để trống!")
+        return False
+    return True
+
