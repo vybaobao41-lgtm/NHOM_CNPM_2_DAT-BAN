@@ -61,3 +61,37 @@ def gia_hop_le(gia):
     except ValueError:
         print("❌ Giá món phải là số!")
         return None
+# =========================
+# AC-04: Cập nhật món thành công
+# =========================
+
+def cap_nhat_mon():
+    hien_thi_thuc_don()
+    try:
+        chon = int(input("\nChọn số món cần cập nhật: ")) - 1
+        mon = thuc_don[chon]
+    except:
+        print("❌ Lựa chọn không hợp lệ!")
+        return
+
+    ten_moi = input("Tên món mới: ").strip()
+    gia_moi = input("Giá mới: ").strip()
+    loai_moi = input("Loại món mới: ").strip()
+
+    gia_moi = gia_hop_le(gia_moi)
+    if gia_moi is None:
+        return
+
+    if not thong_tin_hop_le(ten_moi, gia_moi, loai_moi):
+        return
+
+    mon.ten = ten_moi
+    mon.gia = gia_moi
+    mon.loai = loai_moi
+
+    print("\n✅ Cập nhật món thành công!")
+    hien_thi_thuc_don()
+
+
+# Chạy chức năng cập nhật
+cap_nhat_mon()
