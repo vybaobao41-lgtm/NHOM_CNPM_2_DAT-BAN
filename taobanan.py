@@ -58,3 +58,39 @@ def them_ban_moi(ten_khach, so_nguoi):
 
     print(f"✔ Thêm bàn {so_ban_moi} cho {ten_khach} ({so_nguoi} khách) thành công!")
 
+# =========================
+# AC-04: Tự động cập nhật sơ đồ bàn
+# =========================
+def hien_thi_so_do_ban():
+    print("\n📌 SƠ ĐỒ BÀN HIỆN TẠI")
+    for so_ban, info in ban_an.items():
+        if info["trang_thai"] == "đặt":
+            print(f"- Bàn {so_ban}: {info['khach']} ({info['so_nguoi']} khách)")
+        else:
+            print(f"- Bàn {so_ban}: Trống")
+
+
+# =========================
+# CHƯƠNG TRÌNH CHÍNH
+# =========================
+def tao_ban_an():
+    print("\n===== TẠO BÀN ĂN =====")
+
+    if not hoi_them_ban_khi_het():
+        return
+
+    print("\n--- Nhập thông tin khách ---")
+    ten_khach = input("Tên khách: ")
+    so_nguoi = input("Số người: ")
+
+    hop_le, thong_bao = kiem_tra_thong_tin_khach(ten_khach, so_nguoi)
+    if not hop_le:
+        print(thong_bao)
+        return
+
+    them_ban_moi(ten_khach, so_nguoi)
+    hien_thi_so_do_ban()
+
+
+if __name__ == "__main__":
+    tao_ban_an()
