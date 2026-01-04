@@ -12,9 +12,39 @@ class Table:
         self.so_nguoi = so_nguoi
         self.trang_thai = trang_thai
 
-    def __str__(self):
-        return (f"Bàn {self.table_id} | Ngày: {self.ngay} | Giờ: {self.gio} | "
-                f"Số người: {self.so_nguoi} | Trạng thái: {self.trang_thai}")
+
+# =========================
+# REALTIME (AC02)
+# =========================
+
+subscribers = []
+
+def dang_ky_realtime(ten_client):
+    subscribers.append(ten_client)
+
+def thong_bao_realtime(ban):
+    for client in subscribers:
+        print(f"🔔 [Realtime → {client}] "
+              f"Bàn B{ban.table_id} cập nhật → {ban.trang_thai}")
+
+
+# =========================
+# HIỂN THỊ BẢNG (UI)
+# =========================
+
+def in_bang_ban(danh_sach_ban, tieu_de="DANH SÁCH BÀN"):
+    print(f"\n=== {tieu_de} ===")
+    print("+------+------------+-------+----------+---------------+")
+    print("| ID   |    Ngày    |  Giờ  | Số người |   Trạng thái  |")
+    print("+------+------------+-------+----------+---------------+")
+
+    for b in danh_sach_ban:
+        print(f"| B{b.table_id:<3} "
+              f"| {b.ngay:<10} "
+              f"| {b.gio:<5} "
+              f"| {b.so_nguoi:^8} "
+              f"| {b.trang_thai:<13} |")
+        print("+------+------------+-------+----------+---------------+")
 
 
 # =========================
@@ -26,10 +56,10 @@ def kiem_tra_hop_le(ngay, gio, so_nguoi, trang_thai):
         return False, "Ngày và giờ không được để trống"
 
     try:
-        datetime.strptime(ngay, "%Y-%m-%d")
-        datetime.strptime(gio, "%H:%M")
+        datetime.strptime(ngay, "%d/%m/%Y")
     except ValueError:
-        return False, "Sai định dạng ngày (yyyy-mm-dd) hoặc giờ (hh:mm)"
+        return False, "Sai định dạng ngày (dd/mm/yyyy) hoặc giờ (hh:mm)"
+        datetime.strptime(gio, "%H:%M")
 
     if so_nguoi <= 0:
         return False, "Số người phải lớn hơn 0"
@@ -57,7 +87,7 @@ def cap_nhat_ban(danh_sach_ban, table_id,
 
             if not hop_le:
                 print(f"❌ {thong_bao}")
-                return False
+                return None
 
             ban.ngay = ngay_moi
             ban.gio = gio_moi
@@ -65,44 +95,40 @@ def cap_nhat_ban(danh_sach_ban, table_id,
             ban.trang_thai = trang_thai_moi
 
             print("✅ Cập nhật bàn thành công!")
-            print(ban)
-            return True
+            thong_bao_realtime(ban)
+
+            return ban
 
     print("❌ Không tìm thấy bàn")
-    return False
+    return None
 
 
 # =========================
-# UI NHẬP TỪ BÀN PHÍM (US-02)
+# UI CẬP NHẬT 1 BÀN
 # =========================
 
-def cap_nhat_thong_tin_ban_tu_ban_phim(danh_sach_ban):
-    print("\n=== CẬP NHẬT THÔNG TIN BÀN (US-02) ===")
+def cap_nhat_1_ban(danh_sach_ban):
+    raw_id = input("Nhập ID bàn: ").strip().upper()
 
-    # Nhập ID
-    try:
-        table_id = int(input("Nhập ID bàn: "))
-    except ValueError:
-        print("❌ ID phải là số")
+    if not raw_id.startswith("B") or not raw_id[1:].isdigit():
+        print("❌ ID không hợp lệ")
         return
 
+    table_id = int(raw_id[1:])
     ban = next((b for b in danh_sach_ban if b.table_id == table_id), None)
+
     if not ban:
         print("❌ Không tìm thấy bàn")
         return
 
-    print("\nThông tin hiện tại:")
-    print(ban)
+    in_bang_ban([ban], "THÔNG TIN HIỆN TẠI")
 
-    # Xác nhận cập nhật (AC04)
-    xac_nhan = input("\nBạn có muốn cập nhật bàn này không? (y/n): ").lower()
+    xac_nhan = input("Bạn có muốn cập nhật bàn này không? (y/n): ").lower()
     if xac_nhan != "y":
         print("⛔ Đã hủy cập nhật")
         return
 
-    print("\nNhập thông tin mới:")
-
-    ngay_moi = input("Ngày (yyyy-mm-dd): ").strip()
+    ngay_moi = input("Ngày (dd/mm/yyyy): ").strip()
     gio_moi = input("Giờ (hh:mm): ").strip()
 
     try:
@@ -113,7 +139,7 @@ def cap_nhat_thong_tin_ban_tu_ban_phim(danh_sach_ban):
 
     trang_thai_moi = input("Trạng thái (Trống / Đang sử dụng / Đã đặt): ").strip()
 
-    cap_nhat_ban(
+    ban_moi = cap_nhat_ban(
         danh_sach_ban,
         table_id,
         ngay_moi,
@@ -122,24 +148,59 @@ def cap_nhat_thong_tin_ban_tu_ban_phim(danh_sach_ban):
         trang_thai_moi
     )
 
+    if ban_moi:
+        in_bang_ban([ban_moi], "BÀN VỪA CẬP NHẬT")
+
+
+# =========================
+# MENU ĐIỀU KHIỂN
+# =========================
+
+def menu(danh_sach_ban):
+    while True:
+        print("\n===== MENU =====")
+        print("1. Cập nhật bàn")
+        print("2. In toàn bộ danh sách bàn")
+        print("0. Thoát")
+
+        chon = input("Chọn chức năng: ").strip()
+
+        if chon == "1":
+            cap_nhat_1_ban(danh_sach_ban)
+        elif chon == "2":
+            in_bang_ban(danh_sach_ban)
+        elif chon == "0":
+            print("👋 Thoát chương trình")
+            break
+        else:
+            print("❌ Lựa chọn không hợp lệ")
+
 
 # =========================
 # DEMO
 # =========================
 
 if __name__ == "__main__":
+
+    dang_ky_realtime("Quầy lễ tân")
+    dang_ky_realtime("Màn hình quản lý")
+
     danh_sach_ban = [
-        Table(1, "2026-01-03", "18:00", 4, "Trống"),
-        Table(2, "2026-01-03", "19:00", 6, "Đang sử dụng"),
-        Table(3, "2026-01-04", "20:00", 2, "Đã đặt")
+        Table(1, "02/01/2026", "17:15", 2, "Trống"),
+        Table(2, "05/01/2026", "18:40", 4, "Đã đặt"),
+        Table(3, "08/01/2026", "19:25", 6, "Đang sử dụng"),
+        Table(4, "12/01/2026", "11:35", 2, "Trống"),
+        Table(5, "15/01/2026", "18:10", 8, "Đã đặt"),
+        Table(6, "19/01/2026", "20:05", 2, "Đang sử dụng"),
+        Table(7, "22/01/2026", "17:50", 2, "Trống"),
+        Table(8, "24/01/2026", "19:15", 4, "Đã đặt"),
+        Table(9, "29/01/2026", "20:45", 10, "Đang sử dụng"),
+        Table(10, "02/02/2026", "16:40", 2, "Trống"),
+        Table(11, "05/02/2026", "18:25", 5, "Đã đặt"),
+        Table(12, "10/02/2026", "19:55", 4, "Đang sử dụng"),
+        Table(13, "14/02/2026", "17:20", 2, "Trống"),
+        Table(14, "18/02/2026", "18:50", 4, "Đã đặt"),
+        Table(15, "22/02/2026", "21:10", 6, "Đang sử dụng"),
     ]
 
-    print("=== DANH SÁCH BÀN ===")
-    for ban in danh_sach_ban:
-        print(ban)
-
-    cap_nhat_thong_tin_ban_tu_ban_phim(danh_sach_ban)
-
-    print("\n=== SAU CẬP NHẬT ===")
-    for ban in danh_sach_ban:
-        print(ban)
+    menu(danh_sach_ban)
