@@ -47,3 +47,17 @@ def thong_tin_hop_le(ten, gia, loai):
         return False
     return True
 
+# =========================
+# AC-03: Kiểm tra giá hợp lệ
+# =========================
+
+def gia_hop_le(gia):
+    try:
+        gia = float(gia)
+        if gia <= 0:
+            print("❌ Giá món phải lớn hơn 0!")
+            return None
+        return gia
+    except ValueError:
+        print("❌ Giá món phải là số!")
+        return None
