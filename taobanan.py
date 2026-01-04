@@ -43,3 +43,18 @@ def kiem_tra_thong_tin_khach(ten_khach, so_nguoi):
         return False, "❌ Số người phải lớn hơn 0"
 
     return True, ""
+
+# =========================
+# AC-03: Thêm bàn ăn thành công
+# =========================
+def them_ban_moi(ten_khach, so_nguoi):
+    so_ban_moi = max(ban_an.keys()) + 1
+
+    ban_an[so_ban_moi] = {
+        "trang_thai": "đặt",
+        "khach": ten_khach,
+        "so_nguoi": int(so_nguoi)
+    }
+
+    print(f"✔ Thêm bàn {so_ban_moi} cho {ten_khach} ({so_nguoi} khách) thành công!")
+
