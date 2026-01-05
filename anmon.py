@@ -40,19 +40,24 @@ def tim_mon(ten_mon):
 # AC-02 + AC-03: ẨN MÓN & LƯU TRẠNG THÁI
 # =========================
 def an_mon_khi_het_hang():
-    ten_mon = input("Nhập tên món đã hết hàng: ").strip()
-    mon = tim_mon(ten_mon)
+    print("\n--- KIỂM TRA MÓN HẾT HÀNG (BẾP) ---")
+    dem = 0
 
-    if not mon:
-        print("❌ Món không tồn tại!")
-        return
+    for mon in thuc_don:
+        if mon.dang_ban:
+            print(f"\n{mon.ten} - {mon.gia}đ ({mon.loai})")
+            lua_chon = input("Món này đã hết chưa? (y/n): ").strip().lower()
 
-    if not mon.dang_ban:
-        print("⚠ Món đã được ẩn trước đó!")
-        return
+            if lua_chon == "y":
+                mon.an_mon()
+                dem += 1
+                print(f"✔ Đã ẩn món '{mon.ten}'")
 
-    mon.an_mon()
-    print(f"✔ Đã ẩn món '{mon.ten}' (Hết hàng)")
+    print(f"\n👉 Tổng số món đã ẩn: {dem}")
+
+    if dem == 0:
+        print("⚠ Không có món nào được ẩn.")
+
     # =========================
 # AC-04: HIỂN THỊ THEO VAI TRÒ
 # =========================
