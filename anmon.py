@@ -53,3 +53,47 @@ def an_mon_khi_het_hang():
 
     mon.an_mon()
     print(f"✔ Đã ẩn món '{mon.ten}' (Hết hàng)")
+    # =========================
+# AC-04: HIỂN THỊ THEO VAI TRÒ
+# =========================
+def hien_thi_cho_phuc_vu():
+    print("\n--- THỰC ĐƠN PHỤC VỤ ---")
+    for mon in thuc_don:
+        mon.hien_thi()
+
+
+def hien_thi_cho_bep():
+    print("\n--- QUẢN LÝ THỰC ĐƠN (BẾP) ---")
+    for mon in thuc_don:
+        trang_thai = "Còn hàng" if mon.dang_ban else "Hết hàng"
+        print(f"{mon.ten} - {trang_thai}")
+
+
+# =========================
+# MENU TEST
+# =========================
+def menu():
+    while True:
+        print("\n===== US: ẨN MÓN KHI HẾT HÀNG =====")
+        print("1. Bếp: Ẩn món hết hàng")
+        print("2. Phục vụ: Xem thực đơn")
+        print("3. Bếp: Xem danh sách quản lý món")
+        print("0. Thoát")
+
+        chon = input("Chọn chức năng: ").strip()
+
+        if chon == "1":
+            an_mon_khi_het_hang()
+        elif chon == "2":
+            hien_thi_cho_phuc_vu()
+        elif chon == "3":
+            hien_thi_cho_bep()
+        elif chon == "0":
+            print("👋 Thoát chương trình")
+            break
+        else:
+            print("❌ Lựa chọn không hợp lệ!")
+
+
+if __name__ == "__main__":
+    menu()
