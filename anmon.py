@@ -36,3 +36,20 @@ def tim_mon(ten_mon):
         if mon.ten.lower() == ten_mon.lower():
             return mon
     return None
+# =========================
+# AC-02 + AC-03: ẨN MÓN & LƯU TRẠNG THÁI
+# =========================
+def an_mon_khi_het_hang():
+    ten_mon = input("Nhập tên món đã hết hàng: ").strip()
+    mon = tim_mon(ten_mon)
+
+    if not mon:
+        print("❌ Món không tồn tại!")
+        return
+
+    if not mon.dang_ban:
+        print("⚠ Món đã được ẩn trước đó!")
+        return
+
+    mon.an_mon()
+    print(f"✔ Đã ẩn món '{mon.ten}' (Hết hàng)")
