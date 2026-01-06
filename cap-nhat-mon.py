@@ -1,119 +1,119 @@
+# =========================
+# MODEL MÓN ĂN
+# =========================
 class MonAn:
-    def __init__(self, ten_mon, gia, loai_mon, mo_ta="", hinh_anh="", dang_ban=True):
-        self.ten_mon = ten_mon
+    def __init__(self, ten, gia, loai):
+        self.ten = ten
         self.gia = gia
-        self.loai_mon = loai_mon
-        self.mo_ta = mo_ta
-        self.hinh_anh = hinh_anh
-        self.dang_ban = dang_ban
+        self.loai = loai
 
-    def thong_tin(self):
-        """Trả về thông tin món ăn"""
-        return {
-            "ten_mon": self.ten_mon,
-            "gia": self.gia,
-            "loai_mon": self.loai_mon,
-            "mo_ta": self.mo_ta,
-            "hinh_anh": self.hinh_anh
-        }
+    def hien_thi(self):
+        return f"{self.ten} | {self.gia} | {self.loai}"
+
+
+# =========================
+# DỮ LIỆU THỰC ĐƠN GIẢ LẬP
+# =========================
+thuc_don = [
+    MonAn("Cơm gà", 35000, "Món chính"),
+    MonAn("Bún bò", 40000, "Món chính")
+]
+
 
 # =========================
 # AC-01 — HIỂN THỊ THÔNG TIN MÓN
 # =========================
-def lay_thong_tin_mon(mon_an):
-    """
-    Lấy thông tin món để hiển thị khi chỉnh sửa
-    """
-    return mon_an.thong_tin()
+def hien_thi_thuc_don():
+    print("\n📋 DANH SÁCH THỰC ĐƠN")
+    for i, mon in enumerate(thuc_don, start=1):
+        print(f"{i}. {mon.hien_thi()}")
+
 
 # =========================
 # AC-02 — KIỂM TRA THÔNG TIN BẮT BUỘC
 # =========================
-def kiem_tra_thong_tin_bat_buoc(ten_mon, gia, loai_mon):
-    if not ten_mon or not loai_mon or gia is None:
-        return False, "⚠ Vui lòng nhập đầy đủ thông tin bắt buộc"
-    return True, ""
+def kiem_tra_bat_buoc(ten, gia, loai):
+    if not ten or not gia or not loai:
+        print("❌ Không được để trống tên, giá hoặc loại món")
+        return False
+    return True
+
 
 # =========================
 # AC-03 — KIỂM TRA GIÁ HỢP LỆ
 # =========================
-def kiem_tra_gia_hop_le(gia):
+def kiem_tra_gia(gia):
     try:
         gia = float(gia)
         if gia <= 0:
-            return False, "⚠ Giá phải là số lớn hơn 0"
-        return True, ""
+            print("❌ Giá phải là số lớn hơn 0")
+            return False
+        return True
     except ValueError:
-        return False, "⚠ Giá phải là số lớn hơn 0"
-    
-    # =========================
+        print("❌ Giá phải là số lớn hơn 0")
+        return False
+
+
+# =========================
 # AC-04 — CẬP NHẬT MÓN THÀNH CÔNG
 # =========================
-def cap_nhat_mon(mon_an, ten_mon, gia, loai_mon, mo_ta="", hinh_anh=""):
-    """
-    Cập nhật thông tin món ăn
-    """
-    # Kiểm tra thông tin bắt buộc
-    hop_le, thong_bao = kiem_tra_thong_tin_bat_buoc(ten_mon, gia, loai_mon)
-    if not hop_le:
-        return thong_bao
+def cap_nhat_mon():
+    hien_thi_thuc_don()
 
-    # Kiểm tra giá
-    hop_le, thong_bao = kiem_tra_gia_hop_le(gia)
-    if not hop_le:
-        return thong_bao
+    chon = input("\nChọn món cần chỉnh sửa (số): ").strip()
+    if not chon.isdigit():
+        print("❌ Lựa chọn không hợp lệ")
+        return
 
-    # Cập nhật dữ liệu
-    mon_an.ten_mon = ten_mon
-    mon_an.gia = float(gia)
-    mon_an.loai_mon = loai_mon
-    mon_an.mo_ta = mo_ta
-    mon_an.hinh_anh = hinh_anh
+    mon = thuc_don[int(chon) - 1]
 
-    return "✔ Cập nhật món thành công"
+    print("\n✏ THÔNG TIN HIỆN TẠI")
+    print(mon.hien_thi())
+
+    ten_moi = input("Tên món mới: ").strip()
+    gia_moi = input("Giá mới: ").strip()
+    loai_moi = input("Loại món mới: ").strip()
+
+    # AC-02
+    if not kiem_tra_bat_buoc(ten_moi, gia_moi, loai_moi):
+        return
+
+    # AC-03
+    if not kiem_tra_gia(gia_moi):
+        return
+
+    # AC-04
+    mon.ten = ten_moi
+    mon.gia = float(gia_moi)
+    mon.loai = loai_moi
+
+    print("✔ Cập nhật món thành công")
+
 
 # =========================
-# AC-05 — DANH SÁCH CẬP NHẬT
+# AC-05 — DANH SÁCH ĐƯỢC CẬP NHẬT
 # =========================
-def hien_thi_danh_sach(danh_sach_mon):
-    """
-    Hiển thị danh sách thực đơn sau khi cập nhật
-    """
-    print("\nDANH SÁCH THỰC ĐƠN")
-    for i, mon in enumerate(danh_sach_mon, start=1):
-        print(f"{i}. {mon.ten_mon} | {mon.gia} | {mon.loai_mon}")
+def chay_chuong_trinh():
+    while True:
+        print("\n===== QUẢN LÝ THỰC ĐƠN =====")
+        print("1. Hiển thị thực đơn")
+        print("2. Cập nhật món")
+        print("0. Thoát")
 
-# NHẬP DỮ LIỆU 
-def nhap_thuc_don():
-    danh_sach = []
+        chon = input("Chọn chức năng: ")
 
-    so_luong = int(input("Nhập số món trong thực đơn: "))
-    for _ in range(so_luong):
-        print("\n--- Nhập món ---")
-        ten = input("Tên món: ")
-
-        while True:
-            try:
-                gia = float(input("Giá món: "))
-                if gia <= 0:
-                    print("⚠ Giá phải lớn hơn 0")
-                    continue
-                break
-            except ValueError:
-                print("⚠ Giá phải là số")
-
-        loai = input("Loại món: ")
-
-        mon = MonAn(ten, gia, loai)
-        danh_sach.append(mon)
-
-    return danh_sach
+        if chon == "1":
+            hien_thi_thuc_don()
+        elif chon == "2":
+            cap_nhat_mon()
+            hien_thi_thuc_don()  # AC-05
+        elif chon == "0":
+            break
+        else:
+            print("❌ Lựa chọn không hợp lệ")
 
 
-if __name__ == "__main__":
-    danh_sach_mon = nhap_thuc_don()
-
-
-    print("\n--- Danh sách ban đầu ---")
-    hien_thi_danh_sach(danh_sach_mon)
-
+# =========================
+# CHẠY CHƯƠNG TRÌNH
+# =========================
+chay_chuong_trinh()
