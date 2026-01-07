@@ -1,67 +1,43 @@
-import pandas as pd
+import json
+
 
 # =========================
-# ĐỌC MENU TỪ EXCEL
+# ĐỌC MENU TỪ FILE JSON
 # =========================
-FILE_PATH = "THUCDON.xlsx"
-df = pd.read_excel(FILE_PATH)
+def load_menu_from_json(file_path):
+    try:
+        with open(file_path, 'r', encoding='utf-8') as f:
+            # Dữ liệu JSON đã có sẵn cấu trúc: id, ten, gia, danh_muc, trang_thai
+            return json.load(f)
+    except FileNotFoundError:
+        print(f"❌ Không tìm thấy file {file_path}")
+        return []
 
-menu = []
-for idx, row in df.iterrows():
-    menu.append({
-        "id": idx + 1,
-        "name": row["TÊN MÓN"],
-        "category": row["DANH MỤC"],
-        "price": int(row["GIÁ TIỀN (VND)"]),
-        "status": "Còn hàng"
-    })
+
+# Load dữ liệu
+FILE_NAME = "THUCDON.json"
+menu = load_menu_from_json(FILE_NAME)
 
 # =========================
 # DANH MỤC + SỐ LA MÃ
 # =========================
-categories = [
-    "Tráng Miệng",
-    "Món Chay",
-    "Mì Ý & Mỳ Việt Nam",
-    "Burger & Sandwich",
-    "Pizza",
-    "Món chính",
-    "Súp & Cháo",
-    "Snack & Món Chiên Giòn",
-    "Khai vị",
-    "Vietnamese Coffee",
-    "Expresso Bar",
-    "Tea",
-    "Yogurt",
-    "Freshly Squeezed Juice",
-    "Healthy Juice",
-    "Non Alcoholic Cocktails",
-    "Cocktail",
-    "Long drink",
-    "Whisky",
-    "Cognag & Brandy",
-    "Sangria",
-    "House Wine",
-    "Soft Drink",
-    "Sparking & Champagne",
-    "Beer",
-    "Red Whine",
-    "White Wine"
-]
+# Tự động lấy danh sách danh mục duy nhất từ dữ liệu JSON
+categories = sorted(list(set(item['danh_muc'] for item in menu)))
 
-roman_map = {
-    "I": 1, "II": 2, "III": 3, "IV": 4, "V": 5,
-    "VI": 6, "VII": 7, "VIII": 8, "IX": 9, "X": 10,
-    "XI": 11, "XII": 12, "XIII": 13, "XIV": 14, "XV": 15,
-    "XVI": 16, "XVII": 17, "XVIII": 18, "XIX": 19, "XX": 20,
-    "XXI": 21, "XXII": 22, "XXIII": 23, "XXIV": 24, "XXV": 25,
-    "XXVI": 26, "XXVII": 27
-}
+roman_numbers = [
+    "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X",
+    "XI", "XII", "XIII", "XIV", "XV", "XVI", "XVII", "XVIII", "XIX", "XX",
+    "XXI", "XXII", "XXIII", "XXIV", "XXV", "XXVI", "XXVII"
+]
+roman_map = {roman: i + 1 for i, roman in enumerate(roman_numbers)}
+
 
 # =========================
 # IN BẢNG ASCII
 # =========================
 def print_table(headers, rows):
+    if not rows:
+        return
     widths = [len(h) for h in headers]
     for r in rows:
         for i, c in enumerate(r):
@@ -80,29 +56,29 @@ def print_table(headers, rows):
         row(r)
         line()
 
+
 # =========================
 # CHỨC NĂNG
 # =========================
 def show_categories():
     print("\nDANH SÁCH DANH MỤC")
-    for i, cat in enumerate(categories, start=1):
-        roman = list(roman_map.keys())[i - 1]
+    for i, cat in enumerate(categories):
+        roman = roman_numbers[i] if i < len(roman_numbers) else str(i + 1)
         print(f"{roman}. {cat}")
+
 
 def filter_by_category():
     show_categories()
     choice = input("\n👉 Nhập số La Mã hoặc tên danh mục: ").strip()
 
     selected_category = None
-
-    # Nếu nhập số La Mã
     key = choice.upper()
+
     if key in roman_map:
         index = roman_map[key] - 1
         if 0 <= index < len(categories):
             selected_category = categories[index]
     else:
-        # Nhập tên danh mục
         for cat in categories:
             if choice.lower() == cat.lower():
                 selected_category = cat
@@ -112,62 +88,35 @@ def filter_by_category():
         print("❌ Danh mục không hợp lệ")
         return
 
-    result = [m for m in menu if m["category"].lower() == selected_category.lower()]
-    if not result:
-        print("❌ Không có món trong danh mục này")
-        return
-
-    rows = []
-    for item in result:
-        rows.append([item["id"], item["name"], f"{item['price']} VND"])
+    result = [m for m in menu if m["danh_muc"] == selected_category]
+    rows = [[m["id"], m["ten"], f"{m['gia']} VND", m["trang_thai"]] for m in result]
 
     print(f"\nDANH MỤC: {selected_category}")
-    print_table(["ID", "Tên món", "Giá"], rows)
+    print_table(["ID", "Tên món", "Giá", "Trạng thái"], rows)
+
 
 def show_full_menu():
-    rows = []
-    for item in menu:
-        rows.append([item["id"], item["name"], item["category"], f"{item['price']} VND"])
+    rows = [[m["id"], m["ten"], m["danh_muc"], f"{m['gia']} VND"] for m in menu]
     print("\nDANH SÁCH THỰC ĐƠN")
     print_table(["ID", "Tên món", "Danh mục", "Giá"], rows)
 
+
 def search_menu():
-    keyword = input("Nhập từ khóa: ")
-    result = [m for m in menu if keyword.lower() in m["name"].lower()]
+    keyword = input("Nhập từ khóa tìm kiếm: ").lower()
+    result = [m for m in menu if keyword in m["ten"].lower()]
+
     if not result:
         print("❌ Không tìm thấy món")
         return
 
-    rows = []
-    for item in result:
-        rows.append([item["id"], item["name"], item["category"], f"{item['price']} VND"])
+    rows = [[m["id"], m["ten"], m["danh_muc"], f"{m['gia']} VND"] for m in result]
     print_table(["ID", "Tên món", "Danh mục", "Giá"], rows)
 
+
 def show_menu_status():
-    rows = []
-
-    for item in menu:
-        n = item["id"]
-        is_prime = True
-
-        if n < 2:
-            is_prime = False
-        else:
-            for i in range(2, int(n ** 0.5) + 1):
-                if n % i == 0:
-                    is_prime = False
-                    break
-
-        status = "Còn hàng" if is_prime else "Hết hàng"
-
-        rows.append([
-            item["id"],
-            item["name"],
-            f"{item['price']} VND",
-            status
-        ])
-
-    print("\nTRẠNG THÁI MÓN ĂN")
+    # Hiển thị trạng thái thực tế từ file JSON
+    rows = [[m["id"], m["ten"], f"{m['gia']} VND", m["trang_thai"]] for m in menu]
+    print("\nTRẠNG THÁI MÓN ĂN (Cập nhật từ hệ thống)")
     print_table(["ID", "Tên món", "Giá", "Trạng thái"], rows)
 
 
@@ -175,18 +124,21 @@ def show_menu_status():
 # MENU CHÍNH
 # =========================
 def main_menu():
+    if not menu:
+        return
+
     while True:
         print("""
-========== MENU ==========
+========== MENU QUẢN LÝ ==========
 1. Xem toàn bộ thực đơn
 2. Xem món theo danh mục
 3. Tìm kiếm món ăn
-4. Xem trạng thái món
+4. Xem trạng thái món (Còn/Hết)
 0. Thoát
-==========================
+==================================
         """)
 
-        choice = input("👉 Chọn: ")
+        choice = input("👉 Chọn chức năng: ")
 
         if choice == "1":
             show_full_menu()
@@ -197,13 +149,11 @@ def main_menu():
         elif choice == "4":
             show_menu_status()
         elif choice == "0":
-            print("👋 Thoát chương trình")
+            print("👋 Tạm biệt!")
             break
         else:
             print("❌ Lựa chọn không hợp lệ")
 
-# =========================
-# CHẠY CHƯƠNG TRÌNH
-# =========================
+
 if __name__ == "__main__":
     main_menu()
