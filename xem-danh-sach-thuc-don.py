@@ -102,8 +102,12 @@ def show_full_menu():
 
 
 def search_menu():
-    keyword = input("Nhập từ khóa tìm kiếm: ").lower()
-    result = [m for m in menu if keyword in m["ten"].lower()]
+    keyword = input("Nhập ID hoặc tên món: ").strip().lower()
+
+    result = []
+    for m in menu:
+        if keyword == m["id"].lower() or keyword in m["ten"].lower():
+            result.append(m)
 
     if not result:
         print("❌ Không tìm thấy món")
@@ -111,6 +115,7 @@ def search_menu():
 
     rows = [[m["id"], m["ten"], m["danh_muc"], f"{m['gia']} VND"] for m in result]
     print_table(["ID", "Tên món", "Danh mục", "Giá"], rows)
+
 
 
 def show_menu_status():
