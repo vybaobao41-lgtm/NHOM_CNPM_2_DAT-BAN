@@ -1,91 +1,114 @@
 import datetime
 
-# Danh sách lưu nhật ký (AC07)
-lich_su_thao_tac = []
+class DishNoteService:
+    def __init__(self):
+        self.ten_mon = "Beef Steak"
+        self.ghi_chu = ""
+        self.da_gui_bep = False
+        self.lich_su_thao_tac = [] # AC-07
+        self.max_length = 50 # AC-06
 
-print("--- HỆ THỐNG ĐẶT MÓN NHÀ HÀNG ---")
-nhan_vien = input("Nhập tên nhân viên đang trực: ")
-ten_mon = "Beef Steak"
-ghi_chu = ""
-da_gui_bep = False
+    def luu_log(self, thao_tac, noi_dung_cu, noi_dung_moi):
+        """Hỗ trợ AC-07: Lưu nhật ký thao tác"""
+        thoi_gian = datetime.datetime.now().strftime("%H:%M:%S")
+        log = f"[{thoi_gian}] {thao_tac}: '{noi_dung_cu}' -> '{noi_dung_moi}'"
+        if self.da_gui_bep:
+            log += " (THAY ĐỔI SAU KHI GỬI BẾP - AC-05)"
+        self.lich_su_thao_tac.append(log)
 
-while True:
-    print("\n-------------------------------")
-    print(f"Món ăn: {ten_mon}")
-    # Hiển thị ghi chú ngay dưới món (AC01)
-    print(f"Ghi chú: {ghi_chu if ghi_chu != '' else '(Trống)'}")
-    print(f"Trạng thái: {'Đã gửi bếp' if da_gui_bep else 'Chờ gửi'}")
-    print("-------------------------------")
-    print("1. Thêm/Sửa ghi chú")
-    print("2. Xóa ghi chú")
-    print("3. Gửi order xuống bếp")
-    print("4. Xem nhật ký")
-    print("5. Thoát")
-    
-    lua_chon = input("Chọn thao tác (1-5): ")
+# --- GIAO DIỆN HỆ THỐNG ---
+def menu_us20():
+    service = DishNoteService()
+    print("--- HỆ THỐNG GHI CHÚ MÓN ĂN ---")
+    nhan_vien = input("Nhập tên nhân viên: ")
 
-    if lua_chon == '1':
-        # AC01, AC02: Thêm và Sửa ghi chú
-        # Given: Nhân viên đang chọn món
-        noi_dung = input("Nhập nội dung ghi chú (VD: ít tiêu, không rau thơm có mùi mạnh, không quá nhiều bơ, nước sốt ít ngọt...): ")
+    while True:
+        print("\n" + "="*55)
+        print(f"TRẠNG THÁI: {service.ten_mon} | Ghi chú: {service.ghi_chu or '(Trống)'}")
+        print(f"Bếp: {'Đã nhận' if service.da_gui_bep else 'Chờ gửi'}")
+        print("="*55)
+        print("1. Thêm ghi chú mới cho món")
+        print("2. Chỉnh sửa ghi chú hiện có")
+        print("3. Xóa bỏ ghi chú của món")
+        print("4. Gửi ghi chú xuống bếp")
+        print("5. Cập nhật ghi chú SAU khi đã gửi bếp")
+        print("6. Kiểm tra ràng buộc dữ liệu (Validation)")
+        print("7. Xem nhật ký thao tác chi tiết")
+        print("0. Thoát")
         
-        # AC06: Kiểm tra dữ liệu (Validation)
-        # When: Ghi chú rỗng hoặc quá dài
-        if noi_dung == "":
-            # Then: Hệ thống báo lỗi
-            print(">> Lỗi: Ghi chú không được bỏ trống!")
-        elif len(noi_dung) > 50:
-            print(">> Lỗi: Ghi chú không được dài quá 50 ký tự!")
-        else:
-            # Lưu lại thông tin cũ để ghi nhật ký
-            ghi_chu_cu = ghi_chu
-            ghi_chu = noi_dung # Cập nhật ghi chú mới
-            
-            # AC07: Lưu nhật ký thao tác
-            thoi_gian = datetime.datetime.now().strftime("%H:%M:%S")
-            loai_thao_tac = "Sửa" if ghi_chu_cu != "" else "Thêm"
-            nhat_ky = f"[{thoi_gian}] {nhan_vien} {loai_thao_tac}: '{ghi_chu_cu}' -> '{ghi_chu}'"
-            
-            # AC05: Nếu đã gửi bếp mà còn sửa thì đánh dấu
-            if da_gui_bep:
-                nhat_ky += " (ĐÃ THAY ĐỔI SAU KHI GỬI BẾP)"
-            
-            lich_su_thao_tac.append(nhat_ky)
-            print(">> Cập nhật ghi chú thành công!")
+        chon = input("\nChọn mục kiểm tra AC (0-7): ")
 
-    elif lua_chon == '2':
-        # AC03: Xóa ghi chú
-        # Given: Món đang có ghi chú
-        if ghi_chu == "":
-            print(">> Món này hiện chưa có ghi chú nào.")
-        else:
-            # When: Nhân viên xóa ghi chú
-            thoi_gian = datetime.datetime.now().strftime("%H:%M:%S")
-            lich_su_thao_tac.append(f"[{thoi_gian}] {nhan_vien} Xóa ghi chú: '{ghi_chu}'")
-            
-            ghi_chu = "" 
-            # Then: Món vẫn giữ nguyên, chỉ mất ghi chú
-            print(">> Đã xóa ghi chú. Món ăn vẫn nằm trong đơn hàng.")
+        if chon == '1':
+            if service.ghi_chu:
+                print(">> [AC-01] Ghi chú đã tồn tại, vui lòng chọn mục 2 để sửa.")
+            else:
+                # Thêm ví dụ gợi ý cho AC-01
+                print("Gợi ý: ít rau mùi, không tiêu, chín kỹ, sốt để riêng...")
+                nd = input("Nhập ghi chú mới: ").strip()
+                if nd:
+                    service.luu_log("Thêm mới", "", nd)
+                    service.ghi_chu = nd
+                    print(">> AC-01: Thêm thành công.")
+                else:
+                    print("❌ Lỗi: Ghi chú không được để trống!")
 
-    elif lua_chon == '3':
-        # AC04: Gửi xuống bếp
-        # Given: Order đã xong
-        # When: Nhân viên xác nhận gửi
-        da_gui_bep = True
-        # Then: Bếp nhận được món kèm ghi chú
-        print(f">> ĐÃ GỬI XUỐNG BẾP: {ten_mon} - Ghi chú: {ghi_chu}")
+        elif chon == '2':
+            if not service.ghi_chu:
+                print(">> [AC-02] Chưa có ghi chú để sửa, vui lòng chọn mục 1.")
+            else:
+                # Thêm ví dụ gợi ý cho AC-02
+                print(f"Ghi chú cũ: '{service.ghi_chu}'")
+                print("Gợi ý sửa: đổi 'ít tiêu' thành 'không tiêu', thêm 'không hành'...")
+                nd = input("Nhập nội dung mới: ").strip()
+                if nd:
+                    service.luu_log("Chỉnh sửa", service.ghi_chu, nd)
+                    service.ghi_chu = nd
+                    print(">> AC-02: Sửa thành công.")
 
-    elif lua_chon == '4':
-        # AC07: Hiển thị nhật ký
-        print("\n--- NHẬT KÝ HỆ THỐNG ---")
-        if not lich_su_thao_tac:
-            print("Chưa có thao tác nào được thực hiện.")
-        else:
-            for log in lich_su_thao_tac:
+        elif chon == '3':
+            if service.ghi_chu:
+                cu = service.ghi_chu
+                service.ghi_chu = ""
+                service.luu_log("Xóa", cu, "Trống")
+                print(f">> AC-03: Đã xóa '{cu}'. Món ăn vẫn giữ nguyên.")
+            else:
+                print(">> Không có gì để xóa.")
+
+        elif chon == '4':
+            service.da_gui_bep = True
+            print(f">> AC-04: Đã gửi lệnh xuống bếp. Bếp nhận được món kèm: {service.ghi_chu or 'Không ghi chú'}")
+
+        elif chon == '5':
+            if not service.da_gui_bep:
+                print(">> [Lỗi] Phải gửi bếp trước (Mục 4) mới kiểm tra được mục này.")
+            else:
+                print("Gợi ý cập nhật gấp: Khách đổi ý không lấy hành, bớt cay hơn...")
+                nd = input("Cập nhật bổ sung cho bếp: ").strip()
+                if nd:
+                    cu = service.ghi_chu
+                    service.ghi_chu = nd
+                    service.luu_log("Cập nhật sau gửi", cu, nd)
+                    print(">> AC-05: Đã cập nhật sau gửi bếp thành công.")
+
+        elif chon == '6':
+            print(f">> [AC-06] Kiểm tra Validation (Giới hạn {service.max_length} ký tự)")
+            nd = input("Thử nhập ghi chú (Trống hoặc > 50 ký tự): ")
+            if not nd.strip():
+                print("❌ Kết quả: Hệ thống chặn thành công vì để TRỐNG.")
+            elif len(nd) > service.max_length:
+                print(f"❌ Kết quả: Hệ thống chặn vì QUÁ DÀI ({len(nd)} ký tự).")
+            else:
+                print("✅ Kết quả: Dữ liệu hợp lệ.")
+
+        elif chon == '7':
+            print("\n--- [AC-07] NHẬT KÝ THAO TÁC CHI TIẾT ---")
+            for log in service.lich_su_thao_tac:
                 print(log)
+            if not service.lich_su_thao_tac: print("Chưa có nhật ký.")
 
-    elif lua_chon == '5':
-        print("Đang thoát chương trình...")
-        break
-    else:
-        print(">> Lựa chọn không hợp lệ, vui lòng nhập lại (1-5).")
+        elif chon == '0':
+            break
+
+if __name__ == "__main__":
+    menu_us20()
+    

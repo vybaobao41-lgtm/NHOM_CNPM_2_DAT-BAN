@@ -1,0 +1,97 @@
+# =========================
+# AC-01: Hiển thị thông tin món cần cập nhật
+# =========================
+
+class MonAn:
+    def __init__(self, ten, gia, loai):
+        self.ten = ten
+        self.gia = gia
+        self.loai = loai
+
+    def hien_thi(self):
+        print(f"Tên món: {self.ten} | Giá: {self.gia} | Loại: {self.loai}")
+
+
+# Danh sách thực đơn ban đầu (nhiều món)
+thuc_don = [
+    MonAn("Cơm gà", 35000, "Món chính"),
+    MonAn("Bún bò", 40000, "Món chính"),
+    MonAn("Phở bò", 45000, "Món chính"),
+    MonAn("Cơm sườn", 50000, "Món chính"),
+    MonAn("Gà chiên nước mắm", 60000, "Món chính"),
+
+    MonAn("Trà đá", 5000, "Nước uống"),
+    MonAn("Trà đào", 25000, "Nước uống"),
+    MonAn("Nước cam", 30000, "Nước uống"),
+
+    MonAn("Bánh flan", 20000, "Tráng miệng"),
+    MonAn("Rau câu", 15000, "Tráng miệng")
+]
+
+def hien_thi_thuc_don():
+    print("\n--- DANH SÁCH THỰC ĐƠN ---")
+    for i, mon in enumerate(thuc_don, start=1):
+        print(f"{i}. ", end="")
+        mon.hien_thi()
+
+# =========================
+# AC-02: Kiểm tra thông tin bắt buộc
+# =========================
+
+def thong_tin_hop_le(ten, gia, loai):
+    if not ten or not loai:
+        print("❌ Tên và loại món không được để trống!")
+        return False
+    if gia is None:
+        print("❌ Giá món không được để trống!")
+        return False
+    return True
+
+# =========================
+# AC-03: Kiểm tra giá hợp lệ
+# =========================
+
+def gia_hop_le(gia):
+    try:
+        gia = float(gia)
+        if gia <= 0:
+            print("❌ Giá món phải lớn hơn 0!")
+            return None
+        return gia
+    except ValueError:
+        print("❌ Giá món phải là số!")
+        return None
+# =========================
+# AC-04: Cập nhật món thành công
+# =========================
+
+def cap_nhat_mon():
+    hien_thi_thuc_don()
+    try:
+        chon = int(input("\nChọn số món cần cập nhật: ")) - 1
+        mon = thuc_don[chon]
+    except:
+        print("❌ Lựa chọn không hợp lệ!")
+        return
+
+    ten_moi = input("Tên món mới: ").strip()
+    gia_moi = input("Giá mới: ").strip()
+    loai_moi = input("Loại món mới: ").strip()
+
+    gia_moi = gia_hop_le(gia_moi)
+    if gia_moi is None:
+        return
+
+    if not thong_tin_hop_le(ten_moi, gia_moi, loai_moi):
+        return
+
+    mon.ten = ten_moi
+    mon.gia = gia_moi
+    mon.loai = loai_moi
+
+    print("\n✅ Cập nhật món thành công!")
+    hien_thi_thuc_don()
+
+
+# Chạy chức năng cập nhật
+cap_nhat_mon()
