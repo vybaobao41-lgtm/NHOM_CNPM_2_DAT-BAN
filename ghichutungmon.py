@@ -5,8 +5,8 @@ class DishNoteService:
         self.ten_mon = "Beef Steak"
         self.ghi_chu = ""
         self.da_gui_bep = False
-        self.lich_su_thao_tac = [] # AC-07
-        self.max_length = 50 # AC-06
+        self.lich_su_thao_tac = [] 
+        self.max_length = 50 
 
     def luu_log(self, thao_tac, noi_dung_cu, noi_dung_moi):
         """Hỗ trợ AC-07: Lưu nhật ký thao tác"""
@@ -16,7 +16,6 @@ class DishNoteService:
             log += " (THAY ĐỔI SAU KHI GỬI BẾP - AC-05)"
         self.lich_su_thao_tac.append(log)
 
-# --- GIAO DIỆN HỆ THỐNG ---
 def menu_us20():
     service = DishNoteService()
     print("--- HỆ THỐNG GHI CHÚ MÓN ĂN ---")
@@ -27,22 +26,20 @@ def menu_us20():
         print(f"TRẠNG THÁI: {service.ten_mon} | Ghi chú: {service.ghi_chu or '(Trống)'}")
         print(f"Bếp: {'Đã nhận' if service.da_gui_bep else 'Chờ gửi'}")
         print("="*55)
-        print("1. Thêm ghi chú mới cho món")
-        print("2. Chỉnh sửa ghi chú hiện có")
-        print("3. Xóa bỏ ghi chú của món")
-        print("4. Gửi ghi chú xuống bếp")
-        print("5. Cập nhật ghi chú SAU khi đã gửi bếp")
-        print("6. Kiểm tra ràng buộc dữ liệu (Validation)")
-        print("7. Xem nhật ký thao tác chi tiết")
+        print("1. Thêm/chỉnh sửa ghi chú mới cho món")
+        print("2. Xóa bỏ ghi chú của món")
+        print("3. Gửi ghi chú xuống bếp")
+        print("4. Cập nhật ghi chú SAU khi đã gửi bếp")
+        print("5. Kiểm tra ràng buộc dữ liệu ")
+        print("6. Xem nhật ký thao tác chi tiết")
         print("0. Thoát")
         
-        chon = input("\nChọn mục kiểm tra AC (0-7): ")
+        chon = input("\nChọn mục kiểm tra AC (0-6): ")
 
         if chon == '1':
             if service.ghi_chu:
-                print(">> [AC-01] Ghi chú đã tồn tại, vui lòng chọn mục 2 để sửa.")
+                print(">> Ghi chú đã tồn tại, vui lòng chọn mục 2 để sửa.")
             else:
-                # Thêm ví dụ gợi ý cho AC-01
                 print("Gợi ý: ít rau mùi, không tiêu, chín kỹ, sốt để riêng...")
                 nd = input("Nhập ghi chú mới: ").strip()
                 if nd:
@@ -56,7 +53,6 @@ def menu_us20():
             if not service.ghi_chu:
                 print(">> [AC-02] Chưa có ghi chú để sửa, vui lòng chọn mục 1.")
             else:
-                # Thêm ví dụ gợi ý cho AC-02
                 print(f"Ghi chú cũ: '{service.ghi_chu}'")
                 print("Gợi ý sửa: đổi 'ít tiêu' thành 'không tiêu', thêm 'không hành'...")
                 nd = input("Nhập nội dung mới: ").strip()
@@ -68,11 +64,11 @@ def menu_us20():
         elif chon == '3':
             if service.ghi_chu:
                 cu = service.ghi_chu
-                service.ghi_chu = ""
-                service.luu_log("Xóa", cu, "Trống")
-                print(f">> AC-03: Đã xóa '{cu}'. Món ăn vẫn giữ nguyên.")
+                service.da_gui_bep = True
+                service.luu_log("Gửi bếp", cu, "Đã gửi")
+                print(f">> AC-03: Đã gửi xuống bếp '{cu}'. Món ăn vẫn giữ nguyên.")
             else:
-                print(">> Không có gì để xóa.")
+                print(">> Chưa có ghi chú để gửi, vui lòng thêm ghi chú trước.")
 
         elif chon == '4':
             service.da_gui_bep = True
