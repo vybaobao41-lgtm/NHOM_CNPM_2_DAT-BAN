@@ -1,127 +1,122 @@
 # =========================
 # US-11 — THÊM MÓN VÀO THỰC ĐƠN
-# AC-01: Thông tin không hợp lệ
+# Đọc / Ghi: THUCDON.json
 # =========================
 
-thuc_don = []  # Danh sách món ăn
+import json
+import os
 
-def ac01_kiem_tra_thong_tin_trong(ten_mon, gia, loai_mon):
-    if ten_mon.strip() == "":
+FILE_NAME = "THUCDON.json"
+
+# =========================
+# XỬ LÝ FILE & DỮ LIỆU
+# =========================
+
+def chuan_hoa_thuc_don(ds):
+    ket_qua = []
+    for mon in ds:
+        ket_qua.append({
+            "ten_mon": mon.get("ten_mon") or mon.get("ten") or mon.get("name") or "Chưa đặt tên",
+            "gia": mon.get("gia") or mon.get("price") or mon.get("don_gia") or 0,
+            "loai_mon": mon.get("loai_mon") or mon.get("loai") or mon.get("category") or "Chưa phân loại"
+        })
+    return ket_qua
+
+
+def doc_thuc_don():
+    if not os.path.exists(FILE_NAME):
+        return []
+    with open(FILE_NAME, "r", encoding="utf-8") as f:
+        return chuan_hoa_thuc_don(json.load(f))
+
+
+def luu_thuc_don(ds):
+    with open(FILE_NAME, "w", encoding="utf-8") as f:
+        json.dump(ds, f, ensure_ascii=False, indent=4)
+
+
+# =========================
+# VALIDATION (AC-01 + AC-02)
+# =========================
+
+def kiem_tra(ten, gia, loai):
+    if not ten.strip():
         return False, "❌ Tên món không được để trống"
-    if gia.strip() == "":
-        return False, "❌ Giá không được để trống"
-    if loai_mon.strip() == "":
+    if not gia.isdigit() or int(gia) <= 0:
+        return False, "❌ Giá phải là số > 0"
+    if not loai.strip():
         return False, "❌ Loại món không được để trống"
     return True, ""
 
-def ac01_them_mon():
-    print("\n--- AC-01: Thông tin không hợp lệ ---")
-    ten_mon = input("Nhập tên món: ")
-    gia = input("Nhập giá: ")
-    loai_mon = input("Nhập loại món: ")
-
-    hop_le, thong_bao = ac01_kiem_tra_thong_tin_trong(ten_mon, gia, loai_mon)
-    if not hop_le:
-        print(thong_bao)
-        print("❌ Không cho phép lưu món ăn")
-        return
-
-    print("✔ Thông tin không bị bỏ trống")
 
 # =========================
-# AC-02: Kiểm tra giá hợp lệ
+# AC-03: THÊM MÓN
 # =========================
 
-def ac02_kiem_tra_gia(gia):
-    if not gia.isdigit():
-        return False, "❌ Giá phải là số"
-    if int(gia) <= 0:
-        return False, "❌ Giá phải lớn hơn 0"
-    return True, ""
+def them_mon():
+    thuc_don = doc_thuc_don()
 
-def ac02_them_mon():
-    print("\n--- AC-02: Kiểm tra giá hợp lệ ---")
-    ten_mon = input("Nhập tên món: ")
-    gia = input("Nhập giá: ")
-    loai_mon = input("Nhập loại món: ")
-
-    hop_le, thong_bao = ac01_kiem_tra_thong_tin_trong(ten_mon, gia, loai_mon)
-    if not hop_le:
-        print(thong_bao)
+    so_mon = input("Nhập số món muốn thêm: ")
+    if not so_mon.isdigit() or int(so_mon) <= 0:
+        print("❌ Số món không hợp lệ")
         return
 
-    hop_le, thong_bao = ac02_kiem_tra_gia(gia)
-    if not hop_le:
-        print(thong_bao)
-        print("❌ Không cho phép lưu")
-        return
+    for i in range(int(so_mon)):
+        print(f"\nMón {i + 1}:")
+        ten = input("Tên món: ")
+        gia = input("Giá: ")
+        loai = input("Loại món: ")
 
-    print("✔ Giá hợp lệ")
+        hop_le, tb = kiem_tra(ten, gia, loai)
+        if not hop_le:
+            print(tb)
+            continue
 
-    # =========================
-# AC-03: Thêm món thành công
-# =========================
+        thuc_don.append({
+            "ten_mon": ten.strip(),
+            "gia": int(gia),
+            "loai_mon": loai.strip()
+        })
 
-def ac03_them_mon_thanh_cong():
-    print("\n--- AC-03: Thêm món thành công ---")
-    ten_mon = input("Nhập tên món: ")
-    gia = input("Nhập giá: ")
-    loai_mon = input("Nhập loại món: ")
+        print("✔ Đã thêm")
 
-    hop_le, thong_bao = ac01_kiem_tra_thong_tin_trong(ten_mon, gia, loai_mon)
-    if not hop_le:
-        print(thong_bao)
-        return
+    luu_thuc_don(thuc_don)
+    print("\n✅ Lưu thành công vào THUCDON.json")
 
-    hop_le, thong_bao = ac02_kiem_tra_gia(gia)
-    if not hop_le:
-        print(thong_bao)
-        return
-
-    mon_moi = {
-        "ten_mon": ten_mon,
-        "gia": int(gia),
-        "loai_mon": loai_mon
-    }
-
-    thuc_don.append(mon_moi)
-    print("✔ Thêm món vào thực đơn thành công")
 
 # =========================
-# AC-04: Hiển thị món trong danh sách
+# AC-04: HIỂN THỊ (GỌN)
 # =========================
 
-def ac04_hien_thi_thuc_don():
-    print("\n--- AC-04: Danh sách thực đơn ---")
-    if not thuc_don:
-        print("📭 Thực đơn hiện đang trống")
+def hien_thi():
+    ds = doc_thuc_don()
+    if not ds:
+        print("📭 Thực đơn trống")
         return
 
-    for i, mon in enumerate(thuc_don, start=1):
-        print(f"{i}. {mon['ten_mon']} - {mon['gia']}đ - {mon['loai_mon']}")
+    print("\n--- THỰC ĐƠN ---")
+    for i, mon in enumerate(ds, 1):
+        print(f"{i}. {mon['ten_mon']} - {mon['gia']}đ")
+
+
+# =========================
+# MENU
+# =========================
 
 if __name__ == "__main__":
     while True:
-        print("\nThêm món vào thực đơn")
-        print("1. Kiểm tra thông tin không hợp lệ")
-        print("2. Kiểm tra giá hợp lệ")
-        print("3. Thêm món thành công")
-        print("4. Hiển thị món trong thực đơn")
+        print("\n=== US-11: THÊM MÓN VÀO THỰC ĐƠN ===")
+        print("1. Thêm món")
+        print("2. Xem thực đơn")
         print("0. Thoát")
 
-        chon = input("Chọn chức năng: ")
+        chon = input("Chọn: ")
 
         if chon == "1":
-            ac01_them_mon()
+            them_mon()
         elif chon == "2":
-            ac02_them_mon()
-        elif chon == "3":
-            ac03_them_mon_thanh_cong()
-        elif chon == "4":
-            ac04_hien_thi_thuc_don()
+            hien_thi()
         elif chon == "0":
-            print("Thoát chương trình.")
             break
         else:
-            print("Lựa chọn không hợp lệ, vui lòng chọn lại.")
-
+            print("❌ Lựa chọn không hợp lệ")
