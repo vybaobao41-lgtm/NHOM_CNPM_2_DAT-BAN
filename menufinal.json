@@ -1,0 +1,254 @@
+[
+  {
+    "id": "TM002",
+    "ten": "Panna Cotta Trà Xanh",
+    "gia": 99000,
+    "danh_muc": "Tráng Miệng",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "TM003",
+    "ten": "Bánh Mousse Chanh Dây",
+    "gia": 99000,
+    "danh_muc": "Tráng Miệng",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "TM006",
+    "ten": "Trái Cây Theo Mùa",
+    "gia": 129000,
+    "danh_muc": "Tráng Miệng",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "MC001",
+    "ten": "Bún Chay Huế",
+    "gia": 79000,
+    "danh_muc": "Món Chay",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "MC002",
+    "ten": "Cà Tím Nướng, Sốt Tương Bần kèm Cơm Lá Dứa",
+    "gia": 89000,
+    "danh_muc": "Món Chay",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "MC003",
+    "ten": "Mỳ Việt Nam Xào Rau Nấm",
+    "gia": 89000,
+    "danh_muc": "Món Chay",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "VC006",
+    "ten": "Bạc xỉu",
+    "gia": 60000,
+    "danh_muc": "Vietnamese Coffee",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "VC007",
+    "ten": "Cà phê muối",
+    "gia": 60000,
+    "danh_muc": "Vietnamese Coffee",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "VC008",
+    "ten": "Cà phê trứng muối",
+    "gia": 60000,
+    "danh_muc": "Vietnamese Coffee",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "EB001",
+    "ten": "Cà phê Americano",
+    "gia": 50000,
+    "danh_muc": "Expresso Bar",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "EB002",
+    "ten": "Cà phê Espresso",
+    "gia": 55000,
+    "danh_muc": "Expresso Bar",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "EB003",
+    "ten": "Cà phê Espresso sữa",
+    "gia": 60000,
+    "danh_muc": "Expresso Bar",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "EB004",
+    "ten": "Cà phê Cappuccino",
+    "gia": 65000,
+    "danh_muc": "Expresso Bar",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "EB005",
+    "ten": "Cà phê Latte",
+    "gia": 65000,
+    "danh_muc": "Expresso Bar",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "EB006",
+    "ten": "Cà phê Mocha",
+    "gia": 65000,
+    "danh_muc": "Expresso Bar",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "BE001",
+    "ten": "Bia Huda (Lon)",
+    "gia": 45000,
+    "danh_muc": "Beer",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "BE002",
+    "ten": "Bia Tiger nâu (Chai)",
+    "gia": 5500,
+    "danh_muc": "Beer",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "BE003",
+    "ten": "Bia Tiger bạc (Chai)",
+    "gia": 55000,
+    "danh_muc": "Beer",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "BE004",
+    "ten": "Bia Heniken (Lon)",
+    "gia": 65000,
+    "danh_muc": "Beer",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "RW001",
+    "ten": "Rượu vang Canapi, Nero Davola, IGT Sicilia",
+    "gia": 750000,
+    "danh_muc": "Red Whine",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "RW002",
+    "ten": "Rượu vang Tarquino Malbec Shiraz",
+    "gia": 800000,
+    "danh_muc": "Red Whine",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "RW003",
+    "ten": "Rượu vang DB Family Selection Shiraz Cabernet",
+    "gia": 850000,
+    "danh_muc": "Red Whine",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "RW004",
+    "ten": "Rượu vang Welmoed Merlot",
+    "gia": 850000,
+    "danh_muc": "Red Whine",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "RW005",
+    "ten": "Rượu vang Chateau La Croix De Queynac",
+    "gia": 950000,
+    "danh_muc": "Red Whine",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "RW006",
+    "ten": "Rượu vang Casillero Del Diablo Cabernet Sauvignon Reserva",
+    "gia": 1000000,
+    "danh_muc": "Red Whine",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "RW007",
+    "ten": "Rượu vang Marques Casa Camenere",
+    "gia": 1800000,
+    "danh_muc": "Red Whine",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "RW008",
+    "ten": "Rượu vang Chateau Haut Rocher, Saint Emilion Grand Cru",
+    "gia": 2350000,
+    "danh_muc": "Red Whine",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "WW001",
+    "ten": "Rượu vang Tarquino Sauvignon Blanc",
+    "gia": 800000,
+    "danh_muc": "White Wine",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "WW002",
+    "ten": "Rượu vang Canapi, Grillo, IGT Sicilia",
+    "gia": 800000,
+    "danh_muc": "White Wine",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "WW003",
+    "ten": "Rượu vang Welmoed Pinot Noir",
+    "gia": 850000,
+    "danh_muc": "White Wine",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "WW004",
+    "ten": "Rượu vang DB Family Selection Semillon Chardonnay",
+    "gia": 900000,
+    "danh_muc": "White Wine",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "WW005",
+    "ten": "Rượu vang Casillero Chardonnay",
+    "gia": 1050000,
+    "danh_muc": "White Wine",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "WW006",
+    "ten": "Rượu vang Les Hauts De Bordeaux White",
+    "gia": 1250000,
+    "danh_muc": "White Wine",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "WW007",
+    "ten": "Rượu vang Gunderloch, Fritz Riesling, Rheinhessen",
+    "gia": 1350000,
+    "danh_muc": "White Wine",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "MÓ009",
+    "ten": "cơm rang dưa bò",
+    "gia": 120000,
+    "danh_muc": "món nước",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "MÓ010",
+    "ten": "ngan cháy tỏi",
+    "gia": 500000,
+    "danh_muc": "món chính",
+    "trang_thai": "Còn hàng"
+  }
+]
