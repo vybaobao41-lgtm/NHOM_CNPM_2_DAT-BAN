@@ -1,16 +1,7 @@
 import json
 import os
 
-DB_FILE = 'menufinal.json'
 ORDER_FILE = 'order.json'
-
-# --- đọc menu ---
-def doc_thuc_don():
-    if not os.path.exists(DB_FILE):
-        print(f"❌ Không tìm thấy file {DB_FILE}")
-        return []
-    with open(DB_FILE, 'r', encoding='utf-8') as f:
-        return json.load(f)
 
 # --- đọc order ---
 def doc_order():
@@ -27,29 +18,19 @@ def ghi_order(order):
     with open(ORDER_FILE, 'w', encoding='utf-8') as f:
         json.dump(order, f, ensure_ascii=False, indent=4)
 
-# --- thêm món ---
-def them_mon(ma_mon):
-    thuc_don = doc_thuc_don()
+# --- xóa món ---
+def xoa_mon(ma_mon):
     order = doc_order()
-
-    mon = next((m for m in thuc_don if m['id'] == ma_mon), None)
-    if not mon:
-        print(f"❌ Mã món {ma_mon} không tồn tại")
-        return
-    if mon['trang_thai'] == "Hết hàng":
-        print(f"🚫 Món {mon['ten']} hiện hết hàng")
+    if ma_mon not in order:
+        print(f"❌ Mã món {ma_mon} không tồn tại trong order")
         return
 
-    if ma_mon in order:
-        order[ma_mon]['so_luong'] += 1
-        print(f"🔄 Tăng số lượng {mon['ten']} lên {order[ma_mon]['so_luong']}")
+    if order[ma_mon]['so_luong'] > 1:
+        order[ma_mon]['so_luong'] -= 1
+        print(f"🔽 Giảm 1 số lượng {order[ma_mon]['ten']} xuống {order[ma_mon]['so_luong']}")
     else:
-        order[ma_mon] = {
-            "ten": mon['ten'],
-            "gia": mon['gia'],
-            "so_luong": 1
-        }
-        print(f"✅ Thêm món {mon['ten']} vào order")
+        print(f"🗑️ Xóa món {order[ma_mon]['ten']} khỏi order")
+        del order[ma_mon]
 
     ghi_order(order)
 
@@ -67,8 +48,8 @@ def hien_thi_order():
 # --- chạy thử ---
 if __name__ == "__main__":
     while True:
-        cmd = input("Nhập mã món (hoặc DONE để kết thúc): ").upper()
+        cmd = input("Nhập mã món xóa (hoặc DONE để kết thúc): ").upper()
         if cmd == "DONE":
             hien_thi_order()
             break
-        them_mon(cmd)
+        xoa_mon(cmd)

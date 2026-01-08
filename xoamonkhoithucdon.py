@@ -1,131 +1,97 @@
-# =========================
-# US-02 — CẬP NHẬT THÔNG TIN BÀN
-# =========================
+import json
+import os
+import tkinter as tk
+from tkinter import messagebox
 
-# =========================
-# DỮ LIỆU GIẢ LẬP
-# =========================
+# File thực đơn
+FILE_MENU = "menufinal.json"
 
-tables = [
-    {
-        "id": 1,
-        "name": "Bàn 01",
-        "seats": 4,
-        "status": "Trống"
-    },
-    {
-        "id": 2,
-        "name": "Bàn 02",
-        "seats": 6,
-        "status": "Đang phục vụ"
-    }
-]
+class XoaMonGUI:
+    def __init__(self, root):
+        self.root = root
+        self.root.title("Quản lý thực đơn - Xóa món")
+        self.root.geometry("600x400")
 
-subscribers = []  # giả lập realtime
+        self.thuc_don = []
 
+        self.tao_giao_dien()
+        self.tai_du_lieu()
 
-# =========================
-# HÀM HỖ TRỢ
-# =========================
+    # Tạo giao diện GUI
+    def tao_giao_dien(self):
+        tk.Label(self.root, text="DANH SÁCH THỰC ĐƠN", font=("Arial", 14, "bold")).pack(pady=10)
 
-def notify_realtime():
-    """AC-02: đồng bộ realtime"""
-    for sub in subscribers:
-        sub()
+        self.listbox = tk.Listbox(self.root, width=80, height=15)
+        self.listbox.pack(padx=10, pady=5)
 
-
-def find_table_by_id(table_id):
-    """Tìm bàn theo ID"""
-    for table in tables:
-        if table["id"] == table_id:
-            return table
-    return None
-
-
-def is_duplicate_table_name(name, exclude_id):
-    """AC-01: kiểm tra trùng tên bàn"""
-    for table in tables:
-        if table["name"] == name and table["id"] != exclude_id:
-            return True
-    return False
-
-
-def show_tables():
-    print("\n--- DANH SÁCH BÀN ---")
-    for t in tables:
-        print(
-            f"ID: {t['id']} | {t['name']} | "
-            f"Số chỗ: {t['seats']} | Trạng thái: {t['status']}"
+        self.btn_xoa = tk.Button(
+            self.root,
+            text="🗑 Xóa món đã chọn",
+            bg="#ff6b6b",
+            fg="white",
+            font=("Arial", 12, "bold"),
+            command=self.xoa_mon
         )
-    print("--------------------\n")
+        self.btn_xoa.pack(pady=10)
 
+    # Tải dữ liệu từ file menu.json
+    def tai_du_lieu(self):
+        if not os.path.exists(FILE_MENU):
+            messagebox.showerror("Lỗi", f"Không tìm thấy file {FILE_MENU}")
+            return
 
-# =========================
-# US-02 — CẬP NHẬT THÔNG TIN BÀN
-# =========================
+        try:
+            with open(FILE_MENU, "r", encoding="utf-8") as f:
+                self.thuc_don = json.load(f)
+        except Exception as e:
+            messagebox.showerror("Lỗi", f"Không thể đọc file {FILE_MENU}\nChi tiết: {e}")
+            return
 
-def update_table(table_id, new_name, new_seats):
-    """
-    AC-01: Kiểm tra tính hợp lệ
-    AC-02: Cập nhật khi đang sử dụng + realtime
-    AC-03: Cập nhật thành công
-    AC-04: Hủy (không xử lý trong function, do UI xử lý)
-    """
+        self.cap_nhat_listbox()
 
-    # ---- AC-01: bàn tồn tại ----
-    table = find_table_by_id(table_id)
-    if not table:
-        return "❌ Bàn không tồn tại"
+    # Cập nhật listbox
+    def cap_nhat_listbox(self):
+        self.listbox.delete(0, tk.END)
+        for mon in self.thuc_don:
+            dong = f"{mon['ten']} | {mon['danh_muc']} | {mon['gia']} VND"
+            self.listbox.insert(tk.END, dong)
 
-    # ---- AC-01: validate tên bàn ----
-    if not new_name or not new_name.strip():
-        return "❌ Tên bàn không được để trống"
+    # Xóa món đã chọn
+    def xoa_mon(self):
+        chon = self.listbox.curselection()
+        if not chon:
+            messagebox.showwarning("Cảnh báo", "Vui lòng chọn món cần xóa")
+            return
 
-    # ---- AC-01: validate số chỗ ngồi ----
-    if not isinstance(new_seats, int):
-        return "❌ Số chỗ ngồi phải là số"
-    if new_seats <= 0:
-        return "❌ Số chỗ ngồi phải là số nguyên dương"
+        index = chon[0]
+        mon = self.thuc_don[index]
 
-    # ---- AC-01: trùng tên bàn ----
-    if is_duplicate_table_name(new_name.strip(), table_id):
-        return "❌ Tên bàn đã tồn tại"
+        xac_nhan = messagebox.askyesno(
+            "Xác nhận xóa",
+            f"Bạn có chắc chắn muốn xóa món:\n\n"
+            f"Tên: {mon['ten']}\n"
+            f"Danh mục: {mon['danh_muc']}\n"
+            f"Giá: {mon['gia']} VND"
+        )
 
-    # ---- AC-02: cập nhật khi đang phục vụ ----
-    # KHÔNG đổi trạng thái
-    # KHÔNG ảnh hưởng order / đặt bàn
+        if not xac_nhan:
+            return
 
-    table["name"] = new_name.strip()
-    table["seats"] = new_seats
+        try:
+            # Xóa món khỏi danh sách
+            self.thuc_don.pop(index)
+            # Ghi lại file menu.json
+            with open(FILE_MENU, "w", encoding="utf-8") as f:
+                json.dump(self.thuc_don, f, ensure_ascii=False, indent=4)
 
-    # ---- AC-02: realtime sync ----
-    notify_realtime()
+            self.cap_nhat_listbox()
+            messagebox.showinfo("Thành công", "Đã xóa món khỏi thực đơn")
 
-    # ---- AC-03: thành công ----
-    return "✅ Cập nhật thông tin bàn thành công"
+        except Exception as e:
+            messagebox.showerror("Lỗi", f"Không thể xóa món.\nChi tiết: {e}")
 
-
-# =========================
-# GIẢ LẬP REALTIME LISTENER
-# =========================
-
-def realtime_listener():
-    print("🔄 Dữ liệu bàn đã được cập nhật realtime!")
-    show_tables()
-
-
-subscribers.append(realtime_listener)
-
-
-# =========================
-# TEST THỦ CÔNG (CÓ THỂ XÓA KHI PUSH)
-# =========================
 
 if __name__ == "__main__":
-    show_tables()
-
-    print(update_table(2, "Bàn VIP", 8))
-    print(update_table(1, "Bàn VIP", 4))     # trùng tên
-    print(update_table(1, "", 4))            # lỗi tên
-    print(update_table(1, "Bàn 01A", -1))    # lỗi số chỗ
-    print(update_table(99, "Bàn 99", 4))     # không tồn tại
+    root = tk.Tk()
+    app = XoaMonGUI(root)
+    root.mainloop()

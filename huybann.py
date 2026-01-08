@@ -1,40 +1,50 @@
-# Khai báo dữ liệu mẫu để kiểm tra
+# Dữ liệu mô phỏng theo yêu cầu
 dat_ban = {
-    "DB001": "Đã đặt",
-    "DB002": "Đã check-in"
+    "DB001": {"trang_thai": "Chưa check-in", "ma_ban": "B10"},
+    "DB002": {"trang_thai": "Đã check-in", "ma_ban": "B11"},
+    "DB003": {"trang_thai": "Đã hủy", "ma_ban": None}
 }
 
-def kiem_tra_hien_thi_nut_huy(ma_dat_ban):
-    trang_thai = dat_ban.get(ma_dat_ban)
-    
-    # AC-01 & AC-02: Kiểm tra điều kiện hiển thị
-    if trang_thai == "Đã check-in":
-        print(f"[{ma_dat_ban}] Trạng thái: {trang_thai}")
-        print("KẾT QUẢ: Nút 'Hủy đặt bàn' bị ẨN/VÔ HIỆU HÓA.")
-        print("THÔNG BÁO: Không thể hủy đặt bàn đã check-in.")
-        return False
-    else:
-        print(f"[{ma_dat_ban}] Trạng thái: {trang_thai}")
-        print("KẾT QUẢ: Nút 'Hủy đặt bàn' HIỂN THỊ và có thể nhấn.")
-        return True
+trang_thai_ban = {"B10": "Đã gán", "B11": "Đã gán"}
 
-def xac_nhan_huy():
-    # AC-03: Yêu cầu xác nhận khi nhấn nút
-    print("\n--- HỘP THOẠI XÁC NHẬN ---")
-    print("Bạn có chắc chắn muốn hủy không?")
-    print("1. Xác nhận")
-    print("2. Hủy bỏ")
-    lua_chon = input("Chọn (1/2): ")
-    
-    if lua_chon == "1":
-        print("Hệ thống: Đang chuyển sang bước tiếp theo...")
-        return True
-    else:
-        print("Hệ thống: Chưa có thay đổi dữ liệu nào xảy ra.")
-        return False
+def xu_ly_huy_ban(ma_don):
+    # 1. Kiểm tra đơn tồn tại
+    if ma_don not in dat_ban:
+        print(f"❌ Không tìm thấy mã đơn: {ma_don}")
+        return
 
-# Chạy thử
-if __name__ == "__main__":
-    ma_id = "DB001" # Thử thay bằng DB002 để xem AC-02
-    if kiem_tra_hien_thi_nut_huy(ma_id):
-        xac_nhan_huy()
+    don = dat_ban[ma_don]
+
+    # AC01: Không cho phép hủy khi đã check-in
+    if don["trang_thai"] == "Đã check-in":
+        print(f"🛑 AC01: Đơn {ma_don} đã CHECK-IN. Không thể hủy!")
+        return
+
+    # Kiểm tra nếu đơn đã hủy rồi
+    if don["trang_thai"] == "Đã hủy":
+        print(f"ℹ️ Đơn {ma_don} đã được hủy trước đó.")
+        return
+
+    # AC02: Xác nhận trước khi hủy
+    xac_nhan = input(f"❓ Bạn có chắc chắn muốn hủy đơn {ma_don}? (y/n): ")
+    
+    if xac_nhan.lower() == 'y':
+        # Cập nhật trạng thái thành "Đã hủy"
+        don["trang_thai"] = "Đã hủy"
+        
+        # Nếu có gán bàn, chuyển trạng thái bàn về "Trống"
+        ma_ban = don["ma_ban"]
+        if ma_ban in trang_thai_ban:
+            trang_thai_ban[ma_ban] = "Trống"
+            print(f"🔓 Bàn {ma_ban} đã được chuyển về trạng thái Trống.")
+
+        # AC03: Thông báo thành công
+        print(f"✅ AC03: Hủy đặt bàn {ma_don} THÀNH CÔNG!")
+        
+        # AC04: Hiển thị danh sách cập nhật
+        print(f"📋 AC04 - Danh sách mới: {ma_don} -> {don['trang_thai']}")
+    else:
+        print("❌ Hủy bỏ thao tác.")
+
+# Chạy thử nghiệm
+xu_ly_huy_ban("DB001")
