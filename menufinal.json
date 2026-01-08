@@ -1,5 +1,4 @@
 [
-
     {
         "id": "TM002",
         "ten": "Panna Cotta Trà Xanh",
@@ -41,13 +40,6 @@
         "gia": 89000,
         "danh_muc": "Món Chay",
         "trang_thai": "Còn hàng"
-    },
-    {
-        "id": "MC004",
-        "ten": "Gỏi Hoa Chuối",
-        "gia": 99000,
-        "danh_muc": "Món Chay",
-        "trang_thai": "Hết hàng"
     },
     {
         "id": "VC006",
@@ -246,6 +238,3 @@
         "trang_thai": "Còn hàng"
     }
 ]
-
-  
-
