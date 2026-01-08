@@ -1,0 +1,10 @@
+import os
+
+print("Thư mục hiện tại:", os.getcwd())
+print("Danh sách file:", os.listdir())
+
+FILE_MENU = "menu.json"
+if os.path.exists(FILE_MENU):
+    print("File menu.json tồn tại!")
+else:
+    print("Không tìm thấy file menu.json")
