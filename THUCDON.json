@@ -1,0 +1,1157 @@
+[
+    {
+        "ten_mon": "Bánh Crepe Cuộn Chuối",
+        "gia": 79000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Panna Cotta Trà Xanh",
+        "gia": 99000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Bánh Mousse Chanh Dây",
+        "gia": 99000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Bánh Creme Brulee Dừa",
+        "gia": 109000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Bánh Sô Cô La Đen với Ngũ Cốc",
+        "gia": 109000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Trái Cây Theo Mùa",
+        "gia": 129000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Bún Chay Huế",
+        "gia": 79000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Cà Tím Nướng, Sốt Tương Bần kèm Cơm Lá Dứa",
+        "gia": 89000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Mỳ Việt Nam Xào Rau Nấm",
+        "gia": 89000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Gỏi Hoa Chuối",
+        "gia": 99000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Khuôn Đậu Rim Sả kèm Cơm Trắng",
+        "gia": 99000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Đậu Cô Ve Xào với Đậu Phụ, Hành Nấm kèm Cơm Trắng",
+        "gia": 99000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Gỏi Cuốn Chay",
+        "gia": 109000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Nấm Đùi Gà Xào Lá Lốt kèm Cơm Lá Dứa",
+        "gia": 109000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Tàu Hũ Non Chưng Nấm kèm Cơm Trắng",
+        "gia": 109000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Các Loại Nấm Chiên Giòn Sốt BBQ",
+        "gia": 119000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Cơm Chiên Dưa Cải Chua",
+        "gia": 129000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Mỳ Việt Nam Xào Cùng Phi Lê Bò & Rau Củ",
+        "gia": 145000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Mỳ Ý Tôm Áp Chảo Sốt Hải Sản",
+        "gia": 145000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Mỳ Việt Nam Xào Hải Sản",
+        "gia": 155000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Mỳ Ý Sốt Bò Băm",
+        "gia": 165000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Mì Ý Sốt Carbonara",
+        "gia": 165000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Mỳ Ý Hải Sản Sốt Cà Chua",
+        "gia": 199000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Mì Ý Thăn Bò Áp Chảo Sốt Pesto",
+        "gia": 209000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Sandwich Quý Ông",
+        "gia": 109000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Sandwich Quý Bà",
+        "gia": 119000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Burger Trứng",
+        "gia": 119000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Burger Thịt Bò",
+        "gia": 129000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Burger Thịt Gà",
+        "gia": 129000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Burger Thịt Nguội",
+        "gia": 129000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": " Sandwich Trứng và Thịt Nguội",
+        "gia": 145000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Pizza Margarita",
+        "gia": 119000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Pizza Hawaii",
+        "gia": 155000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Pizza Xúc Xích Ý Hun Khói",
+        "gia": 199000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Pizza Bán Nguyệt",
+        "gia": 209000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Pizza Hải Sản",
+        "gia": 239000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Cơm Chiên Trứng và Rau Củ",
+        "gia": 119000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Cơm Chiên Bò và Dưa Cải",
+        "gia": 145000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Miến Xào Tôm Kiểu Trung Hoa",
+        "gia": 145000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Tôm Thịt Rim Salad kèm Cơm Lá Dứa",
+        "gia": 145000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Cơm Chiên Hải Sản",
+        "gia": 155000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Thịt Ba Chỉ Quay Giòn kèm Muối Ớt Xanh",
+        "gia": 155000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Mực Xào Hành Nấm kèm Cơm Trắng",
+        "gia": 165000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Gà Nướng Mật Ong Salad kèm Xôi",
+        "gia": 175000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Thịt Heo Nấu Mềm Rau Xào kèm Cơm Trắng",
+        "gia": 189000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Bò Nấu Sốt Vang kèm Bánh Mì",
+        "gia": 189000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Tôm Rim Mật Rau Xào kèm Cơm Trắng",
+        "gia": 199000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Bò Lúc Lắc Khoai Tây Chiên kèm Bánh Mì",
+        "gia": 219000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Khay Cá Chẽm Nướng Sốt Sa Tế",
+        "gia": 239000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Ức Gà Áp Chảo Sốt Teriyaki",
+        "gia": 175000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Thăn Bò Mỹ Áp Chảo Sốt Tiêu Xanh",
+        "gia": 239000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Cá Chẽm Áp Chảo Sốt Kem",
+        "gia": 255000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Cồi Sò Điệp Nhật và Tôm Sú Áp Chảo Sốt Sabayon",
+        "gia": 299000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Cá Hồi Áp Chảo Sốt Teriyaki",
+        "gia": 309000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Steak Thăn Bò Nội Hokubee",
+        "gia": 495000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Súp bí ngô",
+        "gia": 69000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Súp Kem Nấm",
+        "gia": 69000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Súp Hành Pháp",
+        "gia": 69000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Súp Khoai Tây",
+        "gia": 69000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Súp Gà Nấm Hạt Sen",
+        "gia": 79000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Súp Cua Măng Tây",
+        "gia": 89000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Súp Hải Sản",
+        "gia": 89000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Cháo Bò Rau Củ",
+        "gia": 129000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Cháo Cá Hồi",
+        "gia": 145000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Tomyum Hải Sản Kiểu Thái",
+        "gia": 239000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Khoai Tây Chiên",
+        "gia": 79000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Gà Tẩm Bột Chiên Giòn",
+        "gia": 119000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Tôm Tẩm Bột Chiên Giòn Sốt Tartar",
+        "gia": 145000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Mực Chiên Xù Sốt Tartar",
+        "gia": 155000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Cá Tẩm Bột Chiên Giòn Sốt Tartar",
+        "gia": 165000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Bánh Khoái Huế",
+        "gia": 65000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Bánh Bèo Huế Tôm Chấy",
+        "gia": 99000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Bánh Ướt Huế Tôm Chấy",
+        "gia": 99000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Bún Bò Huế Truyền Thống",
+        "gia": 109000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Gỏi Đu Đủ",
+        "gia": 109000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Nem Lụi Huế",
+        "gia": 119000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Nem Rán Thập Cẩm",
+        "gia": 119000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Cuốn Tôm Thịt Kiểu Huế",
+        "gia": 129000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Vả Trộn Tôm Thịt Kiểu Huế",
+        "gia": 155000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Bò Nướng Lá Lốt",
+        "gia": 165000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Bò Nướng Lá Lốt và Nem Lụi Sả",
+        "gia": 175000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Khay Đặc Sản Huế",
+        "gia": 219000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Bánh Mì Nướng Bơ Tỏi",
+        "gia": 65000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Bánh Mỳ Bruschetta",
+        "gia": 89000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Salad Lườn Ngỗng",
+        "gia": 145000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Salad Cá Ngừ",
+        "gia": 145000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Salad Caesar Cổ Điển Tôm",
+        "gia": 165000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Cà phê phin",
+        "gia": 45000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Cà phê phin sữa",
+        "gia": 50000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Cà phê đen đá",
+        "gia": 55000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Cà phê sữa đá",
+        "gia": 60000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Cà phê sữa tươi",
+        "gia": 60000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Bạc xỉu",
+        "gia": 60000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Cà phê muối",
+        "gia": 60000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Cà phê trứng muối",
+        "gia": 60000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Cà phê Americano",
+        "gia": 50000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Cà phê Espresso",
+        "gia": 55000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Cà phê Espresso sữa",
+        "gia": 60000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Cà phê Cappuccino",
+        "gia": 65000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Cà phê Latte",
+        "gia": 65000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Cà phê Mocha",
+        "gia": 65000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Cà phê Flat White",
+        "gia": 70000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Trà Lipton",
+        "gia": 45000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Trà Gừng",
+        "gia": 45000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Trà gừng cam sả nóng",
+        "gia": 55000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Trà Ô Long cam",
+        "gia": 55000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Trà sen long nhãn",
+        "gia": 55000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Trà quả mọng nhiệt đới",
+        "gia": 55000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Sữa chua đá",
+        "gia": 50000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Sữa chua xoài",
+        "gia": 60000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Sữa chua chuối, chanh dây",
+        "gia": 60000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Sữa chua trái cây",
+        "gia": 60000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Nước chanh tươi",
+        "gia": 45000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Nước ép cà rốt",
+        "gia": 50000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Nước ép Chanh dây",
+        "gia": 55000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Nước ép dứa",
+        "gia": 55000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Nước ép chuối",
+        "gia": 55000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Nước ép táo",
+        "gia": 60000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Nước ép cà chua",
+        "gia": 60000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Nước ép dưa hấu",
+        "gia": 60000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Nước dừa sữa tươi",
+        "gia": 70000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Nước cam",
+        "gia": 80000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Nước ép Tarot",
+        "gia": 65000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Nước ép dịu mát",
+        "gia": 65000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Nước ép helo",
+        "gia": 65000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Nước ép Green",
+        "gia": 65000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Nước ép Yellow",
+        "gia": 65000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Cocktail Pineapple Milk",
+        "gia": 95000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Cocktail Fruit Punch",
+        "gia": 100000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Cocktail Virgin Colada",
+        "gia": 100000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Cocktail Love Garden",
+        "gia": 100000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Cocktail Milk Shake",
+        "gia": 115000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Cocktail Governor Smile",
+        "gia": 115000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Cocktail Cinderella",
+        "gia": 120000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Cocktail Srewdriver",
+        "gia": 110000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Cocktail Caipiri﻿nha",
+        "gia": 115000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Cocktail Black Russian",
+        "gia": 115000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Cocktail White Lad﻿y",
+        "gia": 115000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Vodkatini",
+        "gia": 120000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Cocktail Mojito",
+        "gia": 120000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Cocktail White Russian",
+        "gia": 130000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Cocktail Banana Daiquiri",
+        "gia": 130000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Cocktail Pinacolada",
+        "gia": 135000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Cocktail Blue Hawaii",
+        "gia": 135000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Cocktail Magarita",
+        "gia": 140000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Cocktail Gin Fizz",
+        "gia": 145000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Cocktail Dry Martini",
+        "gia": 145000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Cocktail Maitai",
+        "gia": 150000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Cocktail Singapore Sling",
+        "gia": 150000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Cocktail Blue Magarita",
+        "gia": 150000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Cocktail Tequila Sunrise",
+        "gia": 155000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Cocktail Long Island Iced Tea",
+        "gia": 165000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Cocktail Alaska Ice Tea",
+        "gia": 165000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Cocktail Elegant Special",
+        "gia": 180000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Vodka & Tonic/ Soda",
+        "gia": 115000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Gin & Tonic/ Soda",
+        "gia": 115000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Rhum & Coke",
+        "gia": 115000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Whisky & Coke/ Soda",
+        "gia": 130000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Jim Bean & Coke",
+        "gia": 130000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Rượu Minh Mạng (Ly)",
+        "gia": 60000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Rượu Minh Mạng (Chai)",
+        "gia": 300000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Rượu Jim Bean (Ly)",
+        "gia": 80000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Rượu Jim Bean (Chai)",
+        "gia": 695000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Rượu Johnie Walker Red (Ly)",
+        "gia": 90000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Rượu Johnie Walker Red (Chai)",
+        "gia": 820000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Rượu Jack Daniels (Ly)",
+        "gia": 110000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Rượu Jack Daniels (Chai)",
+        "gia": 1125000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Rượu Chivas Regal 12 Years (Ly)",
+        "gia": 110000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Rượu Chivas Regal 12 Years (Chai)",
+        "gia": 1500000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Rượu Johnie Walker Black (Ly)",
+        "gia": 120000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Rượu Johnie Walker Black (Chai)",
+        "gia": 1500000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Rượu Johnie Walker Gold (Ly)",
+        "gia": 150000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Rượu Johnie Walker Gold (Chai)",
+        "gia": 2000000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Rượu Chivas Regal 18 Years (Ly)",
+        "gia": 240000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Rượu Chivas Regal 18 Years (Chai)",
+        "gia": 3100000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Rượu Remy Martin VSOP (Ly)",
+        "gia": 170000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Rượu Remy Martin VSOP (Chai)",
+        "gia": 2400000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Rượu Hennessy VSOP (Ly)",
+        "gia": 290000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Rượu Hennessy VSOP (Chai)",
+        "gia": 3100000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Rượu Remy Martin XO (Bottle)",
+        "gia": 8300000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Sangria Cam Quế (Ly)",
+        "gia": 90000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Sangria Cam Quế (500ml)",
+        "gia": 170000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Sangria Cam Quế (1000ml)",
+        "gia": 310000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Sangria Hoa Hồng (Ly)",
+        "gia": 90000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Sangria Hoa hồng (500ml)",
+        "gia": 170000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Sangria Hoa hồng (1000ml)",
+        "gia": 310000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Rượu vang Frontera Chardonnay (Ly)",
+        "gia": 115000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Rượu vang Frontera Chardonnay (Chai)",
+        "gia": 750000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Rượu vang Mapu Sauvignon Blanc (Ly)",
+        "gia": 115000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Rượu vang Mapu Sauvignon Blanc (Chai)",
+        "gia": 750000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Rượu vang Louis Pinel Sauvignon (Ly)",
+        "gia": 125000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Rượu vang Louis Pinel Sauvignon (Chai)",
+        "gia": 800000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Rượu vang Frontera Cabernet Sauvignon (Ly)",
+        "gia": 115000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Rượu vang Frontera Cabernet Sauvignon (Chai)",
+        "gia": 750000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Rượu vang Mapu Cabernet Sauvignon Carmenere (Ly)",
+        "gia": 115000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Rượu vang Mapu Cabernet Sauvignon Carmenere (Chai)",
+        "gia": 750000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Rượu vang Louis Pinel Merlot (Ly)",
+        "gia": 125000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Rượu vang Louis Pinel Merlot (Chai)",
+        "gia": 800000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Rượu vang Louis pinel Cinsault Rose (Chai)",
+        "gia": 800000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Coca Light",
+        "gia": 40000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Coke/ Diet Coke (Coca Cola)",
+        "gia": 35000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "7Up",
+        "gia": 35000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Soda",
+        "gia": 45000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Nước suối",
+        "gia": 30000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Redbull (Bò húc)",
+        "gia": 40000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Tonic",
+        "gia": 45000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Fanta",
+        "gia": 35000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Rượu vang DB Blend Sparkling Brut (Dry)",
+        "gia": 900000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Rượu vang Champagne Charles Mignon Brut Premium Reserve",
+        "gia": 2800000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Bia Huda (Lon)",
+        "gia": 45000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Bia Tiger nâu (Chai)",
+        "gia": 5500,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Bia Tiger bạc (Chai)",
+        "gia": 55000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Bia Heniken (Lon)",
+        "gia": 65000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Rượu vang Canapi, Nero Davola, IGT Sicilia",
+        "gia": 750000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Rượu vang Tarquino Malbec Shiraz",
+        "gia": 800000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Rượu vang DB Family Selection Shiraz Cabernet",
+        "gia": 850000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Rượu vang Welmoed Merlot",
+        "gia": 850000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Rượu vang Chateau La Croix De Queynac",
+        "gia": 950000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Rượu vang Casillero Del Diablo Cabernet Sauvignon Reserva",
+        "gia": 1000000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Rượu vang Marques Casa Camenere",
+        "gia": 1800000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Rượu vang Chateau Haut Rocher, Saint Emilion Grand Cru",
+        "gia": 2350000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Rượu vang Tarquino Sauvignon Blanc",
+        "gia": 800000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Rượu vang Canapi, Grillo, IGT Sicilia",
+        "gia": 800000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Rượu vang Welmoed Pinot Noir",
+        "gia": 850000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Rượu vang DB Family Selection Semillon Chardonnay",
+        "gia": 900000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Rượu vang Casillero Chardonnay",
+        "gia": 1050000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Rượu vang Les Hauts De Bordeaux White",
+        "gia": 1250000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "Rượu vang Gunderloch, Fritz Riesling, Rheinhessen",
+        "gia": 1350000,
+        "loai_mon": "Chưa phân loại"
+    },
+    {
+        "ten_mon": "súp cua",
+        "gia": 150000,
+        "loai_mon": "món chính"
+    },
+    {
+        "ten_mon": "xôi đậu đỏ",
+        "gia": 50000,
+        "loai_mon": "món chính"
+    },
+    {
+        "ten_mon": "matcha latte",
+        "gia": 45000,
+        "loai_mon": "nước"
+    }
+]

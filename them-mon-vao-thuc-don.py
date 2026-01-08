@@ -1,127 +1,112 @@
-# =========================
-# US-11 — THÊM MÓN VÀO THỰC ĐƠN
-# AC-01: Thông tin không hợp lệ
-# =========================
+import json
 
-thuc_don = []  # Danh sách món ăn
+FILE = "menufinal.json"
 
-def ac01_kiem_tra_thong_tin_trong(ten_mon, gia, loai_mon):
-    if ten_mon.strip() == "":
+# =======================
+# HÀM TIỆN ÍCH
+# =======================
+def load_menu():
+    try:
+        with open(FILE, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except Exception:
+        print(f"⚠ File {FILE} bị lỗi hoặc chưa tồn tại. Tạo menu trống...")
+        return []
+
+def save_menu(menu):
+    with open(FILE, "w", encoding="utf-8") as f:
+        json.dump(menu, f, ensure_ascii=False, indent=2)
+
+def is_valid_input(ten_mon, gia, danh_muc):
+    if not ten_mon.strip():
         return False, "❌ Tên món không được để trống"
-    if gia.strip() == "":
+    if not gia.strip():
         return False, "❌ Giá không được để trống"
-    if loai_mon.strip() == "":
-        return False, "❌ Loại món không được để trống"
+    if not danh_muc.strip():
+        return False, "❌ Danh mục không được để trống"
     return True, ""
 
-def ac01_them_mon():
-    print("\n--- AC-01: Thông tin không hợp lệ ---")
-    ten_mon = input("Nhập tên món: ")
-    gia = input("Nhập giá: ")
-    loai_mon = input("Nhập loại món: ")
-
-    hop_le, thong_bao = ac01_kiem_tra_thong_tin_trong(ten_mon, gia, loai_mon)
-    if not hop_le:
-        print(thong_bao)
-        print("❌ Không cho phép lưu món ăn")
-        return
-
-    print("✔ Thông tin không bị bỏ trống")
-
-# =========================
-# AC-02: Kiểm tra giá hợp lệ
-# =========================
-
-def ac02_kiem_tra_gia(gia):
+def is_valid_price(gia):
     if not gia.isdigit():
         return False, "❌ Giá phải là số"
     if int(gia) <= 0:
         return False, "❌ Giá phải lớn hơn 0"
     return True, ""
 
-def ac02_them_mon():
-    print("\n--- AC-02: Kiểm tra giá hợp lệ ---")
-    ten_mon = input("Nhập tên món: ")
-    gia = input("Nhập giá: ")
-    loai_mon = input("Nhập loại món: ")
-
-    hop_le, thong_bao = ac01_kiem_tra_thong_tin_trong(ten_mon, gia, loai_mon)
-    if not hop_le:
-        print(thong_bao)
+# =======================
+# CHỨC NĂNG
+# =======================
+def them_mon(menu):
+    print("\n--- THÊM MÓN MỚI ---")
+    
+    # Nhập số lượng món muốn thêm
+    so_luong = input("Nhập số lượng món muốn thêm: ").strip()
+    if not so_luong.isdigit() or int(so_luong) <= 0:
+        print("❌ Số lượng phải là số nguyên lớn hơn 0")
         return
+    so_luong = int(so_luong)
+    
+    for _ in range(so_luong):
+        ten_mon = input("Nhập tên món: ")
+        gia = input("Nhập giá: ")
+        danh_muc = input("Nhập danh mục: ")
 
-    hop_le, thong_bao = ac02_kiem_tra_gia(gia)
-    if not hop_le:
-        print(thong_bao)
-        print("❌ Không cho phép lưu")
+        hop_le, thong_bao = is_valid_input(ten_mon, gia, danh_muc)
+        if not hop_le:
+            print(thong_bao)
+            continue
+
+        hop_le, thong_bao = is_valid_price(gia)
+        if not hop_le:
+            print(thong_bao)
+            continue
+
+        # Tạo ID tự động
+        last_id = max([int(m['id'][2:]) for m in menu if m['id'][2:].isdigit()], default=0)
+        prefix = danh_muc[:2].upper()  # Lấy 2 chữ cái đầu danh mục làm prefix
+        ma_mon = f"{prefix}{str(last_id+1).zfill(3)}"
+
+        mon_moi = {
+            "id": ma_mon,
+            "ten": ten_mon,
+            "gia": int(gia),
+            "danh_muc": danh_muc,
+            "trang_thai": "Còn hàng"
+        }
+        menu.append(mon_moi)
+        print(f"✔ Thêm món thành công: {ten_mon} ({ma_mon})")
+
+    save_menu(menu)
+
+def hien_thi_menu(menu):
+    print("\n--- DANH SÁCH MÓN ĂN ---")
+    if not menu:
+        print("📭 Menu hiện đang trống")
         return
+    for i, mon in enumerate(menu, start=1):
+        print(f"{i}. {mon['ten']} - {mon['gia']}đ - {mon['danh_muc']} - {mon['trang_thai']}")
 
-    print("✔ Giá hợp lệ")
-
-    # =========================
-# AC-03: Thêm món thành công
-# =========================
-
-def ac03_them_mon_thanh_cong():
-    print("\n--- AC-03: Thêm món thành công ---")
-    ten_mon = input("Nhập tên món: ")
-    gia = input("Nhập giá: ")
-    loai_mon = input("Nhập loại món: ")
-
-    hop_le, thong_bao = ac01_kiem_tra_thong_tin_trong(ten_mon, gia, loai_mon)
-    if not hop_le:
-        print(thong_bao)
-        return
-
-    hop_le, thong_bao = ac02_kiem_tra_gia(gia)
-    if not hop_le:
-        print(thong_bao)
-        return
-
-    mon_moi = {
-        "ten_mon": ten_mon,
-        "gia": int(gia),
-        "loai_mon": loai_mon
-    }
-
-    thuc_don.append(mon_moi)
-    print("✔ Thêm món vào thực đơn thành công")
-
-# =========================
-# AC-04: Hiển thị món trong danh sách
-# =========================
-
-def ac04_hien_thi_thuc_don():
-    print("\n--- AC-04: Danh sách thực đơn ---")
-    if not thuc_don:
-        print("📭 Thực đơn hiện đang trống")
-        return
-
-    for i, mon in enumerate(thuc_don, start=1):
-        print(f"{i}. {mon['ten_mon']} - {mon['gia']}đ - {mon['loai_mon']}")
-
-if __name__ == "__main__":
+# =======================
+# MENU CHÍNH
+# =======================
+def main():
+    menu = load_menu()
     while True:
-        print("\n Thêm món vào thực đơn")
-        print("1.Kiểm tra thông tin không hợp lệ")
-        print("2.Kiểm tra giá hợp lệ")
-        print("3.Thêm món thành công")
-        print("4.Hiển thị món trong thực đơn")
-        print("0.Thoát")
-
-        chon = input("chọn chức năng: ")
+        print("\n===== QUẢN LÝ THỰC ĐƠN =====")
+        print("1. Thêm món mới")
+        print("2. Hiển thị thực đơn")
+        print("0. Thoát")
+        chon = input("Chọn chức năng: ").strip()
 
         if chon == "1":
-            ac01_them_mon()
+            them_mon(menu)
         elif chon == "2":
-            ac02_them_mon()
-        elif chon == "3":
-            ac03_them_mon_thanh_cong()
-        elif chon == "4":
-            ac04_hien_thi_thuc_don()
+            hien_thi_menu(menu)
         elif chon == "0":
-            print("Thoát chương trình.")
+            print("👋 Thoát chương trình.")
             break
         else:
-            print("Lựa chọn không hợp lệ, vui lòng chọn lại.")
+            print("❌ Lựa chọn không hợp lệ.")
 
+if __name__ == "__main__":
+    main()
