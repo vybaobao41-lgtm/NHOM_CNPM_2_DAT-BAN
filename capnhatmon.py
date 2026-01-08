@@ -1,97 +1,132 @@
-# =========================
-# AC-01: Hiển thị thông tin món cần cập nhật
-# =========================
+import json
 
-class MonAn:
-    def __init__(self, ten, gia, loai):
-        self.ten = ten
-        self.gia = gia
-        self.loai = loai
+FILE = "menufinal.json"
 
-    def hien_thi(self):
-        print(f"Tên món: {self.ten} | Giá: {self.gia} | Loại: {self.loai}")
-
-
-# Danh sách thực đơn ban đầu (nhiều món)
-thuc_don = [
-    MonAn("Cơm gà", 35000, "Món chính"),
-    MonAn("Bún bò", 40000, "Món chính"),
-    MonAn("Phở bò", 45000, "Món chính"),
-    MonAn("Cơm sườn", 50000, "Món chính"),
-    MonAn("Gà chiên nước mắm", 60000, "Món chính"),
-
-    MonAn("Trà đá", 5000, "Nước uống"),
-    MonAn("Trà đào", 25000, "Nước uống"),
-    MonAn("Nước cam", 30000, "Nước uống"),
-
-    MonAn("Bánh flan", 20000, "Tráng miệng"),
-    MonAn("Rau câu", 15000, "Tráng miệng")
-]
-
-def hien_thi_thuc_don():
-    print("\n--- DANH SÁCH THỰC ĐƠN ---")
-    for i, mon in enumerate(thuc_don, start=1):
-        print(f"{i}. ", end="")
-        mon.hien_thi()
-
-# =========================
-# AC-02: Kiểm tra thông tin bắt buộc
-# =========================
-
-def thong_tin_hop_le(ten, gia, loai):
-    if not ten or not loai:
-        print("❌ Tên và loại món không được để trống!")
-        return False
-    if gia is None:
-        print("❌ Giá món không được để trống!")
-        return False
-    return True
-
-# =========================
-# AC-03: Kiểm tra giá hợp lệ
-# =========================
-
-def gia_hop_le(gia):
+# =======================
+# TIỆN ÍCH
+# =======================
+def load_menu():
     try:
-        gia = float(gia)
-        if gia <= 0:
-            print("❌ Giá món phải lớn hơn 0!")
-            return None
-        return gia
-    except ValueError:
-        print("❌ Giá món phải là số!")
-        return None
-# =========================
-# AC-04: Cập nhật món thành công
-# =========================
+        with open(FILE, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except Exception:
+        print("⚠ Không đọc được menufinal.json – tạo menu trống")
+        return []
 
-def cap_nhat_mon():
-    hien_thi_thuc_don()
+def save_menu(menu):
+    with open(FILE, "w", encoding="utf-8") as f:
+        json.dump(menu, f, ensure_ascii=False, indent=2)
+
+# =======================
+# HIỂN THỊ MENU
+# =======================
+def hien_thi_menu(menu):
+    print("\n--- DANH SÁCH THỰC ĐƠN ---")
+    if not menu:
+        print("📭 Thực đơn trống")
+        return
+
+    for i, mon in enumerate(menu, start=1):
+        print(
+            f"{i}. {mon['ten']} | "
+            f"{mon['gia']}đ | "
+            f"{mon['danh_muc']} | "
+            f"Số lượng: {mon.get('so_luong', 0)} | "
+            f"{mon['trang_thai']}"
+        )
+
+# =======================
+# KIỂM TRA HỢP LỆ
+# =======================
+def gia_hop_le(gia):
+    if not gia.isdigit():
+        print("❌ Giá phải là số")
+        return None
+    gia = int(gia)
+    if gia <= 0:
+        print("❌ Giá phải lớn hơn 0")
+        return None
+    return gia
+
+def so_luong_hop_le(sl):
+    if not sl.isdigit():
+        print("❌ Số lượng phải là số")
+        return None
+    sl = int(sl)
+    if sl < 0:
+        print("❌ Số lượng không được âm")
+        return None
+    return sl
+
+# =======================
+# CẬP NHẬT MÓN
+# =======================
+def cap_nhat_mon(menu):
+    hien_thi_menu(menu)
+    if not menu:
+        return
+
     try:
         chon = int(input("\nChọn số món cần cập nhật: ")) - 1
-        mon = thuc_don[chon]
+        mon = menu[chon]
     except:
-        print("❌ Lựa chọn không hợp lệ!")
+        print("❌ Lựa chọn không hợp lệ")
         return
 
-    ten_moi = input("Tên món mới: ").strip()
-    gia_moi = input("Giá mới: ").strip()
-    loai_moi = input("Loại món mới: ").strip()
+    print("\n--- NHẬP THÔNG TIN MỚI (Enter để giữ nguyên) ---")
 
-    gia_moi = gia_hop_le(gia_moi)
-    if gia_moi is None:
-        return
+    ten_moi = input(f"Tên ({mon['ten']}): ").strip()
+    gia_moi = input(f"Giá ({mon['gia']}): ").strip()
+    danh_muc_moi = input(f"Danh mục ({mon['danh_muc']}): ").strip()
+    so_luong_moi = input(f"Số lượng ({mon.get('so_luong', 0)}): ").strip()
+    trang_thai_moi = input(f"Trạng thái ({mon['trang_thai']}): ").strip()
 
-    if not thong_tin_hop_le(ten_moi, gia_moi, loai_moi):
-        return
+    if ten_moi:
+        mon["ten"] = ten_moi
 
-    mon.ten = ten_moi
-    mon.gia = gia_moi
-    mon.loai = loai_moi
+    if gia_moi:
+        gia = gia_hop_le(gia_moi)
+        if gia is None:
+            return
+        mon["gia"] = gia
 
+    if danh_muc_moi:
+        mon["danh_muc"] = danh_muc_moi
+
+    if so_luong_moi:
+        sl = so_luong_hop_le(so_luong_moi)
+        if sl is None:
+            return
+        mon["so_luong"] = sl
+
+    if trang_thai_moi:
+        mon["trang_thai"] = trang_thai_moi
+
+    save_menu(menu)
     print("\n✅ Cập nhật món thành công!")
-    hien_thi_thuc_don()
 
+# =======================
+# CHƯƠNG TRÌNH CHÍNH
+# =======================
+def main():
+    menu = load_menu()
+    while True:
+        print("\n===== CẬP NHẬT MÓN ĂN =====")
+        print("1. Hiển thị thực đơn")
+        print("2. Cập nhật món")
+        print("0. Thoát")
 
-# Chạy chức năng cập nhật
-cap_nhat_mon()
+        chon = input("Chọn chức năng: ").strip()
+
+        if chon == "1":
+            hien_thi_menu(menu)
+        elif chon == "2":
+            cap_nhat_mon(menu)
+        elif chon == "0":
+            print("👋 Thoát chương trình")
+            break
+        else:
+            print("❌ Lựa chọn không hợp lệ")
+
+if __name__ == "__main__":
+    main()
