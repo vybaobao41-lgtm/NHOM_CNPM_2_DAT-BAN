@@ -15,7 +15,7 @@ def load_menu_from_json(file_path):
 
 
 # Load dữ liệu
-FILE_NAME = "THUCDON.json"
+FILE_NAME = "menufinal.json"
 menu = load_menu_from_json(FILE_NAME)
 
 # =========================
