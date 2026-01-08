@@ -4,7 +4,7 @@ import tkinter as tk
 from tkinter import messagebox
 
 # File thực đơn
-FILE_MENU = "menu.json"
+FILE_MENU = "menufinal.json"
 
 class XoaMonGUI:
     def __init__(self, root):
