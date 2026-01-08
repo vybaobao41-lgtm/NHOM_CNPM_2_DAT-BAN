@@ -1,79 +1,74 @@
 import json
 import os
 
-# Đường dẫn đến file dữ liệu
-DB_FILE = 'menufinal.json' 
+DB_FILE = 'menufinal.json'
+ORDER_FILE = 'order.json'
 
+# --- đọc menu ---
 def doc_thuc_don():
-    """Đọc dữ liệu từ file JSON"""
     if not os.path.exists(DB_FILE):
-        print(f"❌ Lỗi: Không tìm thấy file {DB_FILE}")
+        print(f"❌ Không tìm thấy file {DB_FILE}")
         return []
     with open(DB_FILE, 'r', encoding='utf-8') as f:
         return json.load(f)
 
-# Đơn hàng hiện tại của bàn (Mã món: Số lượng)
-order_hien_tai = {}
+# --- đọc order ---
+def doc_order():
+    if not os.path.exists(ORDER_FILE):
+        return {}
+    with open(ORDER_FILE, 'r', encoding='utf-8') as f:
+        data = json.load(f)
+        if isinstance(data, list):
+            return {}
+        return data
 
-def them_mon_vao_order(ma_mon_nhap):
-    """
-    Thực hiện chức năng thêm món vào đơn hàng dựa trên ID.
-    Tuân thủ các tiêu chí chấp nhận (AC).
-    """
+# --- ghi order ---
+def ghi_order(order):
+    with open(ORDER_FILE, 'w', encoding='utf-8') as f:
+        json.dump(order, f, ensure_ascii=False, indent=4)
+
+# --- thêm món ---
+def them_mon(ma_mon):
     thuc_don = doc_thuc_don()
-    
-    # Tìm thông tin chi tiết của món dựa trên ID
-    mon_tim_thay = next((item for item in thuc_don if item['id'] == ma_mon_nhap), None)
+    order = doc_order()
 
-    # --- KIỂM TRA ĐIỀU KIỆN ---
-
-    # 1. Kiểm tra mã món tồn tại trong thực đơn
-    if not mon_tim_thay:
-        print(f"❌ Lỗi: Mã món '{ma_mon_nhap}' không tồn tại trong hệ thống.")
+    mon = next((m for m in thuc_don if m['id'] == ma_mon), None)
+    if not mon:
+        print(f"❌ Mã món {ma_mon} không tồn tại")
+        return
+    if mon['trang_thai'] == "Hết hàng":
+        print(f"🚫 Món {mon['ten']} hiện hết hàng")
         return
 
-    # 2. AC-03: Không cho phép thêm món có trạng thái là "Hết hàng"
-    if mon_tim_thay["trang_thai"] == "Hết hàng":
-        print(f"🚫 AC-03: Món '{mon_tim_thay['ten']}' hiện đang hết hàng. Không thể thêm vào đơn!")
+    if ma_mon in order:
+        order[ma_mon]['so_luong'] += 1
+        print(f"🔄 Tăng số lượng {mon['ten']} lên {order[ma_mon]['so_luong']}")
+    else:
+        order[ma_mon] = {
+            "ten": mon['ten'],
+            "gia": mon['gia'],
+            "so_luong": 1
+        }
+        print(f"✅ Thêm món {mon['ten']} vào order")
+
+    ghi_order(order)
+
+# --- hiển thị order ---
+def hien_thi_order():
+    order = doc_order()
+    if not order:
+        print("🛒 Order trống")
         return
+    print("\n=== Order hiện tại ===")
+    for ma_mon, chi_tiet in order.items():
+        print(f"- ID: {ma_mon} | Tên món: {chi_tiet['ten']} | Giá: {chi_tiet['gia']} | SL: {chi_tiet['so_luong']}")
+    print("=====================")
 
-    # --- XỬ LÝ LOGIC THÊM MÓN ---
-
-    if ma_mon_nhap in order_hien_tai:
-        # AC-02: Nếu món đã có trong đơn hàng, tăng số lượng lên 1
-        order_hien_tai[ma_mon_nhap] += 1
-        print(f"🔄 AC-02: Tăng số lượng '{mon_tim_thay['ten']}' lên: {order_hien_tai[ma_mon_nhap]}")
-    else:
-        # AC-01: Nếu món chưa có, thêm mới vào đơn hàng với số lượng mặc định là 1
-        order_hien_tai[ma_mon_nhap] = 1
-        print(f"✅ AC-01: Đã thêm mới món '{mon_tim_thay['ten']}' vào đơn hàng.")
-
-    # --- KẾT QUẢ ---
-    print(f"📊 Đơn hàng hiện tại (Mã: SL): {order_hien_tai}")
-
-def hoan_thanh_order():
-    """Hiển thị danh sách cuối cùng sau khi hoàn thành chọn món"""
-    print("\n" + "="*30)
-    print("✨ ĐÃ HOÀN THÀNH ORDER ✨")
-    if not order_hien_tai:
-        print("Đơn hàng chưa có món nào.")
-    else:
-        thuc_don = doc_thuc_don()
-        for ma_mon, so_luong in order_hien_tai.items():
-            mon = next((m for m in thuc_don if m['id'] == ma_mon), None)
-            print(f"- {mon['ten']} (Mã: {ma_mon}): {so_luong} món")
-    print("="*30)
-
-# --- CHẠY THỬ NGHIỆM ---
+# --- chạy thử ---
 if __name__ == "__main__":
-    print("--- QUY TRÌNH THÊM MÓN VÀO ĐƠN HÀNG ---")
-    
-    # Thử nghiệm các kịch bản theo AC
     while True:
-        cmd = input("\nNhập mã món (VD: TM002, MC002) hoặc 'DONE' để hoàn thành: ").upper()
-        
-        if cmd == 'DONE':
-            hoan_thanh_order()
+        cmd = input("Nhập mã món (hoặc DONE để kết thúc): ").upper()
+        if cmd == "DONE":
+            hien_thi_order()
             break
-        else:
-            them_mon_vao_order(cmd)
+        them_mon(cmd)

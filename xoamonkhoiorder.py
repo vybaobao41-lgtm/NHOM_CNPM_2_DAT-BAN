@@ -1,93 +1,55 @@
-import tkinter as tk
-from tkinter import messagebox
+import json
+import os
 
-# ================= DATA =================
-order = []
+ORDER_FILE = 'order.json'
 
-# ================= FUNCTIONS =================
-def add_item():
-    try:
-        item = {
-            "id": int(entry_id.get()),
-            "name": entry_name.get(),
-            "price": int(entry_price.get()),
-            "qty": int(entry_qty.get())
-        }
-        order.append(item)
-        refresh_list()
-        clear_entries()
-    except ValueError:
-        messagebox.showerror("Lỗi", "Vui lòng nhập đúng dữ liệu")
+# --- đọc order ---
+def doc_order():
+    if not os.path.exists(ORDER_FILE):
+        return {}
+    with open(ORDER_FILE, 'r', encoding='utf-8') as f:
+        data = json.load(f)
+        if isinstance(data, list):
+            return {}
+        return data
 
-def delete_item():
-    selected = listbox.curselection()
-    if not selected:
-        messagebox.showwarning("Thông báo", "Vui lòng chọn món để xóa")
+# --- ghi order ---
+def ghi_order(order):
+    with open(ORDER_FILE, 'w', encoding='utf-8') as f:
+        json.dump(order, f, ensure_ascii=False, indent=4)
+
+# --- xóa món ---
+def xoa_mon(ma_mon):
+    order = doc_order()
+    if ma_mon not in order:
+        print(f"❌ Mã món {ma_mon} không tồn tại trong order")
         return
 
-    index = selected[0]
-    item = order[index]
+    if order[ma_mon]['so_luong'] > 1:
+        order[ma_mon]['so_luong'] -= 1
+        print(f"🔽 Giảm 1 số lượng {order[ma_mon]['ten']} xuống {order[ma_mon]['so_luong']}")
+    else:
+        print(f"🗑️ Xóa món {order[ma_mon]['ten']} khỏi order")
+        del order[ma_mon]
 
-    confirm = messagebox.askyesno(
-        "Xác nhận",
-        f"Bạn có chắc muốn xóa '{item['name']}'?"
-    )
+    ghi_order(order)
 
-    if confirm:
-        order.pop(index)
-        refresh_list()
+# --- hiển thị order ---
+def hien_thi_order():
+    order = doc_order()
+    if not order:
+        print("🛒 Order trống")
+        return
+    print("\n=== Order hiện tại ===")
+    for ma_mon, chi_tiet in order.items():
+        print(f"- ID: {ma_mon} | Tên món: {chi_tiet['ten']} | Giá: {chi_tiet['gia']} | SL: {chi_tiet['so_luong']}")
+    print("=====================")
 
-def calculate_total():
-    total = sum(i["price"] * i["qty"] for i in order)
-    label_total.config(text=f"Tổng tiền: {total:,} VND")
-
-def refresh_list():
-    listbox.delete(0, tk.END)
-    for item in order:
-        listbox.insert(
-            tk.END,
-            f"{item['id']} | {item['name']} | {item['price']} x {item['qty']}"
-        )
-    calculate_total()
-
-def clear_entries():
-    entry_id.delete(0, tk.END)
-    entry_name.delete(0, tk.END)
-    entry_price.delete(0, tk.END)
-    entry_qty.delete(0, tk.END)
-
-# ================= GUI =================
-root = tk.Tk()
-root.title("Quản lý Order - Nhà hàng hải sản")
-root.geometry("500x450")
-
-# ---- Input ----
-tk.Label(root, text="ID món").pack()
-entry_id = tk.Entry(root)
-entry_id.pack()
-
-tk.Label(root, text="Tên món").pack()
-entry_name = tk.Entry(root)
-entry_name.pack()
-
-tk.Label(root, text="Giá").pack()
-entry_price = tk.Entry(root)
-entry_price.pack()
-
-tk.Label(root, text="Số lượng").pack()
-entry_qty = tk.Entry(root)
-entry_qty.pack()
-
-tk.Button(root, text="➕ Thêm món", command=add_item).pack(pady=5)
-
-# ---- List ----
-listbox = tk.Listbox(root, width=60)
-listbox.pack(pady=10)
-
-tk.Button(root, text="🗑️ Xóa món", command=delete_item).pack()
-
-# ---- Total ----
-label_total = tk.Label(root, text="Tổng tiền: 0 VND", font=("Arial", 12, "bold"))
-label_total.pack(pady=10)
-
-root.mainloop()
+# --- chạy thử ---
+if __name__ == "__main__":
+    while True:
+        cmd = input("Nhập mã món xóa (hoặc DONE để kết thúc): ").upper()
+        if cmd == "DONE":
+            hien_thi_order()
+            break
+        xoa_mon(cmd)
