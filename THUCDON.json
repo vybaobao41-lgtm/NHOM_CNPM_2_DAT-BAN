@@ -1,4 +1,5 @@
 [
+<<<<<<< HEAD
     {
         "id": "TM002",
         "ten": "Panna Cotta Trà Xanh",
@@ -1575,3 +1576,1602 @@
         "trang_thai": "Còn hàng"
     }
 ]
+=======
+  {
+    "id": "TM001",
+    "ten": "Bánh Crepe Cuộn Chuối",
+    "gia": 79000,
+    "danh_muc": "Tráng Miệng",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "TM002",
+    "ten": "Panna Cotta Trà Xanh",
+    "gia": 99000,
+    "danh_muc": "Tráng Miệng",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "TM003",
+    "ten": "Bánh Mousse Chanh Dây",
+    "gia": 99000,
+    "danh_muc": "Tráng Miệng",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "TM004",
+    "ten": "Bánh Creme Brulee Dừa",
+    "gia": 109000,
+    "danh_muc": "Tráng Miệng",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "TM005",
+    "ten": "Bánh Sô Cô La Đen với Ngũ Cốc",
+    "gia": 109000,
+    "danh_muc": "Tráng Miệng",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "TM006",
+    "ten": "Trái Cây Theo Mùa",
+    "gia": 129000,
+    "danh_muc": "Tráng Miệng",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "MC001",
+    "ten": "Bún Chay Huế",
+    "gia": 79000,
+    "danh_muc": "Món Chay",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "MC002",
+    "ten": "Cà Tím Nướng, Sốt Tương Bần kèm Cơm Lá Dứa",
+    "gia": 89000,
+    "danh_muc": "Món Chay",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "MC003",
+    "ten": "Mỳ Việt Nam Xào Rau Nấm",
+    "gia": 89000,
+    "danh_muc": "Món Chay",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "MC004",
+    "ten": "Gỏi Hoa Chuối",
+    "gia": 99000,
+    "danh_muc": "Món Chay",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "MC005",
+    "ten": "Khuôn Đậu Rim Sả kèm Cơm Trắng",
+    "gia": 99000,
+    "danh_muc": "Món Chay",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "MC006",
+    "ten": "Đậu Cô Ve Xào với Đậu Phụ, Hành Nấm kèm Cơm Trắng",
+    "gia": 99000,
+    "danh_muc": "Món Chay",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "MC007",
+    "ten": "Gỏi Cuốn Chay",
+    "gia": 109000,
+    "danh_muc": "Món Chay",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "MC008",
+    "ten": "Nấm Đùi Gà Xào Lá Lốt kèm Cơm Lá Dứa",
+    "gia": 109000,
+    "danh_muc": "Món Chay",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "MC009",
+    "ten": "Tàu Hũ Non Chưng Nấm kèm Cơm Trắng",
+    "gia": 109000,
+    "danh_muc": "Món Chay",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "MC010",
+    "ten": "Các Loại Nấm Chiên Giòn Sốt BBQ",
+    "gia": 119000,
+    "danh_muc": "Món Chay",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "MC011",
+    "ten": "Cơm Chiên Dưa Cải Chua",
+    "gia": 129000,
+    "danh_muc": "Món Chay",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "MY001",
+    "ten": "Mỳ Việt Nam Xào Cùng Phi Lê Bò & Rau Củ",
+    "gia": 145000,
+    "danh_muc": "Mì Ý & Mỳ Việt Nam",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "MY002",
+    "ten": "Mỳ Ý Tôm Áp Chảo Sốt Hải Sản",
+    "gia": 145000,
+    "danh_muc": "Mì Ý & Mỳ Việt Nam",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "MY003",
+    "ten": "Mỳ Việt Nam Xào Hải Sản",
+    "gia": 155000,
+    "danh_muc": "Mì Ý & Mỳ Việt Nam",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "MY004",
+    "ten": "Mỳ Ý Sốt Bò Băm",
+    "gia": 165000,
+    "danh_muc": "Mì Ý & Mỳ Việt Nam",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "MY005",
+    "ten": "Mì Ý Sốt Carbonara",
+    "gia": 165000,
+    "danh_muc": "Mì Ý & Mỳ Việt Nam",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "MY006",
+    "ten": "Mỳ Ý Hải Sản Sốt Cà Chua",
+    "gia": 199000,
+    "danh_muc": "Mì Ý & Mỳ Việt Nam",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "MY007",
+    "ten": "Mì Ý Thăn Bò Áp Chảo Sốt Pesto",
+    "gia": 209000,
+    "danh_muc": "Mì Ý & Mỳ Việt Nam",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "BS001",
+    "ten": "Sandwich Quý Ông",
+    "gia": 109000,
+    "danh_muc": "Burger & Sandwich",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "BS002",
+    "ten": "Sandwich Quý Bà",
+    "gia": 119000,
+    "danh_muc": "Burger & Sandwich",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "BS003",
+    "ten": "Burger Trứng",
+    "gia": 119000,
+    "danh_muc": "Burger & Sandwich",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "BS004",
+    "ten": "Burger Thịt Bò",
+    "gia": 129000,
+    "danh_muc": "Burger & Sandwich",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "BS005",
+    "ten": "Burger Thịt Gà",
+    "gia": 129000,
+    "danh_muc": "Burger & Sandwich",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "BS006",
+    "ten": "Burger Thịt Nguội",
+    "gia": 129000,
+    "danh_muc": "Burger & Sandwich",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "BS007",
+    "ten": " Sandwich Trứng và Thịt Nguội",
+    "gia": 145000,
+    "danh_muc": "Burger & Sandwich",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "PZ001",
+    "ten": "Pizza Margarita",
+    "gia": 119000,
+    "danh_muc": "Pizza",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "PZ002",
+    "ten": "Pizza Hawaii",
+    "gia": 155000,
+    "danh_muc": "Pizza",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "PZ003",
+    "ten": "Pizza Xúc Xích Ý Hun Khói",
+    "gia": 199000,
+    "danh_muc": "Pizza",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "PZ004",
+    "ten": "Pizza Bán Nguyệt",
+    "gia": 209000,
+    "danh_muc": "Pizza",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "PZ005",
+    "ten": "Pizza Hải Sản",
+    "gia": 239000,
+    "danh_muc": "Pizza",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "MN001",
+    "ten": "Cơm Chiên Trứng và Rau Củ",
+    "gia": 119000,
+    "danh_muc": "Món Chính",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "MN002",
+    "ten": "Cơm Chiên Bò và Dưa Cải",
+    "gia": 145000,
+    "danh_muc": "Món Chính",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "MN003",
+    "ten": "Miến Xào Tôm Kiểu Trung Hoa",
+    "gia": 145000,
+    "danh_muc": "Món Chính",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "MN004",
+    "ten": "Tôm Thịt Rim Salad kèm Cơm Lá Dứa",
+    "gia": 145000,
+    "danh_muc": "Món Chính",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "MN005",
+    "ten": "Cơm Chiên Hải Sản",
+    "gia": 155000,
+    "danh_muc": "Món Chính",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "MN006",
+    "ten": "Thịt Ba Chỉ Quay Giòn kèm Muối Ớt Xanh",
+    "gia": 155000,
+    "danh_muc": "Món Chính",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "MN007",
+    "ten": "Mực Xào Hành Nấm kèm Cơm Trắng",
+    "gia": 165000,
+    "danh_muc": "Món Chính",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "MN008",
+    "ten": "Gà Nướng Mật Ong Salad kèm Xôi",
+    "gia": 175000,
+    "danh_muc": "Món Chính",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "MN009",
+    "ten": "Thịt Heo Nấu Mềm Rau Xào kèm Cơm Trắng",
+    "gia": 189000,
+    "danh_muc": "Món Chính",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "MN010",
+    "ten": "Bò Nấu Sốt Vang kèm Bánh Mì",
+    "gia": 189000,
+    "danh_muc": "Món Chính",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "MN011",
+    "ten": "Tôm Rim Mật Rau Xào kèm Cơm Trắng",
+    "gia": 199000,
+    "danh_muc": "Món Chính",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "MN012",
+    "ten": "Bò Lúc Lắc Khoai Tây Chiên kèm Bánh Mì",
+    "gia": 219000,
+    "danh_muc": "Món Chính",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "MN013",
+    "ten": "Khay Cá Chẽm Nướng Sốt Sa Tế",
+    "gia": 239000,
+    "danh_muc": "Món Chính",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "MN014",
+    "ten": "Ức Gà Áp Chảo Sốt Teriyaki",
+    "gia": 175000,
+    "danh_muc": "Món Chính",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "MN015",
+    "ten": "Thăn Bò Mỹ Áp Chảo Sốt Tiêu Xanh",
+    "gia": 239000,
+    "danh_muc": "Món Chính",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "MN016",
+    "ten": "Cá Chẽm Áp Chảo Sốt Kem",
+    "gia": 255000,
+    "danh_muc": "Món Chính",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "MN017",
+    "ten": "Cồi Sò Điệp Nhật và Tôm Sú Áp Chảo Sốt Sabayon",
+    "gia": 299000,
+    "danh_muc": "Món Chính",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "MN018",
+    "ten": "Cá Hồi Áp Chảo Sốt Teriyaki",
+    "gia": 309000,
+    "danh_muc": "Món Chính",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "MN019",
+    "ten": "Steak Thăn Bò Nội Hokubee",
+    "gia": 495000,
+    "danh_muc": "Món Chính",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "SC001",
+    "ten": "Súp bí ngô",
+    "gia": 69000,
+    "danh_muc": "Súp & Cháo",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "SC002",
+    "ten": "Súp Kem Nấm",
+    "gia": 69000,
+    "danh_muc": "Súp & Cháo",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "SC003",
+    "ten": "Súp Hành Pháp",
+    "gia": 69000,
+    "danh_muc": "Súp & Cháo",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "SC004",
+    "ten": "Súp Khoai Tây",
+    "gia": 69000,
+    "danh_muc": "Súp & Cháo",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "SC005",
+    "ten": "Súp Gà Nấm Hạt Sen",
+    "gia": 79000,
+    "danh_muc": "Súp & Cháo",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "SC006",
+    "ten": "Súp Cua Măng Tây",
+    "gia": 89000,
+    "danh_muc": "Súp & Cháo",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "SC007",
+    "ten": "Súp Hải Sản",
+    "gia": 89000,
+    "danh_muc": "Súp & Cháo",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "SC008",
+    "ten": "Cháo Bò Rau Củ",
+    "gia": 129000,
+    "danh_muc": "Súp & Cháo",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "SC009",
+    "ten": "Cháo Cá Hồi",
+    "gia": 145000,
+    "danh_muc": "Súp & Cháo",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "SC010",
+    "ten": "Tomyum Hải Sản Kiểu Thái",
+    "gia": 239000,
+    "danh_muc": "Súp & Cháo",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "SN001",
+    "ten": "Khoai Tây Chiên",
+    "gia": 79000,
+    "danh_muc": "Snack & Món Chiên Giòn",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "SN002",
+    "ten": "Gà Tẩm Bột Chiên Giòn",
+    "gia": 119000,
+    "danh_muc": "Snack & Món Chiên Giòn",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "SN003",
+    "ten": "Tôm Tẩm Bột Chiên Giòn Sốt Tartar",
+    "gia": 145000,
+    "danh_muc": "Snack & Món Chiên Giòn",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "SN004",
+    "ten": "Mực Chiên Xù Sốt Tartar",
+    "gia": 155000,
+    "danh_muc": "Snack & Món Chiên Giòn",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "SN005",
+    "ten": "Cá Tẩm Bột Chiên Giòn Sốt Tartar",
+    "gia": 165000,
+    "danh_muc": "Snack & Món Chiên Giòn",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "KV001",
+    "ten": "Bánh Khoái Huế",
+    "gia": 65000,
+    "danh_muc": "Khai Vị",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "KV002",
+    "ten": "Bánh Bèo Huế Tôm Chấy",
+    "gia": 99000,
+    "danh_muc": "Khai Vị",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "KV003",
+    "ten": "Bánh Ướt Huế Tôm Chấy",
+    "gia": 99000,
+    "danh_muc": "Khai Vị",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "KV004",
+    "ten": "Bún Bò Huế Truyền Thống",
+    "gia": 109000,
+    "danh_muc": "Khai Vị",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "KV005",
+    "ten": "Gỏi Đu Đủ",
+    "gia": 109000,
+    "danh_muc": "Khai Vị",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "KV006",
+    "ten": "Nem Lụi Huế",
+    "gia": 119000,
+    "danh_muc": "Khai Vị",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "KV007",
+    "ten": "Nem Rán Thập Cẩm",
+    "gia": 119000,
+    "danh_muc": "Khai Vị",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "KV008",
+    "ten": "Cuốn Tôm Thịt Kiểu Huế",
+    "gia": 129000,
+    "danh_muc": "Khai Vị",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "KV009",
+    "ten": "Vả Trộn Tôm Thịt Kiểu Huế",
+    "gia": 155000,
+    "danh_muc": "Khai Vị",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "KV010",
+    "ten": "Bò Nướng Lá Lốt",
+    "gia": 165000,
+    "danh_muc": "Khai Vị",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "KV011",
+    "ten": "Bò Nướng Lá Lốt và Nem Lụi Sả",
+    "gia": 175000,
+    "danh_muc": "Khai Vị",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "KV012",
+    "ten": "Khay Đặc Sản Huế",
+    "gia": 219000,
+    "danh_muc": "Khai Vị",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "KV013",
+    "ten": "Bánh Mì Nướng Bơ Tỏi",
+    "gia": 65000,
+    "danh_muc": "Khai Vị",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "KV014",
+    "ten": "Bánh Mỳ Bruschetta",
+    "gia": 89000,
+    "danh_muc": "Khai Vị",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "KV015",
+    "ten": "Salad Lườn Ngỗng",
+    "gia": 145000,
+    "danh_muc": "Khai Vị",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "KV016",
+    "ten": "Salad Cá Ngừ",
+    "gia": 145000,
+    "danh_muc": "Khai Vị",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "KV017",
+    "ten": "Salad Caesar Cổ Điển Tôm",
+    "gia": 165000,
+    "danh_muc": "Khai Vị",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "VC001",
+    "ten": "Cà phê phin",
+    "gia": 45000,
+    "danh_muc": "Vietnamese Coffee",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "VC002",
+    "ten": "Cà phê phin sữa",
+    "gia": 50000,
+    "danh_muc": "Vietnamese Coffee",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "VC003",
+    "ten": "Cà phê đen đá",
+    "gia": 55000,
+    "danh_muc": "Vietnamese Coffee",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "VC004",
+    "ten": "Cà phê sữa đá",
+    "gia": 60000,
+    "danh_muc": "Vietnamese Coffee",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "VC005",
+    "ten": "Cà phê sữa tươi",
+    "gia": 60000,
+    "danh_muc": "Vietnamese Coffee",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "VC006",
+    "ten": "Bạc xỉu",
+    "gia": 60000,
+    "danh_muc": "Vietnamese Coffee",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "VC007",
+    "ten": "Cà phê muối",
+    "gia": 60000,
+    "danh_muc": "Vietnamese Coffee",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "VC008",
+    "ten": "Cà phê trứng muối",
+    "gia": 60000,
+    "danh_muc": "Vietnamese Coffee",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "EB001",
+    "ten": "Cà phê Americano",
+    "gia": 50000,
+    "danh_muc": "Expresso Bar",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "EB002",
+    "ten": "Cà phê Espresso",
+    "gia": 55000,
+    "danh_muc": "Expresso Bar",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "EB003",
+    "ten": "Cà phê Espresso sữa",
+    "gia": 60000,
+    "danh_muc": "Expresso Bar",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "EB004",
+    "ten": "Cà phê Cappuccino",
+    "gia": 65000,
+    "danh_muc": "Expresso Bar",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "EB005",
+    "ten": "Cà phê Latte",
+    "gia": 65000,
+    "danh_muc": "Expresso Bar",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "EB006",
+    "ten": "Cà phê Mocha",
+    "gia": 65000,
+    "danh_muc": "Expresso Bar",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "EB007",
+    "ten": "Cà phê Flat White",
+    "gia": 70000,
+    "danh_muc": "Expresso Bar",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "TE001",
+    "ten": "Trà Lipton",
+    "gia": 45000,
+    "danh_muc": "Tea",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "TE002",
+    "ten": "Trà Gừng",
+    "gia": 45000,
+    "danh_muc": "Tea",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "TE003",
+    "ten": "Trà gừng cam sả nóng",
+    "gia": 55000,
+    "danh_muc": "Tea",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "TE004",
+    "ten": "Trà Ô Long cam",
+    "gia": 55000,
+    "danh_muc": "Tea",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "TE005",
+    "ten": "Trà sen long nhãn",
+    "gia": 55000,
+    "danh_muc": "Tea",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "TE006",
+    "ten": "Trà quả mọng nhiệt đới",
+    "gia": 55000,
+    "danh_muc": "Tea",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "YG001",
+    "ten": "Sữa chua đá",
+    "gia": 50000,
+    "danh_muc": "Yogurt",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "YG002",
+    "ten": "Sữa chua xoài",
+    "gia": 60000,
+    "danh_muc": "Yogurt",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "YG003",
+    "ten": "Sữa chua chuối, chanh dây",
+    "gia": 60000,
+    "danh_muc": "Yogurt",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "YG004",
+    "ten": "Sữa chua trái cây",
+    "gia": 60000,
+    "danh_muc": "Yogurt",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "FJ001",
+    "ten": "Nước chanh tươi",
+    "gia": 45000,
+    "danh_muc": "Freshly Squeezed Juice",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "FJ002",
+    "ten": "Nước ép cà rốt",
+    "gia": 50000,
+    "danh_muc": "Freshly Squeezed Juice",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "FJ003",
+    "ten": "Nước ép Chanh dây",
+    "gia": 55000,
+    "danh_muc": "Freshly Squeezed Juice",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "FJ004",
+    "ten": "Nước ép dứa",
+    "gia": 55000,
+    "danh_muc": "Freshly Squeezed Juice",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "FJ005",
+    "ten": "Nước ép chuối",
+    "gia": 55000,
+    "danh_muc": "Freshly Squeezed Juice",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "FJ006",
+    "ten": "Nước ép táo",
+    "gia": 60000,
+    "danh_muc": "Freshly Squeezed Juice",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "FJ007",
+    "ten": "Nước ép cà chua",
+    "gia": 60000,
+    "danh_muc": "Freshly Squeezed Juice",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "FJ008",
+    "ten": "Nước ép dưa hấu",
+    "gia": 60000,
+    "danh_muc": "Freshly Squeezed Juice",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "FJ009",
+    "ten": "Nước dừa sữa tươi",
+    "gia": 70000,
+    "danh_muc": "Freshly Squeezed Juice",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "FJ010",
+    "ten": "Nước cam",
+    "gia": 80000,
+    "danh_muc": "Freshly Squeezed Juice",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "HJ001",
+    "ten": "Nước ép Tarot",
+    "gia": 65000,
+    "danh_muc": "Healthy Juice",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "HJ002",
+    "ten": "Nước ép dịu mát",
+    "gia": 65000,
+    "danh_muc": "Healthy Juice",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "HJ003",
+    "ten": "Nước ép helo",
+    "gia": 65000,
+    "danh_muc": "Healthy Juice",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "HJ004",
+    "ten": "Nước ép Green",
+    "gia": 65000,
+    "danh_muc": "Healthy Juice",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "HJ005",
+    "ten": "Nước ép Yellow",
+    "gia": 65000,
+    "danh_muc": "Healthy Juice",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "NA001",
+    "ten": "Cocktail Pineapple Milk",
+    "gia": 95000,
+    "danh_muc": "Non Alcoholic Cocktails",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "NA002",
+    "ten": "Cocktail Fruit Punch",
+    "gia": 100000,
+    "danh_muc": "Non Alcoholic Cocktails",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "NA003",
+    "ten": "Cocktail Virgin Colada",
+    "gia": 100000,
+    "danh_muc": "Non Alcoholic Cocktails",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "NA004",
+    "ten": "Cocktail Love Garden",
+    "gia": 100000,
+    "danh_muc": "Non Alcoholic Cocktails",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "NA005",
+    "ten": "Cocktail Milk Shake",
+    "gia": 115000,
+    "danh_muc": "Non Alcoholic Cocktails",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "NA006",
+    "ten": "Cocktail Governor Smile",
+    "gia": 115000,
+    "danh_muc": "Non Alcoholic Cocktails",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "NA007",
+    "ten": "Cocktail Cinderella",
+    "gia": 120000,
+    "danh_muc": "Non Alcoholic Cocktails",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "CK001",
+    "ten": "Cocktail Srewdriver",
+    "gia": 110000,
+    "danh_muc": "Cocktail",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "CK002",
+    "ten": "Cocktail Caipiri﻿nha",
+    "gia": 115000,
+    "danh_muc": "Cocktail",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "CK003",
+    "ten": "Cocktail Black Russian",
+    "gia": 115000,
+    "danh_muc": "Cocktail",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "CK004",
+    "ten": "Cocktail White Lad﻿y",
+    "gia": 115000,
+    "danh_muc": "Cocktail",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "CK005",
+    "ten": "Vodkatini",
+    "gia": 120000,
+    "danh_muc": "Cocktail",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "CK006",
+    "ten": "Cocktail Mojito",
+    "gia": 120000,
+    "danh_muc": "Cocktail",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "CK007",
+    "ten": "Cocktail White Russian",
+    "gia": 130000,
+    "danh_muc": "Cocktail",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "CK008",
+    "ten": "Cocktail Banana Daiquiri",
+    "gia": 130000,
+    "danh_muc": "Cocktail",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "CK009",
+    "ten": "Cocktail Pinacolada",
+    "gia": 135000,
+    "danh_muc": "Cocktail",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "CK010",
+    "ten": "Cocktail Blue Hawaii",
+    "gia": 135000,
+    "danh_muc": "Cocktail",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "CK011",
+    "ten": "Cocktail Magarita",
+    "gia": 140000,
+    "danh_muc": "Cocktail",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "CK012",
+    "ten": "Cocktail Gin Fizz",
+    "gia": 145000,
+    "danh_muc": "Cocktail",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "CK013",
+    "ten": "Cocktail Dry Martini",
+    "gia": 145000,
+    "danh_muc": "Cocktail",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "CK014",
+    "ten": "Cocktail Maitai",
+    "gia": 150000,
+    "danh_muc": "Cocktail",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "CK015",
+    "ten": "Cocktail Singapore Sling",
+    "gia": 150000,
+    "danh_muc": "Cocktail",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "CK016",
+    "ten": "Cocktail Blue Magarita",
+    "gia": 150000,
+    "danh_muc": "Cocktail",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "CK017",
+    "ten": "Cocktail Tequila Sunrise",
+    "gia": 155000,
+    "danh_muc": "Cocktail",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "CK018",
+    "ten": "Cocktail Long Island Iced Tea",
+    "gia": 165000,
+    "danh_muc": "Cocktail",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "CK019",
+    "ten": "Cocktail Alaska Ice Tea",
+    "gia": 165000,
+    "danh_muc": "Cocktail",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "CK020",
+    "ten": "Cocktail Elegant Special",
+    "gia": 180000,
+    "danh_muc": "Cocktail",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "LD001",
+    "ten": "Vodka & Tonic/ Soda",
+    "gia": 115000,
+    "danh_muc": "Long Drink",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "LD002",
+    "ten": "Gin & Tonic/ Soda",
+    "gia": 115000,
+    "danh_muc": "Long Drink",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "LD003",
+    "ten": "Rhum & Coke",
+    "gia": 115000,
+    "danh_muc": "Long Drink",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "LD004",
+    "ten": "Whisky & Coke/ Soda",
+    "gia": 130000,
+    "danh_muc": "Long Drink",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "LD005",
+    "ten": "Jim Bean & Coke",
+    "gia": 130000,
+    "danh_muc": "Long Drink",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "WH001",
+    "ten": "Rượu Minh Mạng (Ly)",
+    "gia": 60000,
+    "danh_muc": "Whisky",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "WH002",
+    "ten": "Rượu Minh Mạng (Chai)",
+    "gia": 300000,
+    "danh_muc": "Whisky",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "WH003",
+    "ten": "Rượu Jim Bean (Ly)",
+    "gia": 80000,
+    "danh_muc": "Whisky",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "WH004",
+    "ten": "Rượu Jim Bean (Chai)",
+    "gia": 695000,
+    "danh_muc": "Whisky",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "WH005",
+    "ten": "Rượu Johnie Walker Red (Ly)",
+    "gia": 90000,
+    "danh_muc": "Whisky",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "WH006",
+    "ten": "Rượu Johnie Walker Red (Chai)",
+    "gia": 820000,
+    "danh_muc": "Whisky",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "WH007",
+    "ten": "Rượu Jack Daniels (Ly)",
+    "gia": 110000,
+    "danh_muc": "Whisky",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "WH008",
+    "ten": "Rượu Jack Daniels (Chai)",
+    "gia": 1125000,
+    "danh_muc": "Whisky",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "WH009",
+    "ten": "Rượu Chivas Regal 12 Years (Ly)",
+    "gia": 110000,
+    "danh_muc": "Whisky",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "WH010",
+    "ten": "Rượu Chivas Regal 12 Years (Chai)",
+    "gia": 1500000,
+    "danh_muc": "Whisky",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "WH011",
+    "ten": "Rượu Johnie Walker Black (Ly)",
+    "gia": 120000,
+    "danh_muc": "Whisky",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "WH012",
+    "ten": "Rượu Johnie Walker Black (Chai)",
+    "gia": 1500000,
+    "danh_muc": "Whisky",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "WH013",
+    "ten": "Rượu Johnie Walker Gold (Ly)",
+    "gia": 150000,
+    "danh_muc": "Whisky",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "WH014",
+    "ten": "Rượu Johnie Walker Gold (Chai)",
+    "gia": 2000000,
+    "danh_muc": "Whisky",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "WH015",
+    "ten": "Rượu Chivas Regal 18 Years (Ly)",
+    "gia": 240000,
+    "danh_muc": "Whisky",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "WH016",
+    "ten": "Rượu Chivas Regal 18 Years (Chai)",
+    "gia": 3100000,
+    "danh_muc": "Whisky",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "CB001",
+    "ten": "Rượu Remy Martin VSOP (Ly)",
+    "gia": 170000,
+    "danh_muc": "Cognag & Brandy",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "CB002",
+    "ten": "Rượu Remy Martin VSOP (Chai)",
+    "gia": 2400000,
+    "danh_muc": "Cognag & Brandy",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "CB003",
+    "ten": "Rượu Hennessy VSOP (Ly)",
+    "gia": 290000,
+    "danh_muc": "Cognag & Brandy",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "CB004",
+    "ten": "Rượu Hennessy VSOP (Chai)",
+    "gia": 3100000,
+    "danh_muc": "Cognag & Brandy",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "CB005",
+    "ten": "Rượu Remy Martin XO (Bottle)",
+    "gia": 8300000,
+    "danh_muc": "Cognag & Brandy",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "SG001",
+    "ten": "Sangria Cam Quế (Ly)",
+    "gia": 90000,
+    "danh_muc": "Sangria",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "SG002",
+    "ten": "Sangria Cam Quế (500ml)",
+    "gia": 170000,
+    "danh_muc": "Sangria",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "SG003",
+    "ten": "Sangria Cam Quế (1000ml)",
+    "gia": 310000,
+    "danh_muc": "Sangria",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "SG004",
+    "ten": "Sangria Hoa Hồng (Ly)",
+    "gia": 90000,
+    "danh_muc": "Sangria",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "SG005",
+    "ten": "Sangria Hoa hồng (500ml)",
+    "gia": 170000,
+    "danh_muc": "Sangria",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "SG006",
+    "ten": "Sangria Hoa hồng (1000ml)",
+    "gia": 310000,
+    "danh_muc": "Sangria",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "HW001",
+    "ten": "Rượu vang Frontera Chardonnay (Ly)",
+    "gia": 115000,
+    "danh_muc": "House Wine",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "HW002",
+    "ten": "Rượu vang Frontera Chardonnay (Chai)",
+    "gia": 750000,
+    "danh_muc": "House Wine",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "HW003",
+    "ten": "Rượu vang Mapu Sauvignon Blanc (Ly)",
+    "gia": 115000,
+    "danh_muc": "House Wine",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "HW004",
+    "ten": "Rượu vang Mapu Sauvignon Blanc (Chai)",
+    "gia": 750000,
+    "danh_muc": "House Wine",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "HW005",
+    "ten": "Rượu vang Louis Pinel Sauvignon (Ly)",
+    "gia": 125000,
+    "danh_muc": "House Wine",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "HW006",
+    "ten": "Rượu vang Louis Pinel Sauvignon (Chai)",
+    "gia": 800000,
+    "danh_muc": "House Wine",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "HW007",
+    "ten": "Rượu vang Frontera Cabernet Sauvignon (Ly)",
+    "gia": 115000,
+    "danh_muc": "House Wine",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "HW008",
+    "ten": "Rượu vang Frontera Cabernet Sauvignon (Chai)",
+    "gia": 750000,
+    "danh_muc": "House Wine",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "HW009",
+    "ten": "Rượu vang Mapu Cabernet Sauvignon Carmenere (Ly)",
+    "gia": 115000,
+    "danh_muc": "House Wine",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "HW010",
+    "ten": "Rượu vang Mapu Cabernet Sauvignon Carmenere (Chai)",
+    "gia": 750000,
+    "danh_muc": "House Wine",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "HW011",
+    "ten": "Rượu vang Louis Pinel Merlot (Ly)",
+    "gia": 125000,
+    "danh_muc": "House Wine",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "HW012",
+    "ten": "Rượu vang Louis Pinel Merlot (Chai)",
+    "gia": 800000,
+    "danh_muc": "House Wine",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "HW013",
+    "ten": "Rượu vang Louis pinel Cinsault Rose (Chai)",
+    "gia": 800000,
+    "danh_muc": "House Wine",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "SF001",
+    "ten": "Coca Light",
+    "gia": 40000,
+    "danh_muc": "Soft Drink",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "SF002",
+    "ten": "Coke/ Diet Coke (Coca Cola)",
+    "gia": 35000,
+    "danh_muc": "Soft Drink",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "SF003",
+    "ten": "7Up",
+    "gia": 35000,
+    "danh_muc": "Soft Drink",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "SF004",
+    "ten": "Soda",
+    "gia": 45000,
+    "danh_muc": "Soft Drink",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "SF005",
+    "ten": "Nước suối",
+    "gia": 30000,
+    "danh_muc": "Soft Drink",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "SF006",
+    "ten": "Redbull (Bò húc)",
+    "gia": 40000,
+    "danh_muc": "Soft Drink",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "SF007",
+    "ten": "Tonic",
+    "gia": 45000,
+    "danh_muc": "Soft Drink",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "SF008",
+    "ten": "Fanta",
+    "gia": 35000,
+    "danh_muc": "Soft Drink",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "SP001",
+    "ten": "Rượu vang DB Blend Sparkling Brut (Dry)",
+    "gia": 900000,
+    "danh_muc": "Sparking & Champagne",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "SP002",
+    "ten": "Rượu vang Champagne Charles Mignon Brut Premium Reserve",
+    "gia": 2800000,
+    "danh_muc": "Sparking & Champagne",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "BE001",
+    "ten": "Bia Huda (Lon)",
+    "gia": 45000,
+    "danh_muc": "Beer",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "BE002",
+    "ten": "Bia Tiger nâu (Chai)",
+    "gia": 5500,
+    "danh_muc": "Beer",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "BE003",
+    "ten": "Bia Tiger bạc (Chai)",
+    "gia": 55000,
+    "danh_muc": "Beer",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "BE004",
+    "ten": "Bia Heniken (Lon)",
+    "gia": 65000,
+    "danh_muc": "Beer",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "RW001",
+    "ten": "Rượu vang Canapi, Nero Davola, IGT Sicilia",
+    "gia": 750000,
+    "danh_muc": "Red Whine",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "RW002",
+    "ten": "Rượu vang Tarquino Malbec Shiraz",
+    "gia": 800000,
+    "danh_muc": "Red Whine",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "RW003",
+    "ten": "Rượu vang DB Family Selection Shiraz Cabernet",
+    "gia": 850000,
+    "danh_muc": "Red Whine",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "RW004",
+    "ten": "Rượu vang Welmoed Merlot",
+    "gia": 850000,
+    "danh_muc": "Red Whine",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "RW005",
+    "ten": "Rượu vang Chateau La Croix De Queynac",
+    "gia": 950000,
+    "danh_muc": "Red Whine",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "RW006",
+    "ten": "Rượu vang Casillero Del Diablo Cabernet Sauvignon Reserva",
+    "gia": 1000000,
+    "danh_muc": "Red Whine",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "RW007",
+    "ten": "Rượu vang Marques Casa Camenere",
+    "gia": 1800000,
+    "danh_muc": "Red Whine",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "RW008",
+    "ten": "Rượu vang Chateau Haut Rocher, Saint Emilion Grand Cru",
+    "gia": 2350000,
+    "danh_muc": "Red Whine",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "WW001",
+    "ten": "Rượu vang Tarquino Sauvignon Blanc",
+    "gia": 800000,
+    "danh_muc": "White Wine",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "WW002",
+    "ten": "Rượu vang Canapi, Grillo, IGT Sicilia",
+    "gia": 800000,
+    "danh_muc": "White Wine",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "WW003",
+    "ten": "Rượu vang Welmoed Pinot Noir",
+    "gia": 850000,
+    "danh_muc": "White Wine",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "WW004",
+    "ten": "Rượu vang DB Family Selection Semillon Chardonnay",
+    "gia": 900000,
+    "danh_muc": "White Wine",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "WW005",
+    "ten": "Rượu vang Casillero Chardonnay",
+    "gia": 1050000,
+    "danh_muc": "White Wine",
+    "trang_thai": "Còn hàng"
+  },
+  {
+    "id": "WW006",
+    "ten": "Rượu vang Les Hauts De Bordeaux White",
+    "gia": 1250000,
+    "danh_muc": "White Wine",
+    "trang_thai": "Hết hàng"
+  },
+  {
+    "id": "WW007",
+    "ten": "Rượu vang Gunderloch, Fritz Riesling, Rheinhessen",
+    "gia": 1350000,
+    "danh_muc": "White Wine",
+    "trang_thai": "Còn hàng"
+  }
+]
+>>>>>>> 641fe4b3d13f1e13c5881b256059dae41c1f021b

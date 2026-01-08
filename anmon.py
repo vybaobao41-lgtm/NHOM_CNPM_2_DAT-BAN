@@ -1,104 +1,114 @@
-# =========================
-# MÔ HÌNH MÓN ĂN
-# =========================
-class MonAn:
-    def __init__(self, ten, gia, loai):
-        self.ten = ten
-        self.gia = gia
-        self.loai = loai
-        self.dang_ban = True  # True = còn hàng, False = hết hàng (ẩn)
+import json
 
-    def an_mon(self):
-        self.dang_ban = False
+FILE = "THUCDON.json"
 
-    def hien_thi(self):
-        if self.dang_ban:
-            print(f"{self.ten} - {self.gia}đ ({self.loai})")
-
-
-# =========================
-# DANH SÁCH THỰC ĐƠN (AC-01)
-# =========================
-thuc_don = [
-    MonAn("Cơm gà", 35000, "Món chính"),
-    MonAn("Bún bò", 40000, "Món chính"),
-    MonAn("Phở bò", 45000, "Món chính"),
-    MonAn("Trà đá", 5000, "Nước uống"),
-    MonAn("Trà đào", 25000, "Nước uống"),
-]
-
-
-# =========================
-# AC-01: PHÁT HIỆN MÓN HẾT HÀNG
-# =========================
-def tim_mon(ten_mon):
-    for mon in thuc_don:
-        if mon.ten.lower() == ten_mon.lower():
-            return mon
+# =======================
+# HÀM TIỆN ÍCH
+# =======================
+def get_value(item, *keys):
+    for k in keys:
+        if k in item:
+            return item[k]
     return None
-# =========================
-# AC-02 + AC-03: ẨN MÓN & LƯU TRẠNG THÁI
-# =========================
-def an_mon_khi_het_hang():
-    print("\n--- KIỂM TRA MÓN HẾT HÀNG (BẾP) ---")
-    dem = 0
 
-    for mon in thuc_don:
-        if mon.dang_ban:
-            print(f"\n{mon.ten} - {mon.gia}đ ({mon.loai})")
-            lua_chon = input("Món này đã hết chưa? (y/n): ").strip().lower()
+def is_con_hang(item):
+    value = get_value(item, "status", "trang_thai", "available")
+    return value in ["Còn hàng", True, "con_hang", "available"]
 
-            if lua_chon == "y":
-                mon.an_mon()
-                dem += 1
-                print(f"✔ Đã ẩn món '{mon.ten}'")
+def set_het_hang(item):
+    if "status" in item:
+        item["status"] = "Hết hàng"
+    elif "trang_thai" in item:
+        item["trang_thai"] = "Hết hàng"
+    elif "available" in item:
+        item["available"] = False
+    else:
+        item["status"] = "Hết hàng"
 
-    print(f"\n👉 Tổng số món đã ẩn: {dem}")
+# =======================
+# ĐỌC / GHI FILE
+# =======================
+def load_menu():
+    try:
+        with open(FILE, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except Exception:
+        print(f"⚠ File {FILE} bị lỗi JSON. Tạo menu trống...")
+        return []
 
-    if dem == 0:
-        print("⚠ Không có món nào được ẩn.")
+def save_menu(menu):
+    with open(FILE, "w", encoding="utf-8") as f:
+        json.dump(menu, f, ensure_ascii=False, indent=2)
 
-    # =========================
-# AC-04: HIỂN THỊ THEO VAI TRÒ
-# =========================
-def hien_thi_cho_phuc_vu():
-    print("\n--- THỰC ĐƠN PHỤC VỤ ---")
-    for mon in thuc_don:
-        mon.hien_thi()
+# =======================
+# 1. BẾP: CẬP NHẬT MÓN HẾT
+# =======================
+def bep_cap_nhat_mon_het(menu):
+    print("\n--- BẾP CẬP NHẬT MÓN HẾT HÀNG ---\n")
+    con_hang = [m for m in menu if is_con_hang(m)]
+    if not con_hang:
+        print("⚠ Không còn món nào đang CÒN HÀNG.")
+        return
+    for m in con_hang:
+        print(f'{get_value(m,"id","ma")} - {get_value(m,"name","ten")} ({get_value(m,"category","loai")})')
+    ids = input("\nNhập ID các món hết hoặc Enter: ").strip()
+    if not ids:
+        print("✔ Không cập nhật món nào.")
+        return
+    ids = [i.strip() for i in ids.split(",")]
+    for m in menu:
+        if get_value(m,"id","ma") in ids and is_con_hang(m):
+            set_het_hang(m)
+            print(f"✔ Đã ẩn: {get_value(m,'name','ten')}")
+    save_menu(menu)
 
+# =======================
+# 2. PHỤC VỤ: XEM THỰC ĐƠN
+# =======================
+def phuc_vu_xem_thuc_don(menu):
+    print("\n--- THỰC ĐƠN PHỤC VỤ ---\n")
+    if not menu:
+        print("⚠ Menu đang trống. Vui lòng kiểm tra THUCDON.json")
+        return
+    for m in menu:
+        if is_con_hang(m):
+            print(f'{get_value(m,"name","ten")} - {get_value(m,"price","gia")}đ')
 
-def hien_thi_cho_bep():
-    print("\n--- QUẢN LÝ THỰC ĐƠN (BẾP) ---")
-    for mon in thuc_don:
-        trang_thai = "Còn hàng" if mon.dang_ban else "Hết hàng"
-        print(f"{mon.ten} - {trang_thai}")
+# =======================
+# 3. BẾP: XEM QUẢN LÝ
+# =======================
+def bep_xem_quan_ly(menu):
+    print("\n--- QUẢN LÝ THỰC ĐƠN (BẾP) ---\n")
+    if not menu:
+        print("⚠ Menu đang trống. Vui lòng kiểm tra THUCDON.json")
+        return
+    for m in menu:
+        trang_thai = "Còn hàng" if is_con_hang(m) else "Hết hàng"
+        print(f'{get_value(m,"id","ma")} - {get_value(m,"name","ten")} : {trang_thai}')
 
-
-# =========================
-# MENU TEST
-# =========================
-def menu():
+# =======================
+# MENU CHÍNH
+# =======================
+def main():
+    menu = load_menu()
     while True:
-        print("\n===== US: ẨN MÓN KHI HẾT HÀNG =====")
-        print("1. Bếp: Ẩn món hết hàng")
+        print("\n===== HỆ THỐNG QUẢN LÝ THỰC ĐƠN =====")
+        print("1. Bếp: Cập nhật món hết hàng")
         print("2. Phục vụ: Xem thực đơn")
         print("3. Bếp: Xem danh sách quản lý món")
         print("0. Thoát")
-
         chon = input("Chọn chức năng: ").strip()
-
-        if chon == "1":
-            an_mon_khi_het_hang()
-        elif chon == "2":
-            hien_thi_cho_phuc_vu()
-        elif chon == "3":
-            hien_thi_cho_bep()
-        elif chon == "0":
-            print("👋 Thoát chương trình")
+        if chon=="1":
+            bep_cap_nhat_mon_het(menu)
+        elif chon=="2":
+            phuc_vu_xem_thuc_don(menu)
+        elif chon=="3":
+            bep_xem_quan_ly(menu)
+        elif chon=="0":
+            print("👋 Thoát chương trình.")
             break
         else:
-            print("❌ Lựa chọn không hợp lệ!")
+            print("❌ Lựa chọn không hợp lệ.")
 
-
-if __name__ == "__main__":
-    menu()
+if __name__=="__main__":
+    main()
